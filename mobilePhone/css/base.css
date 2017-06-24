@@ -1,0 +1,106 @@
+@charset "UTF-8";
+/*css 初始化 initialize */
+html, body, ul, li, ol, dl, dd, dt, p, h1, h2, h3, h4, h5, h6, form, fieldset, legend, img, tr, td, input, button, select  {
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    font: 14px/150% "Helvetica Neue", Helvetica, 
+    Tahoma, "Source Han Sans CN", "Noto Sans S Chinese", "Hiragino Sans GB", 
+    "Microsoft YaHei", "sans-serif", Arial, Verdana, "\5b8b\4f53";	/*Unicode，统一码*/
+    color: #666;
+    background: #fff;
+}
+
+fieldset, img, input, button {  /* fieldset组合表单中的相关元素 */
+    border: none;
+    outline-style: none;
+}
+
+ul, ol {    /* 清除列表风格 */
+    list-style: none;
+}
+
+input {
+    padding-top: 0;
+    padding-bottom: 0;
+    font-family: "SimSun", "宋体";
+}
+
+select {
+    outline:none;
+    appearance:none;
+    -webkit-appearance:none;
+    -moz-appearance:none;
+}
+
+select, input {
+    vertical-align: middle;
+}
+
+select, input, textarea {
+    font-size: 12px;
+}
+
+textarea {  /* 防止多行文本框拖动 */
+    resize: none;
+}
+
+
+img {   /* 去掉图片低测默认的3像素空白缝隙 */
+    border: 0;
+    vertical-align: middle;
+}
+
+
+table {     /* 合并外边线 */
+    width:100%;
+    border-collapse: collapse;			
+}
+
+a {
+    color:inherit;
+    text-decoration: none;
+}
+
+h1, h2, h3, h4, h5, h6 {
+    text-decoration: none;
+    font-weight: normal;
+    font-size: 100%;
+}
+
+i, s, em {
+    font-style: normal;
+    text-decoration: none;
+}
+
+.clearfix:before, .clearfix:after {
+    content: "";
+    display: table;
+}
+
+.clearfix:after {
+    clear: both;
+}
+
+.clearfix {
+    zoom: 1;    /* IE/7/6 */
+}
+
+/* 公共类 */
+.w {
+    width: 1210px;
+    margin: 0 auto;
+}
+
+.col-red {
+    color: #C81623 !important;
+}
+
+.fl {float: left;}
+.fr {float: right;}
+.al {text-align: left;}
+.ac {text-align: center;}
+.ar {text-align: right;}
+.hide {display: none;}
