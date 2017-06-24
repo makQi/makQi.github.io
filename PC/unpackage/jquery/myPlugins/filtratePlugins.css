@@ -1,0 +1,37 @@
+.filtrateBox {
+	display:none;
+	width:120px;
+	padding:8px 18px 12px 18px;
+	position:absolute;
+	cursor:default;
+	background-color:#2c2c2c;
+	box-shadow: 2px 5px 20px 0px rgba(0, 0, 0, .6);
+	border-radius:4px;
+	z-index:999;
+}
+.filtrateBox li {
+	height:20px;
+	line-height:20px;
+	padding:2px 0;
+	color:#c4c4c4;
+}
+.filtrateBox li:hover {color:#4A89E6;}
+.filtrateBox label {float:left;}
+.filtrateBox input {
+	float:right;
+	margin-top:3px;
+}
+.filtrateBox button {
+	float:right;
+	width:56px;
+	height:24px;
+	margin-top:10px;
+	padding:0;
+	right:0;
+	cursor:pointer;
+	background-color:#4990E2;
+	color:#fff;
+	border-radius:4px;
+}
+.filtrateBox button:hover {background:#2d78f4;}
+.filtrateBox button:active{background:#4990E2;}

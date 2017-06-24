@@ -103,12 +103,12 @@ mak.getDateDiff = function(endTime){
 };
 
 // http://gosspublic.alicdn.com/aliyun-oss-sdk-4.4.4.min.js 引包
-var client = new OSS.Wrapper({	// 上传图片方法
+/*var client = new OSS.Wrapper({	// 上传图片方法
 	region: 'oss-cn-beijing',
 	accessKeyId: 'LTAI5UVyE7lQndTX',
 	accessKeySecret: 'R3FZMMrxfJbmE0IO87pc8cpc7aU4gO',
 	bucket: 'thfundfile'
-});
+});*/
 // 判断上传文件格式
 mak.checkFileExt = function(filename, e){	// 参数1：input.value,	event事件对像
 	var flag = false; //状态

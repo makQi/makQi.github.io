@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<title></title>
+	<link rel="icon" href="../img/star.png">
+	<link rel="stylesheet" href="../css/base.css">
+	<link rel="stylesheet" href="../css/headerNav.css">
+	<link rel="stylesheet" href="../css/templates/tableDrag.css">
+</head>
+<body>
+	
+	<div class="demo">
+		<h2>jQuery拖动调整表格列宽度</h2>
+		<table width="100%" class="table listext" data-resizable-columns-id="demo-table">
+			<thead>
+				<tr>
+					<th data-resizable-column-id="#">#</th>
+					<th data-resizable-column-id="first_name">First Name</th>
+					<th data-resizable-column-id="last_name">Last Name</th>
+					<th data-resizable-column-id="username" id="username-column" data-noresize>Username</th>
+				</tr>
+			</thead>
+			<tbody>
+				<tr>
+					<td>1</td>
+					<td>Mark</td>
+					<td>Otto</td>
+					<td>@mdo</td>
+				</tr>
+				<tr>
+					<td>2</td>
+					<td>Jacob</td>
+					<td>Thornton</td>
+					<td>@fat</td>
+				</tr>
+				<tr>
+					<td>3</td>
+					<td colspan="2">Larry the Bird</td>
+					<td>@twitter</td>
+				</tr>
+			</tbody>
+		</table>
+	</div>
+
+	<div class="tab">
+		<table>
+			<thead>
+				<tr>
+					<th>header</th>
+					<th>header</th>
+					<th>header</th>
+					<th>header</th>
+				</tr>
+			</thead>
+			<tbody>
+				<tr>
+					<th>1</th>
+					<th>1</th>
+					<th>1</th>
+					<th>2</th>
+				</tr>
+				<tr>
+					<th>2</th>
+					<th>2</th>
+					<th>2</th>
+					<th>2</th>
+				</tr>
+				<tr>
+					<th>3</th>
+					<th>3</th>
+					<th>3</th>
+					<th>3</th>
+				</tr>
+				<tr>
+					<th>4</th>
+					<th>4</th>
+					<th>4</th>
+					<th>4</th>
+				</tr>
+				<tr>
+					<th>5</th>
+					<th>5</th>
+					<th>5</th>
+					<th>5</th>
+				</tr>
+			</tbody>
+		</table>
+	</div>
+
+	<script src="../unpackage/jquery/jquery-1.11.3.min.js"></script>
+	<script src="../unpackage/jquery/Plugins/table/jquery.resizableColumns.js"></script>
+	<script src="../unpackage/jquery/Plugins/table/colResizable/colResizable-1.6.min.js"></script>
+	<script src="../js/headerHtml.js"></script>
+	<script src="../js/base.js"></script>
+	<script type="text/javascript">
+		$('.demo table').resizableColumns();
+		$('.tab table').colResizable({
+			// liveDrag:true, 
+			// draggingClass:"dragging"
+		});
+	</script>
+
+</body>
+</html>

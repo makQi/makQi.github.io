@@ -1,0 +1,64 @@
+
+/* 表格翻页样式 */
+html, body {height:100%;}
+table {width:100%;border-collapse: collapse;}
+.tables {
+    position:relative;
+    overflow:hidden;
+}
+.tables th, .tables td {
+    height:32px;
+    text-align:center;
+    box-sizing:border-box;
+}
+.tables th {
+    color:#4A89E6;
+    background-color:#2B313D;
+}
+.tables tr {
+    width:100%;
+    height:auto;
+    color:#C4C4C4;
+    box-sizing: border-box;
+    background-color:#313131;
+}
+.tables thead tr {border-bottom:1px solid #3F3F3F;}
+.tables .paging {
+    color: #088ADE;
+    position:absolute;
+    top:50%;
+    left:50%;
+    transform: translate(-50%, -50%);
+    -webkit-transform: translate(-50%, -50%);
+}
+.pagingBox1 {position: relative;height:60px;}
+.previousPage1, .nextPage1, .pageNumber1 {
+    height: 26px;
+    color: #088ADE;
+    line-height:26px;
+    box-sizing:border-box;
+    border: 1px solid #3A5F93;
+    background-color: #2B313D;
+}
+.previousPage1, .nextPage1 { padding: 0 10px;cursor:pointer;}
+.pageNumber1 {
+    display:inline-block;
+    vertical-align:bottom;
+    width:auto;
+    margin:0 15px;
+    padding:0 15px;
+    font-size:16px;
+}
+.tables .record {
+    color:#787878;
+    font-size:12px;
+    position:absolute;
+    top:50%;
+    right:0;
+    transform: translateY(-50%);
+    -webkit-transform: translateY(-50%);
+}
+/* 表格翻页样式 */
+#tableBox .record {
+    display:none;
+}

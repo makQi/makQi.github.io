@@ -1,0 +1,17 @@
+<nav>
+	<ul class="clearfix">
+		<li><a href="table.html">自动生成表格</a></li>
+		<li><a href="echarts.html">图表echarts</a></li>
+		<li><a href="filter.html">筛选</a></li>
+		<li><a href="tableDrag.html">表格拖动</a></li>
+		<li><a href="vue_table.html">Vue表格</a></li>
+		<li><a href="ios6switch.html">开关插件</a></li>
+		<li><a href="ios6alert.html">弹窗插件</a></li>
+	</ul>
+</nav>
+<script type="text/javascript">
+	$('nav li>a').each(function(){
+		var $this = $(this);
+		$this.attr('href', linkPath+$this.attr('href'));
+	});
+</script>

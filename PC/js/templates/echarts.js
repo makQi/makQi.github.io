@@ -110,23 +110,12 @@ var option = {
 };
 myCharts.setOption(option);
 
-var tabData = [];
-for(var i=0; i<500; i++){
-	tabData.push({
-		a:'20170427',
-		b:i+1
-	});
-}
-$('#tab').tablesPaging({
-	titleName:[
-	{
-		name:'时间',
-		dataKey:'a'
-	},{
-		name:'指数',
-		dataKey:'b'
+var echartsInterval = function(len, num){
+	var z = 0;
+	if( len<num ){return 'auto';}
+	while (true) {
+		z++;
+		if( Math.ceil(len/z) <= num ){break;}
 	}
-	],
-	listNum:5,
-	data:tabData
-});
+	return z;
+};

@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<title>vue</title>
+	<link rel="icon" href="../img/star.png">
+	<link rel="stylesheet" href="../css/base.css">
+	<link rel="stylesheet" href="../css/headerNav.css">
+	<link rel="stylesheet" href="../unpackage/jquery/Plugins/ios6switch/ios6switch.css">
+</head>
+<body>
+
+	<div>
+		<label>开关效果：</label>
+		<input id="demo" type="checkbox">
+	</div>
+	
+	<script src="../unpackage/jquery/jquery-1.11.3.min.js"></script>
+	<script src="../unpackage/jquery/Plugins/ios6switch/ios6switch.js"></script>
+	<script src="../js/headerHtml.js"></script>
+	<script type="text/javascript">
+		$('#demo').ios6switch({
+			switchoffText: "off",
+			switchonText: "on"
+		});
+		$('#demo').on('change', function(){
+			console.log(this.checked);
+		});
+	</script>
+
+</body>
+</html>

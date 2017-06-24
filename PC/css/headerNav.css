@@ -1,0 +1,12 @@
+nav {
+	padding:10px 0;
+}
+
+nav li {
+    float:left;
+    margin-left:30px;
+}
+
+nav li a {
+    color:red;
+}
