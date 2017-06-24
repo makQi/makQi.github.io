@@ -1,6 +1,7 @@
 var dataArr;
+
 $.ajax({
-  url: '../../../../gitHubDemo/frame/data/vue_table_data.json',
+  url: '../unpackage/data/vue_table_data.json',
   type: 'GET',
   async: false,
   dataType: 'text',
