@@ -1,10 +1,23 @@
 nav {
-	padding:10px 0;
+	position:relative;
+	height:36px;
+}
+
+nav ul {
+	width:600px;
+	position:absolute;
+	top:50%;
+	left:50%;
+	transform:translate(-50%, -50%);
 }
 
 nav li {
     float:left;
     margin-left:30px;
+}
+
+nav li:first-child {
+    margin-left:0;
 }
 
 nav li a {
