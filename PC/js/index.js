@@ -127,6 +127,8 @@ $('#tab').tablesPaging({
 		dataKey:'b'
 	}
 	],
+	autoHeight:false,
 	listNum:5,
+	lineNum:6,
 	data:tabData
 });
