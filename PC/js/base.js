@@ -218,13 +218,10 @@ Number.prototype.formatMoney = function (places, symbol, thousand, decimal) {
 Number.prototype.monetaryUnit = function(){
 	var res;
 	var s = this.toString().split(".")[0].length;
-	var unit = s>8?"亿元":s>6?"百万元":s>4?"万元":"元";
+	var unit = s>8?"亿元":s>4?"万元":"元";
 	switch (unit) {
 		case "亿元":
 			res = this/100000000;
-			break;
-		case "百万元":
-			res = this/1000000;
 			break;
 		case "万元":
 			res = this/10000;
