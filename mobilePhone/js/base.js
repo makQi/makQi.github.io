@@ -1,7 +1,7 @@
 ﻿var mak = {};
 
 // 中文字符转unicode码
-mak.toUnicode == function(str){
+mak.toUnicode = function(str){
 	if(str == ''){return '请输入汉字';}
 	var str =''; 
 	for(var i=0;i<str.length;i++){
@@ -36,19 +36,24 @@ mak.charsLen = function(str){
 	}
 	return realLength;
 };
-// 获取当前时间
-mak.getCurrentTime = function(){
+// 获取当前时间		参数时间链接符
+mak.getCurrentTime = function(linkSymbol){
 	var time = new Date();
-	return {
+	var timeObj = {
 		'year':time.getFullYear().toString(),	// 年
 		'month':time.getMonth()+1<10?'0'+(time.getMonth()+1):(time.getMonth()+1).toString(),	// 月
-		'date':time.getDate().toString(),	// 日
+		'date':time.getDate()<10?'0'+time.getDate():time.getDate().toString(),	// 日
 		'day':time.getDay().toString(),	// 星期中的第几天
 		'hours':time.getHours().toString(),	// 小时
 		'minutes':time.getMinutes().toString(),	// 分钟
 		'seconds':time.getSeconds().toString(),	// 秒
 		'millisecond':time.getMilliseconds().toString()	// 微秒
-	};
+	}
+	if(linkSymbol||linkSymbol==''){
+		return timeObj.year+linkSymbol+timeObj.month+linkSymbol+timeObj.date;
+	}else{
+		return timeObj;
+	}
 };
 // 获取相对路径返程方法
 mak.getLinkPath = function(str){
@@ -103,12 +108,12 @@ mak.getDateDiff = function(endTime){
 };
 
 // http://gosspublic.alicdn.com/aliyun-oss-sdk-4.4.4.min.js 引包
-var client = new OSS.Wrapper({	// 上传图片方法
+/*var client = new OSS.Wrapper({	// 上传图片方法
 	region: 'oss-cn-beijing',
 	accessKeyId: 'LTAI5UVyE7lQndTX',
 	accessKeySecret: 'R3FZMMrxfJbmE0IO87pc8cpc7aU4gO',
 	bucket: 'thfundfile'
-});
+});*/
 // 判断上传文件格式
 mak.checkFileExt = function(filename, e){	// 参数1：input.value,	event事件对像
 	var flag = false; //状态
@@ -214,17 +219,15 @@ Number.prototype.formatMoney = function (places, symbol, thousand, decimal) {
 	j = (j = i.length) > 3 ? j % 3 : 0;
 	return symbol + negative + (j ? i.substr(0, j) + thousand : "") + i.substr(j).replace(/(\d{3})(?=\d)/g, "$1" + thousand) + (places ? decimal + Math.abs(number - i).toFixed(places).slice(2) : "");
 };
-// 货币单位转换
-Number.prototype.monetaryUnit = function(){
+// 货币单位转换  num保留小数多少位，不输入默认保留2位。
+Number.prototype.monetaryUnit = function(num){
 	var res;
 	var s = this.toString().split(".")[0].length;
-	var unit = s>8?"亿元":s>6?"百万元":s>4?"万元":"元";
+	var unit = s>8?"亿元":s>4?"万元":"元";
+	var num = num==undefined?2:num;
 	switch (unit) {
 		case "亿元":
 			res = this/100000000;
-			break;
-		case "百万元":
-			res = this/1000000;
 			break;
 		case "万元":
 			res = this/10000;
@@ -235,7 +238,7 @@ Number.prototype.monetaryUnit = function(){
 		default:
 			break;
 	}
-	return res.toFixed(2)+unit;
+	return res.toFixed(num)+unit;
 }
 // 数组去重
 Array.prototype.removeWeight = function(key){
@@ -259,4 +262,3 @@ Array.prototype.removeWeight = function(key){
 		return newArr;
 	}
 }
-
