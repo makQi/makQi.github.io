@@ -141,6 +141,18 @@ mak.checkFileExt = function(filename, e){	// 参数1：input.value,	event事件�
 	 	console.log("文件名不合法");
 	}
 }
+// cookie过期时间，参数以天为单位 , 不传参数默认为7天
+mak.cookieExpires = function(daysNum){
+	if (!Date.now) {	// 兼容不支持该方法的引擎, 时间戳毫秒值
+		Date.now = function now() {
+			return new Date().getTime();
+		};
+	}
+	var sExpires;
+	daysNum = (daysNum!=undefined&&daysNum!=null&&daysNum!='')?daysNum:7;
+	sExpires = daysNum*24*60*60*1000+Date.now();
+	return new Date(sExpires);
+}
 
 var Http = {
 	getUrlSearch: function(){	// 获取URL地址数据
@@ -202,8 +214,21 @@ var docCookies = {	// Document.cookie 读,写,删除工具方法
 		var aKeys = document.cookie.replace(/((?:^|\s*;)[^\=]+)(?=;|$)|^\s*|\s*(?:\=[^;]*)?(?:\1|$)/g, "").split(/\s*(?:\=[^;]*)?;\s*/);
 		for (var nIdx = 0; nIdx < aKeys.length; nIdx++) { aKeys[nIdx] = decodeURIComponent(aKeys[nIdx]); }
 			return aKeys;
+	},
+	expiresItem: function (sKey, daysNum) {		// cookie过期时间，参数以天为单位 , 不传参数默认为7天
+		var sExpires;
+		if (!Date.now) {	// 兼容不支持该方法的引擎, 时间戳毫秒值
+			Date.now = function now() {
+				return new Date().getTime();
+			};
+		}
+		daysNum = (daysNum!=undefined&&daysNum!=null&&daysNum!='')?daysNum:7;
+		sExpires = daysNum*24*60*60*1000+Date.now();
+		this.setItem(sKey, this.getItem(sKey), new Date(sExpires));
 	}
 };
+docCookies.setItem('github_user', 'makqi.github.io');
+docCookies.expiresItem('github_user', 7);
 
 // 数值转化成为货币格式
 // 参数：保留小数位数，货币符号，整数部分千位分隔符，小数分隔符
