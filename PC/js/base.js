@@ -2,12 +2,17 @@
 var mak = new MakBaseFn();
 var myCookies = new DocCookies();
 
-myCookies.setItem('github', 'io');
-myCookies.expiresItem('github', 1);
+myCookies.setItem('github', 'makqi.github.io');
+myCookies.expiresItem('github', 7);
 
-// 数值转化成为货币格式
-// 参数：保留小数位数，货币符号，整数部分千位分隔符，小数分隔符
-// Number(123456.25687).formatMoney(3, '￥');
+/**
+ * 数值转化成货币格式
+ * 参数名places：保留小数位数，默认保留2位。
+ * 参数名symbol：货币符号。
+ * 参数名thousand：整数部分千位分隔符
+ * 参数名decimal：小数分隔符
+ * 例如：Number(123456.25687).formatMoney(3, '￥');
+ */
 Number.prototype.formatMoney = function (places, symbol, thousand, decimal) {
 	places = !isNaN(places = Math.abs(places)) ? places : 2;
 	symbol = symbol !== undefined ? symbol : "$";
@@ -20,7 +25,11 @@ Number.prototype.formatMoney = function (places, symbol, thousand, decimal) {
 	return symbol + negative + (j ? i.substr(0, j) + thousand : "") + i.substr(j).replace(/(\d{3})(?=\d)/g, "$1" + thousand) + (places ? decimal + Math.abs(number - i).toFixed(places).slice(2) : "");
 };
 
-// 货币单位转换  num保留小数多少位，不输入默认保留2位。
+/**
+ * 数值转化成货币格式
+ * 参数名num：保留小数位数，默认保留2位。
+ * 例如：Number(123456.25687).monetaryUnit(3);
+ */
 Number.prototype.monetaryUnit = function(num){
 	var res;
 	var s = this.toString().split(".")[0].length;
@@ -42,7 +51,12 @@ Number.prototype.monetaryUnit = function(num){
 	return res.toFixed(num)+unit;
 }
 
-// 数组去重
+/**
+ * 数组去重
+ * 参数名key：数组中每一项为对象时，传入对象的某一项key值去重。
+ * 例如：arr.removeWeight('key') 以数组中对象去重
+ * 		arr.removeWeight() 数组去重
+ */
 Array.prototype.removeWeight = function(key){
 	var newArr = [];
 	if(key){
@@ -151,7 +165,7 @@ function MakBaseFn(){
 
 	/**
 	 * 数组排序方法
-	 * 参数：数组中每一项为对象时，传入对象的某一项key值排序。
+	 * 参数key：数组中每一项为对象时，传入对象的某一项key值排序。
 	 * 例如：arr.sort(mak.dropCompare('key')) 以数组中对象排序
 	 * 		arr.sort(mak.dropCompare()) 数组排序
 	 * arr.reverse() 反转数组
@@ -186,9 +200,8 @@ function MakBaseFn(){
 
 	/**
 	 * 获取当前时间字符串
-	 * 参数：为时间链接符。
-	 * 		不传参数返回时间属性对象
-	 * 例如：getCurrentTime('-');
+	 * 参数名linkSymbol：为时间链接符，不传参数返回时间属性对象
+	 * 例如：mak.getCurrentTime('-');
 	 */
 	this.getCurrentTime = function(linkSymbol){
 		var time = new Date();
@@ -211,8 +224,8 @@ function MakBaseFn(){
 
 	/**
 	 * 获取相对路径返程方法
-	 * 参数：文件夹名称。
-	 * 例如：getLinkPath('templates');
+	 * 参数名str：文件夹名称。
+	 * 例如：mak.getLinkPath('templates');
 	 */
 	this.getLinkPath = function(str){
 		var url = document.location.toString();
@@ -234,7 +247,7 @@ function MakBaseFn(){
 
 	/**
 	 * 时间差方法
-	 * 参数：结束时间。
+	 * 参数名endTime：结束时间。
 	 */
 	this.getDateDiff = function(endTime){
 		if(typeof(endTime)=='string'&&endTime.indexOf('-')>-1){	// IE兼容处理
@@ -290,9 +303,9 @@ function MakBaseFn(){
 
 	/**
 	 * 判断上传文件格式
-	 * 参数1：上传按扭input.value值 ,event事件对像
-	 * 参数2: 文件名后缀数组
-	 * 参数3: 上传回调方法
+	 * 参数名filename：上传按扭input.value值 ,event事件对像
+	 * 参数名nameArr: 文件名后缀数组
+	 * 参数名callback: 上传回调方法
 	 */
 	this.checkFileExt = function(filename, nameArr, callback){
 		var flag = false; //状态
@@ -322,7 +335,7 @@ function MakBaseFn(){
 
 	/**
 	 * cookie过期时间
-	 * 参数：以天为单位 , 不传参数默认为7天
+	 * 参数名daysNum：以天为单位 , 不传参数默认为7天
 	 */
 	this.cookieExpires = function(daysNum){
 		if (!Date.now) {	// 兼容不支持该方法的引擎, 时间戳毫秒值
@@ -349,7 +362,7 @@ function MakBaseFn(){
 
 	/**
 	 * cookie过期时间
-	 * 参数：url数据名称
+	 * 参数名name：url数据名称
 	 */
 	this.getUrlParam = function(name) {	
 		var reg = new RegExp("(^|&)" + name + "=([^&]*)(&|$)"); 
