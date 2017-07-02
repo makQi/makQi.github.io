@@ -1,234 +1,9 @@
-﻿var mak = {};
+﻿
+var mak = new MakBaseFn();
+var myCookies = new DocCookies();
 
-// 中文字符转unicode码
-mak.toUnicode = function(str){
-	if(str == ''){return '请输入汉字';}
-	var str =''; 
-	for(var i=0;i<str.length;i++){
-		str+="\\u"+parseInt(str[i].charCodeAt(0),10).toString(16);
-	}
-	return str.replace('/', '\\');
-}
-// 数组对象降序方法
-mak.dropCompare = function(key){
-	return function (a, b) {		// arr.sort(mak.dropCompare('key')) 排序
-		a = a[key]!='undefined'?a[key]:a;		// arr.reverse() 反转数组
-		b = b[key]!='undefined'?b[key]:b;
-		if(a > b){
-			return -1;
-		}else if(a < b) {
-			return 1;
-		}else{
-			return 0;
-		}            
-	} 
-};
-// 获取字符串的字节长度
-mak.charsLen = function(str){
-	var realLength = 0, len = str.length, charCode = -1;
-	for (var i = 0; i < len; i++) {
-		charCode = str.charCodeAt(i);
-		if (charCode >= 0 && charCode <= 128) {
-			realLength += 1;
-		}else{
-			realLength += 2;
-		}
-	}
-	return realLength;
-};
-// 获取当前时间		参数时间链接符
-mak.getCurrentTime = function(linkSymbol){
-	var time = new Date();
-	var timeObj = {
-		'year':time.getFullYear().toString(),	// 年
-		'month':time.getMonth()+1<10?'0'+(time.getMonth()+1):(time.getMonth()+1).toString(),	// 月
-		'date':time.getDate()<10?'0'+time.getDate():time.getDate().toString(),	// 日
-		'day':time.getDay().toString(),	// 星期中的第几天
-		'hours':time.getHours().toString(),	// 小时
-		'minutes':time.getMinutes().toString(),	// 分钟
-		'seconds':time.getSeconds().toString(),	// 秒
-		'millisecond':time.getMilliseconds().toString()	// 微秒
-	}
-	if(linkSymbol||linkSymbol==''){
-		return timeObj.year+linkSymbol+timeObj.month+linkSymbol+timeObj.date;
-	}else{
-		return timeObj;
-	}
-};
-// 获取相对路径返程方法
-mak.getLinkPath = function(str){
-	var url = document.location.toString();
-	var arrUrl = url.split(str);
-	var start = arrUrl[1].indexOf("/");
-	var relUrl = arrUrl[1].substring(start);
-	if(relUrl.indexOf("?") != -1){
-		relUrl = relUrl.split("?")[0];
-	}
-	var l = relUrl.match(/\//g).length-1;
-	var s="";
-	var i=0;
-	while(i<l){
-		s+="../";
-		i++;
-	}
-	return s;
-};
-// 时间差方法
-mak.getDateDiff = function(endTime){
-	if(typeof(endTime)=='string'&&endTime.indexOf('-')>-1){	// IE兼容处理
-		endTime=endTime.replace(/-/g,'/');
-	}
-	var result;
-	var minute = 1000 * 60;
-	var hour = minute * 60;
-	var day = hour * 24;
-	var month = day * 30;
-	var now = new Date().getTime();
-	var diffValue = now - new Date(endTime).getTime();
-	if(diffValue < 0){return '本机时间有误';}
-	var monthC = diffValue/month;
-	var weekC = diffValue/(7*day);
-	var dayC = diffValue/day;
-	var hourC = diffValue/hour;
-	var minC = diffValue/minute;
-	if(monthC>=1){
-		result="" + parseInt(monthC) + "月前";
-	}else if(weekC>=1){
-		result="" + parseInt(weekC) + "周前";
-	}else if(dayC>=1){
-		result=""+ parseInt(dayC) +"天前";
-	}else if(hourC>=1){
-		result=""+ parseInt(hourC) +"小时前";
-	}else if(minC>=1){
-		result=""+ parseInt(minC) +"分钟前";
-	}else{
-		result="刚刚";
-	}
-	return result;
-};
-
-// http://gosspublic.alicdn.com/aliyun-oss-sdk-4.4.4.min.js 引包
-/*var client = new OSS.Wrapper({	// 上传图片方法
-	region: 'oss-cn-beijing',
-	accessKeyId: 'LTAI5UVyE7lQndTX',
-	accessKeySecret: 'R3FZMMrxfJbmE0IO87pc8cpc7aU4gO',
-	bucket: 'thfundfile'
-});*/
-// 判断上传文件格式
-mak.checkFileExt = function(filename, e){	// 参数1：input.value,	event事件对像
-	var flag = false; //状态
-	var arr = ["ppt","docx","doc","xlsx","xls"];
-	var index = filename.lastIndexOf(".");	//取出上传文件的扩展名
-	var ext = filename.substr(index+1);
-	for(var i=0;i<arr.length;i++){	//循环比较
-	 	if(ext == arr[i]){	//一旦找到合适的，立即退出循环
-		   flag = true; 
-		   break;
-		}
-	}
-	if(flag){	//条件判断
-	 	console.log("文件名合法");
-	 	var fileName = Date.now();
-		var file = e.target.files[0];
-		var storeAs = ''+fileName;
-		client.multipartUpload(storeAs, file).then(function (result) {
-			// console.log(result);
-			console.log('http://thfundfile.oss-cn-beijing.aliyuncs.com/'+fileName);
-		}).catch(function (err) {
-			console.log(err);
-		});
-	}else{
-	 	console.log("文件名不合法");
-	}
-}
-// cookie过期时间，参数以天为单位 , 不传参数默认为7天
-mak.cookieExpires = function(daysNum){
-	if (!Date.now) {	// 兼容不支持该方法的引擎, 时间戳毫秒值
-		Date.now = function now() {
-			return new Date().getTime();
-		};
-	}
-	var sExpires;
-	daysNum = (daysNum!=undefined&&daysNum!=null&&daysNum!='')?daysNum:7;
-	sExpires = daysNum*24*60*60*1000+Date.now();
-	return new Date(sExpires);
-}
-
-var Http = {
-	getUrlSearch: function(){	// 获取URL地址数据
-		var arr = decodeURI(location.search).slice(1).split("&");
-		var obj = {};
-		for(var i=0;i<arr.length;i++){
-			var a=arr[i].split("=");
-			obj[a[0]]=a[1];
-		}
-		return obj;
-	},
-	getUrlParam: function(name) {	// 获取url的参数数据	 name:参数名称
-		var reg = new RegExp("(^|&)" + name + "=([^&]*)(&|$)"); 
-		var r = window.location.search.substr(1).match(reg);
-		if (r != null){return unescape(r[2]);}
-		return null;
-	},
-	rootPath: function() {			// 自动获取当前服务器IP,端口,主目录入口
-		var pathName = window.location.pathname.substring(1);
-		var webName = pathName == '' ? '' : pathName.substring(0, pathName
-			.indexOf('/'));
-		return window.location.protocol + '//' + window.location.host + '/'
-		+ webName;
-	}
-};
-
-var docCookies = {	// Document.cookie 读,写,删除工具方法
-	getItem: function (sKey) {
-		return decodeURIComponent(document.cookie.replace(new RegExp("(?:(?:^|.*;)\\s*" + encodeURIComponent(sKey).replace(/[\-\.\+\*]/g, "\\$&") + "\\s*\\=\\s*([^;]*).*$)|^.*$"), "$1")) || null;
-	},
-	setItem: function (sKey, sValue, vEnd, sPath, sDomain, bSecure) {
-		if (!sKey || /^(?:expires|max\-age|path|domain|secure)$/i.test(sKey)) { return false; }
-		var sExpires = "";
-		if (vEnd) {
-			switch (vEnd.constructor) {
-				case Number:
-				sExpires = vEnd === Infinity ? "; expires=Fri, 31 Dec 9999 23:59:59 GMT" : "; max-age=" + vEnd;
-				break;
-				case String:
-				sExpires = "; expires=" + vEnd;
-				break;
-				case Date:
-				sExpires = "; expires=" + vEnd.toUTCString();
-				break;
-			}
-		}
-		document.cookie = encodeURIComponent(sKey) + "=" + encodeURIComponent(sValue) + sExpires + (sDomain ? "; domain=" + sDomain : "") + (sPath ? "; path=" + sPath : "") + (bSecure ? "; secure" : "");
-		return true;
-	},
-	removeItem: function (sKey, sPath, sDomain) {
-		if (!sKey || !this.hasItem(sKey)) { return false; }
-		document.cookie = encodeURIComponent(sKey) + "=; expires=Thu, 01 Jan 1970 00:00:00 GMT" + ( sDomain ? "; domain=" + sDomain : "") + ( sPath ? "; path=" + sPath : "");
-		return true;
-	},
-	hasItem: function (sKey) {
-		return (new RegExp("(?:^|;\\s*)" + encodeURIComponent(sKey).replace(/[\-\.\+\*]/g, "\\$&") + "\\s*\\=")).test(document.cookie);
-	},
-	keys: function () {
-		var aKeys = document.cookie.replace(/((?:^|\s*;)[^\=]+)(?=;|$)|^\s*|\s*(?:\=[^;]*)?(?:\1|$)/g, "").split(/\s*(?:\=[^;]*)?;\s*/);
-		for (var nIdx = 0; nIdx < aKeys.length; nIdx++) { aKeys[nIdx] = decodeURIComponent(aKeys[nIdx]); }
-			return aKeys;
-	},
-	expiresItem: function (sKey, daysNum) {		// cookie过期时间，参数以天为单位 , 不传参数默认为7天
-		var sExpires;
-		if (!Date.now) {	// 兼容不支持该方法的引擎, 时间戳毫秒值
-			Date.now = function now() {
-				return new Date().getTime();
-			};
-		}
-		daysNum = (daysNum!=undefined&&daysNum!=null&&daysNum!='')?daysNum:7;
-		sExpires = daysNum*24*60*60*1000+Date.now();
-		this.setItem(sKey, this.getItem(sKey), new Date(sExpires));
-	}
-};
-docCookies.setItem('github_user', 'makqi.github.io');
-docCookies.expiresItem('github_user', 7);
+myCookies.setItem('github', 'io');
+myCookies.expiresItem('github', 1);
 
 // 数值转化成为货币格式
 // 参数：保留小数位数，货币符号，整数部分千位分隔符，小数分隔符
@@ -244,6 +19,7 @@ Number.prototype.formatMoney = function (places, symbol, thousand, decimal) {
 	j = (j = i.length) > 3 ? j % 3 : 0;
 	return symbol + negative + (j ? i.substr(0, j) + thousand : "") + i.substr(j).replace(/(\d{3})(?=\d)/g, "$1" + thousand) + (places ? decimal + Math.abs(number - i).toFixed(places).slice(2) : "");
 };
+
 // 货币单位转换  num保留小数多少位，不输入默认保留2位。
 Number.prototype.monetaryUnit = function(num){
 	var res;
@@ -265,6 +41,7 @@ Number.prototype.monetaryUnit = function(num){
 	}
 	return res.toFixed(num)+unit;
 }
+
 // 数组去重
 Array.prototype.removeWeight = function(key){
 	var newArr = [];
@@ -288,6 +65,309 @@ Array.prototype.removeWeight = function(key){
 	}
 }
 
+/**
+ * Cookies 添加，删除，查询小框架。
+ * 参数名sKey：对象key键值。
+ * 参数名sValue：某一项的值。
+ * 参数名daysNum：过期时间，以天为单位
+ * 参数名vEnd：过期时间
+ * 参数名sPath：路径
+ */
+function DocCookies(){
+
+	// 获取cookie中某一项的值
+	this.getItem = function (sKey) {
+		return decodeURIComponent(document.cookie.replace(new RegExp("(?:(?:^|.*;)\\s*" + encodeURIComponent(sKey).replace(/[\-\.\+\*]/g, "\\$&") + "\\s*\\=\\s*([^;]*).*$)|^.*$"), "$1")) || null;
+	};
+
+	// 增加某一项到cookie中
+	this.setItem = function (sKey, sValue, vEnd, sPath, sDomain, bSecure) {
+		if (!sKey || /^(?:expires|max\-age|path|domain|secure)$/i.test(sKey)) { return false; }
+		var sExpires = "";
+		if (vEnd) {
+			switch (vEnd.constructor) {
+				case Number:
+				sExpires = vEnd === Infinity ? "; expires=Fri, 31 Dec 9999 23:59:59 GMT" : "; max-age=" + vEnd;
+				break;
+				case String:
+				sExpires = "; expires=" + vEnd;
+				break;
+				case Date:
+				sExpires = "; expires=" + vEnd.toUTCString();
+				break;
+			}
+		}
+		document.cookie = encodeURIComponent(sKey) + "=" + encodeURIComponent(sValue) + sExpires + (sDomain ? "; domain=" + sDomain : "") + (sPath ? "; path=" + sPath : "") + (bSecure ? "; secure" : "");
+		return true;
+	};
+
+	// 在cookie中移除某一项
+	this.removeItem = function (sKey, sPath, sDomain) {
+		if (!sKey || !this.hasItem(sKey)) { return false; }
+		document.cookie = encodeURIComponent(sKey) + "=; expires=Thu, 01 Jan 1970 00:00:00 GMT" + ( sDomain ? "; domain=" + sDomain : "") + ( sPath ? "; path=" + sPath : "");
+		return true;
+	};
+
+	// 查看cookie里面有没有某一项
+	this.hasItem = function (sKey) {
+		return (new RegExp("(?:^|;\\s*)" + encodeURIComponent(sKey).replace(/[\-\.\+\*]/g, "\\$&") + "\\s*\\=")).test(document.cookie);
+	};
+
+	// 返回所有cookie
+	this.keys = function () {
+		var aKeys = document.cookie.replace(/((?:^|\s*;)[^\=]+)(?=;|$)|^\s*|\s*(?:\=[^;]*)?(?:\1|$)/g, "").split(/\s*(?:\=[^;]*)?;\s*/);
+		for (var nIdx = 0; nIdx < aKeys.length; nIdx++) { aKeys[nIdx] = decodeURIComponent(aKeys[nIdx]); }
+			return aKeys;
+	};
+
+	// cookie过期时间，参数以天为单位 , 不传参数默认为7天
+	this.expiresItem = function (sKey, daysNum) {		
+		var sExpires;
+		if (!Date.now) {	// 兼容不支持该方法的引擎, 时间戳毫秒值
+			Date.now = function now() {
+				return new Date().getTime();
+			};
+		}
+		daysNum = (daysNum!=undefined&&daysNum!=null&&daysNum!='')?daysNum:7;
+		sExpires = daysNum*24*60*60*1000+Date.now();
+		this.setItem(sKey, this.getItem(sKey), new Date(sExpires));
+	};
+}
+
+
+function MakBaseFn(){
+
+	this.prototype = this;
+
+	// 中文字符转unicode码
+	this.toUnicode = function(){
+		if(str == ''){return '请输入汉字';}
+		var str =''; 
+		for(var i=0;i<str.length;i++){
+			str+="\\u"+parseInt(str[i].charCodeAt(0),10).toString(16);
+		}
+		return str.replace('/', '\\');
+	};
+
+	/**
+	 * 数组排序方法
+	 * 参数：数组中每一项为对象时，传入对象的某一项key值排序。
+	 * 例如：arr.sort(mak.dropCompare('key')) 以数组中对象排序
+	 * 		arr.sort(mak.dropCompare()) 数组排序
+	 * arr.reverse() 反转数组
+	 */
+	this.dropCompare = function(key){
+		return function (a, b) {
+			a = a[key]!='undefined'?a[key]:a;
+			b = b[key]!='undefined'?b[key]:b;
+			if(a > b){
+				return -1;
+			}else if(a < b) {
+				return 1;
+			}else{
+				return 0;
+			}            
+		} 
+	};
+
+	// 获取字符串的字节长度
+	this.charsLen = function(str){
+		var realLength = 0, len = str.length, charCode = -1;
+		for (var i = 0; i < len; i++) {
+			charCode = str.charCodeAt(i);
+			if (charCode >= 0 && charCode <= 128) {
+				realLength += 1;
+			}else{
+				realLength += 2;
+			}
+		}
+		return realLength;
+	};
+
+	/**
+	 * 获取当前时间字符串
+	 * 参数：为时间链接符。
+	 * 		不传参数返回时间属性对象
+	 * 例如：getCurrentTime('-');
+	 */
+	this.getCurrentTime = function(linkSymbol){
+		var time = new Date();
+		var timeObj = {
+			'year':time.getFullYear().toString(),	// 年
+			'month':time.getMonth()+1<10?'0'+(time.getMonth()+1):(time.getMonth()+1).toString(),	// 月
+			'date':time.getDate()<10?'0'+time.getDate():time.getDate().toString(),	// 日
+			'day':time.getDay().toString(),	// 星期中的第几天
+			'hours':time.getHours().toString(),	// 小时
+			'minutes':time.getMinutes().toString(),	// 分钟
+			'seconds':time.getSeconds().toString(),	// 秒
+			'millisecond':time.getMilliseconds().toString()	// 微秒
+		}
+		if(linkSymbol||linkSymbol==''){
+			return timeObj.year+linkSymbol+timeObj.month+linkSymbol+timeObj.date;
+		}else{
+			return timeObj;
+		}
+	};
+
+	/**
+	 * 获取相对路径返程方法
+	 * 参数：文件夹名称。
+	 * 例如：getLinkPath('templates');
+	 */
+	this.getLinkPath = function(str){
+		var url = document.location.toString();
+		var arrUrl = url.split(str);
+		var start = arrUrl[1].indexOf("/");
+		var relUrl = arrUrl[1].substring(start);
+		if(relUrl.indexOf("?") != -1){
+			relUrl = relUrl.split("?")[0];
+		}
+		var l = relUrl.match(/\//g).length-1;
+		var s="";
+		var i=0;
+		while(i<l){
+			s+="../";
+			i++;
+		}
+		return s;
+	};
+
+	/**
+	 * 时间差方法
+	 * 参数：结束时间。
+	 */
+	this.getDateDiff = function(endTime){
+		if(typeof(endTime)=='string'&&endTime.indexOf('-')>-1){	// IE兼容处理
+			endTime=endTime.replace(/-/g,'/');
+		}
+		var result;
+		var minute = 1000 * 60;
+		var hour = minute * 60;
+		var day = hour * 24;
+		var month = day * 30;
+		var now = new Date().getTime();
+		var diffValue = now - new Date(endTime).getTime();
+		if(diffValue < 0){return '本机时间有误';}
+		var monthC = diffValue/month;
+		var weekC = diffValue/(7*day);
+		var dayC = diffValue/day;
+		var hourC = diffValue/hour;
+		var minC = diffValue/minute;
+		if(monthC>=1){
+			result="" + parseInt(monthC) + "月前";
+		}else if(weekC>=1){
+			result="" + parseInt(weekC) + "周前";
+		}else if(dayC>=1){
+			result=""+ parseInt(dayC) +"天前";
+		}else if(hourC>=1){
+			result=""+ parseInt(hourC) +"小时前";
+		}else if(minC>=1){
+			result=""+ parseInt(minC) +"分钟前";
+		}else{
+			result="刚刚";
+		}
+		return result;
+	};
+
+	// http://gosspublic.alicdn.com/aliyun-oss-sdk-4.4.4.min.js 引包
+	/*var client = new OSS.Wrapper({	// 上传图片方法
+		region: 'oss-cn-beijing',
+		accessKeyId: 'LTAI5UVyE7lQndTX',
+		accessKeySecret: 'R3FZMMrxfJbmE0IO87pc8cpc7aU4gO',
+		bucket: 'thfundfile'
+	});
+	checkFileExt(input.value, ["ppt","docx","doc","xlsx","xls"], function(e){	// e是input事件对像
+		var fileName = Date.now();
+		var file = e.target.files[0];
+		var storeAs = ''+fileName;
+		client.multipartUpload(storeAs, file).then(function (result) {
+			// console.log(result);
+			console.log('http://thfundfile.oss-cn-beijing.aliyuncs.com/'+fileName);
+		}).catch(function (err) {
+			console.log(err);
+		});
+	});*/
+
+	/**
+	 * 判断上传文件格式
+	 * 参数1：上传按扭input.value值 ,event事件对像
+	 * 参数2: 文件名后缀数组
+	 * 参数3: 上传回调方法
+	 */
+	this.checkFileExt = function(filename, nameArr, callback){
+		var flag = false; //状态
+		var index = filename.lastIndexOf(".");	
+		var ext = filename.substr(index+1);		// 取出上传文件的后缀扩展名
+		if(nameArr instanceof Array && nameArr.length!=0){
+			for(var i=0; i<nameArr.length; i++){	//循环比较
+			 	if(ext == nameArr[i]){	//一旦找到合适的，立即退出循环
+			 		flag = true; 
+			 		break;
+			 	}
+			}
+
+			if(flag){	//	判断是否有文件名合法
+			 	console.log("文件名合法");
+			 	callback();
+			}else{
+			 	console.log("文件名不合法");
+			}
+
+		}else{
+			console.log("所以文件名都合法");
+			callback();
+		}
+		
+	};
+
+	/**
+	 * cookie过期时间
+	 * 参数：以天为单位 , 不传参数默认为7天
+	 */
+	this.cookieExpires = function(daysNum){
+		if (!Date.now) {	// 兼容不支持该方法的引擎, 时间戳毫秒值
+			Date.now = function now() {
+				return new Date().getTime();
+			};
+		}
+		var sExpires;
+		daysNum = (daysNum!=undefined&&daysNum!=null&&daysNum!='')?daysNum:7;
+		sExpires = daysNum*24*60*60*1000+Date.now();
+		return new Date(sExpires);
+	};
+
+	// 获取URL地址数据
+	this.getUrlSearch = function(){	
+		var arr = decodeURI(location.search).slice(1).split("&");
+		var obj = {};
+		for(var i=0;i<arr.length;i++){
+			var a=arr[i].split("=");
+			obj[a[0]]=a[1];
+		}
+		return obj;
+	};
+
+	/**
+	 * cookie过期时间
+	 * 参数：url数据名称
+	 */
+	this.getUrlParam = function(name) {	
+		var reg = new RegExp("(^|&)" + name + "=([^&]*)(&|$)"); 
+		var r = window.location.search.substr(1).match(reg);
+		if (r != null){return unescape(r[2]);}
+		return null;
+	};
+
+	// 自动获取当前服务器IP,端口,主目录入口
+	this.rootPath = function() {			
+		var pathName = window.location.pathname.substring(1);
+		var webName = pathName == '' ? '' : pathName.substring(0, pathName
+			.indexOf('/'));
+		return window.location.protocol + '//' + window.location.host + '/'
+		+ webName;
+	};
+
+}
 
 
 // 加密与解密
