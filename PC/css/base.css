@@ -10,6 +10,7 @@ body {
     Tahoma, "Source Han Sans CN", "Noto Sans S Chinese", "Hiragino Sans GB", 
     "Microsoft YaHei", "sans-serif", Arial, Verdana, "\5b8b\4f53";	/*Unicode，统一码*/
     color: #666;
+    cursor: default;
     background: #fff;
 }
 
@@ -96,6 +97,11 @@ i, s, em {
 
 .col-red {
     color: #C81623 !important;
+}
+
+.inline-align { 
+    display: inline-block;  
+    vertical-align: top;    /* 行内块元素顶部对齐 */
 }
 
 .fl {float: left;}
