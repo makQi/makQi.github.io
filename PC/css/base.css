@@ -3,6 +3,7 @@
 html, body, ul, li, ol, dl, dd, dt, p, h1, h2, h3, h4, h5, h6, form, fieldset, legend, img, tr, td, input, button, select  {
     margin: 0;
     padding: 0;
+    letter-spacing: 2px;
 }
 
 body {
@@ -21,6 +22,11 @@ fieldset, img, input, button {  /* fieldset组合表单中的相关元素 */
 
 ul, ol {    /* 清除列表风格 */
     list-style: none;
+}
+
+button {
+    border-style: none;
+    cursor:pointer;
 }
 
 input {
@@ -94,16 +100,18 @@ i, s, em {
     width: 1210px;
     margin: 0 auto;
 }
-
 .col-red {
     color: #C81623 !important;
 }
-
 .inline-align { 
     display: inline-block;  
     vertical-align: top;    /* 行内块元素顶部对齐 */
 }
-
+.text-beyond {      /* 文字超出容器... */
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
 .fl {float: left;}
 .fr {float: right;}
 .al {text-align: left;}
