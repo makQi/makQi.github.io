@@ -34,6 +34,18 @@ input {
     padding-bottom: 0;
     font-family: "SimSun", "宋体";
 }
+input::-webkit-input-placeholder { 
+    color: #3c3c3c; 
+}
+input:-moz-placeholder { 
+    color: #3c3c3c; 
+} 
+input::-moz-placeholder { 
+    color: #3c3c3c; 
+} 
+input:-ms-input-placeholder { 
+    color: #3c3c3c;
+}
 
 select {
     outline:none;
