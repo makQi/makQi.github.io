@@ -122,6 +122,13 @@ i, s, em {
     text-overflow: ellipsis;
     white-space: nowrap;
 }
+.tag-noChecked{     /* 标签内容不可以被选中 标签加上属性onselectstart="return false;" unselectable="on" */
+  -webkit-user-select:none;
+  -moz-user-select:none;
+  -ms-user-select:none;
+  -o-user-select:none;
+  user-select:none;
+}
 .fl {float: left;}
 .fr {float: right;}
 .al {text-align: left;}
