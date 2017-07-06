@@ -151,8 +151,6 @@ function DocCookies(){
 
 function MakBaseFn(){
 
-	this.prototype = this;
-
 	// 中文字符转unicode码
 	this.toUnicode = function(){
 		if(str == ''){return '请输入汉字';}
