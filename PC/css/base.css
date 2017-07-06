@@ -9,9 +9,7 @@ body {
     font: 14px/150% "Helvetica Neue", Helvetica, 
     Tahoma, "Source Han Sans CN", "Noto Sans S Chinese", "Hiragino Sans GB", 
     "Microsoft YaHei", "sans-serif", Arial, Verdana, "\5b8b\4f53";	/*Unicode，统一码*/
-    color: #666;
     cursor: default;
-    background: #fff;
     letter-spacing: 2px;    /* 文字之间的间隔 */
 }
 
