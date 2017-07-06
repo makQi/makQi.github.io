@@ -3,7 +3,6 @@
 html, body, ul, li, ol, dl, dd, dt, p, h1, h2, h3, h4, h5, h6, form, fieldset, legend, img, tr, td, input, button, select  {
     margin: 0;
     padding: 0;
-    letter-spacing: 2px;
 }
 
 body {
@@ -13,6 +12,7 @@ body {
     color: #666;
     cursor: default;
     background: #fff;
+    letter-spacing: 2px;    /* 文字之间的间隔 */
 }
 
 fieldset, img, input, button {  /* fieldset组合表单中的相关元素 */
