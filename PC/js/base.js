@@ -80,6 +80,17 @@ Array.prototype.removeWeight = function(key){
 }
 
 /**
+ * 页面刷新与关闭浏览器时触发的事件
+ */
+window.onbeforeunload = function (){
+	if(event.clientX>document.body.clientWidth && event.clientY < 0 || event.altKey){
+		alert('关闭浏览器时执行');
+	}else{
+		alert('刷新页面时执行');
+	}
+}
+
+/**
  * Cookies 添加，删除，查询小框架。
  * 参数名sKey：对象key键值。
  * 参数名sValue：某一项的值。
