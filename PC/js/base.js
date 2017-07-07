@@ -347,7 +347,7 @@ function MakBaseFn(){
 		return new Date(sExpires);
 	};
 
-	// 获取URL地址数据
+	// 获取URL地址全部数据
 	this.getUrlSearch = function(){	
 		var arr = decodeURI(location.search).slice(1).split("&");
 		var obj = {};
@@ -359,7 +359,7 @@ function MakBaseFn(){
 	};
 
 	/**
-	 * cookie过期时间
+	 * 获取URL地址单个数据
 	 * 参数名name：url数据名称
 	 */
 	this.getUrlParam = function(name) {	
