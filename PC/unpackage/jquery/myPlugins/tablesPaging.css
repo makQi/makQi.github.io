@@ -1,47 +1,57 @@
+thead {
+    background-color: #161F3E;
+}
+tbody {
+    background-color: #191C2B;
+}
+tr, td {
+    border: 1px solid #272F5C;
+}
+#tableBox .record {
+    display:none;
+}
+
 
 /* 表格翻页样式 */
 html, body {height:100%;}
 table {width:100%;border-collapse: collapse;}
 .tables {
-    position:relative;
-    overflow:hidden;
+    position: relative;
+    overflow: hidden;
 }
 .tables th, .tables td {
-    height:32px;
-    text-align:center;
-    box-sizing:border-box;
-}
-.tables th {
-    color:#4A89E6;
-    background-color:#2B313D;
+    text-align: center;
+    box-sizing: border-box;
 }
 .tables tr {
     width:100%;
     height:auto;
-    color:#C4C4C4;
     box-sizing: border-box;
-    background-color:#313131;
 }
-.tables thead tr {border-bottom:1px solid #3F3F3F;}
 .tables .paging {
-    color: #088ADE;
     position:absolute;
     top:50%;
     left:50%;
     transform: translate(-50%, -50%);
     -webkit-transform: translate(-50%, -50%);
 }
-.pagingBox1 {position: relative;height:60px;}
-.previousPage1, .nextPage1, .pageNumber1 {
+.tables .paging_box {
+    position: relative;
+    height: 60px;
+}
+.tables .previous_page, .tables .next_page, .tables .page_number {
     height: 26px;
-    color: #088ADE;
     line-height:26px;
     box-sizing:border-box;
-    border: 1px solid #3A5F93;
-    background-color: #2B313D;
+    color: #71AFFF;
+    border: 1px solid #71AFFF;
+    background-color: transparent;
 }
-.previousPage1, .nextPage1 { padding: 0 10px;cursor:pointer;}
-.pageNumber1 {
+.tables .previous_page, .tables .next_page { 
+    padding: 0 10px;
+    cursor: pointer;
+}
+.tables .page_number {
     display:inline-block;
     vertical-align:bottom;
     width:auto;
@@ -55,10 +65,32 @@ table {width:100%;border-collapse: collapse;}
     position:absolute;
     top:50%;
     right:0;
-    transform: translateY(-50%);
     -webkit-transform: translateY(-50%);
+    -moz-transform: translateY(-50%);
+    -ms-transform: translateY(-50%);
+    -o-transform: translateY(-50%);
+    transform: translateY(-50%);
+}
+.tables .min {
+    padding: 0;
+    margin: 0;
+    /* width: 11.38px; */
+    height: 21px;
+    color: #71AFFF;
+    font-family: "Helvetica Neue", "Noto Sans", "Microsoft Yahei", SimSun, 
+    PingFang, Helvetica, Tahoma, "Source Han Sans CN", 
+    "Noto Sans S Chinese", "Hiragino Sans GB", "sans-serif";
+    font-size: 16px;
+    text-align: center;
+    letter-spacing: 2px;
+    background-color: transparent;
+}
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button{
+    -webkit-appearance: none !important;
+    margin: 0; 
+}
+input[type="number"] {
+    -moz-appearance: textfield;
 }
 /* 表格翻页样式 */
-#tableBox .record {
-    display:none;
-}
