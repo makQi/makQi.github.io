@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<title>PC首页</title>
+	<link rel="icon" href="img/star.png">
+	<link rel="stylesheet" href="css/base.css">
+	<link rel="stylesheet" href="unpackage/jquery/myPlugins/tablesPaging-2.0.css">
+</head>
+<body>
+
+	<div id="tab" class="tab"></div>
+	
+	<script src="unpackage/jquery/jquery-1.11.3.min.js"></script>
+	<script src="unpackage/jquery/myPlugins/tablesPaging-2.0.js"></script>
+	<script src="unpackage/base.js"></script>
+	<script type="text/javascript">
+		var tabData = [];
+		for(var i=0; i<500; i++){
+			tabData.push({
+				a:'20170427',
+				b:i+1
+			});
+		}
+		$('#tab').tablesPaging({
+			titleName:[
+			{
+				name:'时间',
+				dataKey:'a'
+			},{
+				name:'指数',
+				dataKey:'b'
+			}
+			],
+			autoHeight:false,
+			listNum:5,
+			lineNum:6,
+			data:tabData
+		});
+	</script>
+</body>
+</html>
