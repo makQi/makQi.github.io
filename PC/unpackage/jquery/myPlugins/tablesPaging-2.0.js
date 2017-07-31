@@ -6,9 +6,11 @@
  * lineNum: 行数	默认值:8行
  * listNum: 列数	默认值:1列
  * autoHeight: 自动高度   默认值:true,lineNum会不起做用
+ * sort: false 	默认值:false
  * trHeight: tr标签高度	默认值:32
  * data: 数据
- * template: 模版
+ * templateThead: 模版或字符串
+ * templateTbody: 模版
  * titleName: [{name:表头th名称,datakey:对应数据key}]  template启用时titleName属性不起作用
  */
 
@@ -18,8 +20,9 @@
 			var defaluts = {
 				tabCustomData:null,
 				minWidth:11.38,
-				autoHeight:true,
 				pagingBtnBottom:true,
+				autoHeight:false,
+				sort:false,
 				listNum:1,
 				lineNum:8,
 				trHeight:32
@@ -67,13 +70,19 @@
 				var bodyH = $('body').height();
 				var topH = $this.find('.tables').offset().top;
 				var pagingBoxH = $this.find('.paging_box').outerHeight();
+				var $li = $this.find('li');
 				if(opts.autoHeight){lineNum = Math.floor((bodyH-pagingBoxH-topH)/opts.trHeight-1);}
 
 				$this.find('.tables').height((lineNum+1)*opts.trHeight+pagingBoxH);
 				$this.find('.min').width(opts.minWidth);
 				$this.find('.max').text(Math.ceil(opts.data.length/(lineNum*listNum)));
 				$this.find('.record_num').text(opts.data.length);
-				dataTreating(1);
+				$li.each(function(index, el) {	// 表头标题
+					$(this).find('thead').html(baidu.template(opts.templateThead, {
+						tabCustomData:opts.tabCustomData
+					}));				
+				});
+				dataTreating(1);	// 初始化表格数据
 
 				$this.find('.previous_page').click(function(){	// 上一页
 					var $box = $(this).parents('.tables').parent();
@@ -115,41 +124,51 @@
 					$(this).val('').width(opts.minWidth);
 				});
 
+				if(opts.sort){	// 排序功能
+					$li.find('th').click(function(){
+						var $th_this = $(this);
+						var key = $th_this.attr('data-sortkey');
+						if(key==undefined||key==''){return;}
+						if($th_this.hasClass('litre')){
+							$th_this.addClass('drop').removeClass('litre');
+							opts.data.reverse();
+						}else if($th_this.hasClass('drop')){
+							$th_this.addClass('litre').removeClass('drop');
+							opts.data.reverse();
+						}else {
+							$th_this.addClass('litre').removeClass('drop');
+							opts.data.sort(function(a, b){
+								if(a[key]>b[key]){
+									return 1;
+								}else if(a[key]<b[key]){
+									return -1;
+								}else{
+									return 0;
+								}
+							});
+						}
+						$th_this.siblings().removeClass('litre drop');
+						$th_this.parents('li').siblings('li').find('th').removeClass('litre drop');
+						if($th_this.hasClass('litre')){
+							$th_this.parents('li').siblings('li').find('th[data-sortkey='+key+']').addClass('litre').removeClass('drop');
+						}else{
+							$th_this.parents('li').siblings('li').find('th[data-sortkey='+key+']').addClass('drop').removeClass('litre');
+						}
+						$this.find('.min').val(1);
+						dataTreating(1);
+					});
+				}
+
 				function dataTreating(pageNum){	// 数据处理
 					var data = opts.data.slice((pageNum-1)*lineNum*listNum, (pageNum-1)*lineNum*listNum+lineNum*listNum);
-					if(opts.template){
-						$this.find('li').each(function(index, el) {
-							$(el).html(baidu.template(opts.template, {
-								data:data.slice(index*lineNum, (index+1)*lineNum),
-								tabCustomData:opts.tabCustomData
-							}));
-						});
-					}else{
-						$this.find('li').each(function(index, el) {
-							$(el).find('thead').html(function(){
-								var theadHtml = '';
-								for(var i=0; i<opts.titleName.length; i++){
-									theadHtml += '<th>'+opts.titleName[i].name+'</th>';
-								}
-								return '<tr>'+theadHtml+'</tr>';
-							});
-							$(el).find('tbody').html(function(){
-								var tbodyHtml = '';
-								for(var i=index*lineNum; i<index*lineNum+lineNum; i++) {
-									var trHtml = '';
-									for (var j=0; j<opts.titleName.length; j++) {
-										if(!data[i]){break;}
-										trHtml += '<td>'+data[i][opts.titleName[j].dataKey]+'</td>'; 
-									}
-									tbodyHtml += '<tr>'+trHtml+'</tr>';
-								}
-								return tbodyHtml;
-							});
-						});
-					}
-					/*$this.find('th').outerHeight(opts.trHeight);
-					$this.find('td').outerHeight(opts.trHeight);*/
+					$li.each(function(index, el) {
+						$(this).find('tbody').html(baidu.template(opts.templateTbody, {
+							data:data.slice(index*lineNum, (index+1)*lineNum),
+							tabCustomData:opts.tabCustomData
+						}));
+					});
 				}
+
 			});
 		}
 	});

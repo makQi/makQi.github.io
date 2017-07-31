@@ -11,6 +11,20 @@
 <body>
 
 	<div id="tab" class="tab" style="color: #fff;"></div>
+	<script id="tab_thead_tpl" type="text/template">
+		<tr>
+			<th data-sortkey="a">时间</th>
+			<th data-sortkey="b">指数</th>
+		</tr>
+	</script>
+	<script id="tab_tbody_tpl" type="text/template">
+		<% for(var i=0; i<data.length; i++){ %>
+		<tr>
+			<td><%= data[i].a %></td>
+			<td><%= data[i].b %></td>
+		</tr>
+		<% } %>
+	</script>
 	
 	<script src="unpackage/jquery/jquery-1.11.3.min.js"></script>
 	<script src="unpackage/jquery/myPlugins/tablesPaging-2.0.js"></script>
@@ -20,24 +34,20 @@
 		for(var i=0; i<500; i++){
 			tabData.push({
 				a:'20170427',
+				// b:Math.floor(Math.random()*1000)
 				b:i+1
 			});
 		}
+
 		$('#tab').tablesPaging({
-			titleName:[
-			{
-				name:'时间',
-				dataKey:'a'
-			},{
-				name:'指数',
-				dataKey:'b'
-			}
-			],
-			autoHeight:false,
 			listNum:5,
 			lineNum:6,
+			sort:true,
+			templateThead:'tab_thead_tpl',
+			templateTbody:'tab_tbody_tpl',
 			data:tabData
 		});
+
 	</script>
 </body>
 </html>

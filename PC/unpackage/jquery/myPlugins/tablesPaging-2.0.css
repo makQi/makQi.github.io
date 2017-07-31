@@ -24,14 +24,14 @@ table {width:100%;border-collapse: collapse;}
     box-sizing: border-box;
 }
 .tables tr {
-    width:100%;
-    height:auto;
+    width: 100%;
+    height: 32px;
     box-sizing: border-box;
 }
 .tables .paging {
-    position:absolute;
-    top:50%;
-    left:50%;
+    position: absolute;
+    top: 50%;
+    left: 50%;
     transform: translate(-50%, -50%);
     -webkit-transform: translate(-50%, -50%);
 }
@@ -41,8 +41,8 @@ table {width:100%;border-collapse: collapse;}
 }
 .tables .previous_page, .tables .next_page, .tables .page_number {
     height: 26px;
-    line-height:26px;
-    box-sizing:border-box;
+    line-height: 26px;
+    box-sizing: border-box;
     color: #71AFFF;
     border: 1px solid #71AFFF;
     background-color: transparent;
@@ -52,19 +52,19 @@ table {width:100%;border-collapse: collapse;}
     cursor: pointer;
 }
 .tables .page_number {
-    display:inline-block;
-    vertical-align:bottom;
-    width:auto;
-    margin:0 15px;
-    padding:0 15px;
-    font-size:16px;
+    display: inline-block;
+    vertical-align: bottom;
+    width: auto;
+    margin: 0 15px;
+    padding: 0 15px;
+    font-size: 16px;
 }
 .tables .record {
-    color:#787878;
-    font-size:12px;
-    position:absolute;
-    top:50%;
-    right:0;
+    color: #787878;
+    font-size: 12px;
+    position: absolute;
+    top: 50%;
+    right: 0;
     -webkit-transform: translateY(-50%);
     -moz-transform: translateY(-50%);
     -ms-transform: translateY(-50%);
@@ -84,6 +84,21 @@ table {width:100%;border-collapse: collapse;}
     text-align: center;
     letter-spacing: 2px;
     background-color: transparent;
+}
+.tables .litre:after {
+    content: '';
+    display: inline-block;
+    margin-bottom: 5px;
+    border-bottom: 5px solid #fff;
+    border-right: 5px solid transparent;
+    border-left: 5px solid transparent;
+}
+.tables .drop:after {
+    content: '';
+    display: inline-block;
+    border-top: 5px solid #fff;
+    border-right: 5px solid transparent;
+    border-left: 5px solid transparent;
 }
 input::-webkit-outer-spin-button,
 input::-webkit-inner-spin-button{
