@@ -13,7 +13,7 @@
 	<div id="tab" class="tab" style="color: #fff;"></div>
 	<script id="tab_thead_tpl" type="text/template">
 		<tr>
-			<th data-sortkey="a">时间</th>
+			<th>时间</th>
 			<th data-sortkey="b">指数</th>
 		</tr>
 	</script>
@@ -34,8 +34,8 @@
 		for(var i=0; i<500; i++){
 			tabData.push({
 				a:'20170427',
-				// b:Math.floor(Math.random()*1000)
-				b:i+1
+				// b:i+1
+				b:Math.floor(Math.random()*1000)
 			});
 		}
 
