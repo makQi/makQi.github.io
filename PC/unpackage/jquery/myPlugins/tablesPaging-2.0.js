@@ -5,7 +5,7 @@
  * pagingBtnBottom: 翻页是否始终在底部	默认值:true 
  * lineNum: 行数	默认值:8行
  * listNum: 列数	默认值:1列
- * autoHeight: 自动高度   默认值:true,lineNum会不起做用
+ * autoHeight: 自动高度   默认值:false,  设置为：true时，lineNum属性不起做用
  * sort: false 	默认值:false
  * trHeight: tr标签高度	默认值:32
  * data: 数据
