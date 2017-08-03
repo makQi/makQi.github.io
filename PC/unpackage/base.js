@@ -186,14 +186,14 @@ function MakBaseFn(){
 	 * 		arr.sort(mak.dropCompare()) 数组排序
 	 * arr.reverse() 反转数组
 	 */
-	this.dropCompare = function(key){
+	this.dropCompare = function(key){	// 升序排列
 		return function (a, b) {
 			a = a[key]!='undefined'?a[key]:a;
 			b = b[key]!='undefined'?b[key]:b;
 			if(a > b){
-				return -1;
-			}else if(a < b) {
 				return 1;
+			}else if(a < b) {
+				return -1;
 			}else{
 				return 0;
 			}            
