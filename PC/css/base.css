@@ -1,51 +1,85 @@
-@charset "UTF-8";
+@charset 'UTF-8';
+
 /*css 初始化 initialize */
-html, body, ul, li, ol, dl, dd, dt, p, h1, h2, h3, h4, h5, h6, form, fieldset, legend, img, tr, td, input, button, select  {
+
+html,
+body,
+ul,
+li,
+ol,
+dl,
+dd,
+dt,
+p,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+form,
+fieldset,
+legend,
+img,
+tr,
+td,
+input,
+button,
+select {
     margin: 0;
     padding: 0;
 }
 
 body {
-    font: 14px/150% "Helvetica Neue", Helvetica, 
-    Tahoma, "Source Han Sans CN", "Noto Sans S Chinese", "Hiragino Sans GB", 
-    "Microsoft YaHei", "sans-serif", Arial, Verdana, "\5b8b\4f53";
+    font: 14px/150% 'Helvetica Neue', Helvetica, Tahoma, 'Source Han Sans CN', 'Noto Sans S Chinese', 'Hiragino Sans GB', 'Microsoft YaHei', 'sans-serif', Arial, Verdana, '\5b8b\4f53';
     /* font-size: 14px/150%;
     font-family: "Helvetica Neue", "Noto Sans", "Microsoft Yahei", 
     SimSun, PingFang, Helvetica, Tahoma, "Source Han Sans CN", 
     "Noto Sans S Chinese", "Hiragino Sans GB", "sans-serif", Arial, Verdana, "\5b8b\4f53"; */
     cursor: default;
-    letter-spacing: 2px;    /* 文字之间的间隔 */
+    letter-spacing: 2px;
+    /* 文字之间的间隔 */
 }
 
-fieldset, img, input, button {  /* fieldset组合表单中的相关元素 */
+fieldset,
+img,
+input,
+button {
+    /* fieldset组合表单中的相关元素 */
     border: none;
     outline-style: none;
 }
 
-ul, ol {    /* 清除列表风格 */
+ul,
+ol {
+    /* 清除列表风格 */
     list-style: none;
 }
 
 button {
-    border-style: none;
     cursor: pointer;
+    border-style: none;
 }
 
 input {
+    font-family: 'SimSun', '宋体';
     padding-top: 0;
     padding-bottom: 0;
-    font-family: "SimSun", "宋体";
 }
-input::-webkit-input-placeholder { 
-    color: #3c3c3c; 
+
+input::-webkit-input-placeholder {
+    color: #3c3c3c;
 }
-input:-moz-placeholder { 
-    color: #3c3c3c; 
-} 
-input::-moz-placeholder { 
-    color: #3c3c3c; 
-} 
-input:-ms-input-placeholder { 
+
+input:-moz-placeholder {
+    color: #3c3c3c;
+}
+
+input::-moz-placeholder {
+    color: #3c3c3c;
+}
+
+input:-ms-input-placeholder {
     color: #3c3c3c;
 }
 
@@ -56,50 +90,62 @@ select {
     -moz-appearance: none;
 }
 
-select, input {
+select,
+input {
     vertical-align: middle;
 }
 
-select, input, textarea {
+select,
+input,
+textarea {
     font-size: 12px;
 }
 
-textarea {  /* 防止多行文本框拖动 */
+textarea {
+    /* 防止多行文本框拖动 */
     resize: none;
 }
 
-
-img {   /* 去掉图片低测默认的3像素空白缝隙 */
-    border: 0;
+img {
     vertical-align: middle;
+    /* 去掉图片低测默认的3像素空白缝隙 */
+    border: 0;
 }
 
-
-table {     /* 合并外边线 */
+table {
+    /* 合并外边线 */
     width: 100%;
     table-layout: fixed;
-    border-collapse: collapse;			
+    border-collapse: collapse;
 }
 
 a {
+    text-decoration: none;
     color: inherit;
-    text-decoration: none;
 }
 
-h1, h2, h3, h4, h5, h6 {
-    text-decoration: none;
-    font-weight: normal;
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
     font-size: 100%;
+    font-weight: normal;
+    text-decoration: none;
 }
 
-i, s, em {
+i,
+s,
+em {
     font-style: normal;
     text-decoration: none;
 }
 
-.clearfix:before, .clearfix:after {
-    content: "";
+.clearfix:before,
+.clearfix:after {
     display: table;
+    content: '';
 }
 
 .clearfix:after {
@@ -107,59 +153,85 @@ i, s, em {
 }
 
 .clearfix {
-    zoom: 1;    /* IE/7/6 */
+    zoom: 1;
+    /* IE/7/6 */
 }
 
+
 /* 公共类 */
+
 .w {
     width: 1210px;
     margin: 0 auto;
 }
+
 .col-red {
-    color: #C81623 !important;
+    color: #c81623 !important;
 }
-.inline-align { 
-    display: inline-block;  
-    vertical-align: top;    /* 行内块元素顶部对齐 */
+
+.inline-align {
+    display: inline-block;
+    vertical-align: top;
+    /* 行内块元素顶部对齐 */
 }
-.text-beyond {      /* 文字超出容器... */
+
+.text-beyond {
+    /* 文字超出容器... */
     overflow: hidden;
-    text-overflow: ellipsis;
     white-space: nowrap;
+    text-overflow: ellipsis;
 }
-.tag-noChecked{     /* 标签内容不可以被选中 标签加上属性onselectstart="return false;" unselectable="on" */
-  -webkit-user-select: none;
-  -moz-user-select: none;
-  -ms-user-select: none;
-  -o-user-select: none;
-  user-select: none;
+
+.tag-noChecked {
+    /* 标签内容不可以被选中 标签加上属性onselectstart="return false;" unselectable="on" */
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+    -o-user-select: none;
 }
-.fl {float: left;}
-.fr {float: right;}
-.al {text-align: left;}
-.ac {text-align: center;}
-.ar {text-align: right;}
-.hide {display: none;}
 
+.fl {
+    float: left;
+}
 
+.fr {
+    float: right;
+}
 
+.al {
+    text-align: left;
+}
+
+.ac {
+    text-align: center;
+}
+
+.ar {
+    text-align: right;
+}
+
+.hide {
+    display: none;
+}
 
 @font-face {
-  font-family: 'myFont';   /*字体名称*/
-  src: url('iconFont/Gotham-Book.ttf');       /*字体源文件*/
+    font-family: 'myFont';
+    /*字体名称*/
+    src: url('iconFont/Gotham-Book.ttf');
+    /*字体源文件*/
 }
+
 @font-face {
-  font-family: 'iconfont';
-  src: url('iconFont/iconfont.eot');
-  src: url('iconFont/iconfont.eot?#iefix') format('embedded-opentype'),
-  url('iconFont/iconfont.woff') format('woff'),
-  url('iconFont/iconfont.ttf') format('truetype'),
-  url('iconFont/iconfont.svg#iconfont') format('svg');
+    font-family: 'iconfont';
+    src: url('iconFont/iconfont.eot');
+    src: url('iconFont/iconfont.eot?#iefix') format('embedded-opentype'), url('iconFont/iconfont.woff') format('woff'), url('iconFont/iconfont.ttf') format('truetype'), url('iconFont/iconfont.svg#iconfont') format('svg');
 }
-.iconfont{
-  font-family: "iconfont" !important;
-  font-style: normal;
-  -webkit-font-smoothing: antialiased;
-  -webkit-text-stroke-width: 0.2px;
-  -moz-osx-font-smoothing: grayscale;
+
+.iconfont {
+    font-family: 'iconfont' !important;
+    font-style: normal;
+    -webkit-font-smoothing: antialiased;
+    -webkit-text-stroke-width: .2px;
+    -moz-osx-font-smoothing: grayscale;
 }
