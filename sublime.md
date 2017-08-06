@@ -7,8 +7,8 @@
 >从当前文件路径下启动终端 （后台控制台）
 
 `LiveReload`
->自动刷新页面插件
->同时需要chrome浏览器也装上LiveReload插件
+>自动刷新页面插件    
+>同时需要chrome浏览器也装上LiveReload插件    
 >用户配制 \{ "enabled_plugins": \["SimpleReloadPlugin","SimpleRefresh"\]\}
 
 `Emmet`
