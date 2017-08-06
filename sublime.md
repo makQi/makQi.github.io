@@ -1,7 +1,7 @@
 # sublime插件
 
 #### SublimeServer
->localhost 以服务器方式打开网页   
+>localhost 以服务器方式打开网页
 
 #### Terminal
 ```
@@ -91,6 +91,12 @@
 >css语法检查
 >注意：需要安装 npm install -g csslint
 
+#### Theme - Soda
+>侧边栏主题配色方案   改成   Soda Light 3 白色
+
+#### Seti_UI
+>侧边栏图标
+
 #### 设置-用户
 ```
 {
@@ -108,7 +114,63 @@
 }
 ```
 
+#### 快捷键
+```
+| Win          | MAC          | 说明
+| ------------ | ------------ | ---
+| Ctrl+Shift+P | Cmd+Shift+P  | 打开命令面板
+| Ctrl+G       | ===          | 跳转到第几行
+| Ctrl+P:<N>   | Cmd+P:<N>    | 跳转到第几行
+| Ctrl+M       | ===          | 跳转对应括号
+| Ctrl+R       | Cmd+R        | 跳转到对应的方法
+| Shift+<上/下> | Cmd+<上/下>   | 定位到文档开头/结尾
+| Ctrl+D       | Cmd+D        | 选择单词
+| Ctrl+D+Ctrl+K| Cmd+D+Cmd+K  | 跳过选中
+| Ctrl+L       | Cmd+L        | 选择行
+| Ctrl+Shift+L | Cmd+L(重复)   | 选择多行
+| Ctrl+\`      | Cmd+`        | 选择引号内容
+| Shift+<左/右> | ===          | 选择左/右
+| Ctrl+J       | ===          | 选择标签(光标定位内容选择内容，定位标签选择整个标签)
+| ---          | Cmd+Shift+A  | 选择标签内容(光标当前标签)(重复向外扩展)
+| Ctrl+Shift+M | Cmd+Shift+M  | 选择当前括号内容，重复可选着括号本身
+| Ctrl+Shift+A | ===          | 选择光标之前的内容
+| Ctrl+Shift+/ | ---          | 注释已选择内容
+| Ctrl+Alt+/   | Cmd+Alt+/    | 块注释
+| Ctrl+H       | ---          | 替换
+| Ctrl+Shift+<上/下>| ---      | 可以移动此行代码，与上行互换
+| Ctrl+F       | Cmd+F        | 当前文档搜索
+| Ctrl+Shift+F | Cmd+Shift+F  | 跨文档搜索
+| Ctrl+P       | Cmd+P        | 搜索文件
+| Ctrl+Alt+<N> | Cmd+Alt+<N>  | 分割窗口(纵向) 1/2/3/4/5
+| Ctrl+Alt+Shift+<N>| Cmd+Shift+Alt+<N>| 分割窗口(横向) 2/3
+| Ctrl+N       | Cmd+N        | 新建窗口
+| Ctrl+K+B     | Cmd+K+B      | 开关侧栏
+| Ctrl+Shift+W | Cmd+Shift+W  | 关闭所有文件
+| Ctrl+M       | Cmd+M        | 最小化窗口
+| Ctrl+F2      | Cmd+F2       | 设置标记
+| Ctrl+X       | Cmd+X        | 删除当前行
+| Ctrl+Delete  | Cmd+BackSpace| 删除光标前的所有字符
+| Shift+F11    |              | 全屏模式
+| Ctrl+Alt+<左/右>| Cmd+Alt+<左/右>| tab 面板切换
+| Ctrl+Shift+V | Cmd+Shift+V  | 保留格式粘贴
+| Ctrl+Alt+V   | Cmd+Alt+V    | 历史复制记录粘贴
+| Ctrl+Enter   | Cmd+Enter    | 随意换行
+| Ctrl+Shift+Enter| Cmd+Shift+Enter| 在当前行前插入新行
+------------------------------------------------------------------------------
+ Alt+Shift+1       Single         独屏               
+ Alt+Shift+2       Columns:2      纵向二栏分屏        
+ Alt+Shift+3       Columns:3      纵向三栏分屏        
+ Alt+Shift+4       Columns:4      纵向四栏分屏        
 
+ Alt+Shift+8       Rows:2         横向二栏分屏        
+ Alt+Shift+9       Rows:3         横向三栏分屏
+ Alt+Shift+5       Grid           四格式分屏
+
+ Cmd + Alt + 1                    纵向分屏
+ Cmd + Alt + Shift + 2            纵向分屏
+ Cmd + Alt + Shift + 3            纵向分屏
+ Alt + Shift + 4                  纵向分屏
+```
 
 
 
