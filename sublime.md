@@ -141,6 +141,27 @@
 }
 ```
 
+#### sublimeText 添加鼠标右键打开功能
+```
+新建一个sublime_addright.txt文件，
+然后，把以下内容复制并保存到文件，重命名为：sublime_addright.reg，在双击就可以了。
+其中，@="用 SublimeText 打开" 引号中的内容为出现在鼠标右键菜单中的文字内容。
+注意：需要把下面代码中的Sublime的安装目录（路径），替换成自已实际的Sublime安装目录（路径）。
+--------------------------------------------------------------------------------------------
+Windows Registry Editor Version 5.00
+[HKEY_CLASSES_ROOT\*\shell\SublimeText3]
+@="用 SublimeText 打开"
+"Icon"="C:\\Program Files\\Sublime Text 3\\sublime_text.exe,0"
+[HKEY_CLASSES_ROOT\*\shell\SublimeText3\command]
+@="C:\\Program Files\\Sublime Text 3\\sublime_text.exe %1"
+[HKEY_CLASSES_ROOT\Directory\shell\SublimeText3]
+@="用 SublimeText 打开"
+"Icon"="C:\\Program Files\\Sublime Text 3\\sublime_text.exe,0"
+[HKEY_CLASSES_ROOT\Directory\shell\SublimeText3\command]
+@="C:\\Program Files\\Sublime Text 3\\sublime_text.exe %1"
+
+```
+
 #### 快捷键
 ```
 | Win          | MAC          | 说明
