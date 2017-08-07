@@ -58,6 +58,9 @@
 #### Alignment
 >代码对齐
 
+#### JavaScript Completions
+>JS代码提示、补全
+
 #### jquery
 >jquery方法补全
 
@@ -102,6 +105,12 @@
 
 #### Better Completion
 >支持Javascript、JQuery、Twitter Bootstrap框架、HTML5标签属性代码提示的插件
+
+#### IMESupport
+>中文鼠标跟随BUG
+
+#### SyncedSidebarBg
+>根据活动视图的配色方案更改侧栏主题
 
 #### Material Theme
 >主题插件
