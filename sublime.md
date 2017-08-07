@@ -88,7 +88,7 @@
 >注意：需要安装 npm install -g jshint
 
 #### SublimeLinter-csslint
->css语法检查
+>css语法检查     
 >注意：需要安装 npm install -g csslint
 
 #### Theme - Soda
