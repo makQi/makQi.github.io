@@ -24,12 +24,12 @@
 ```
 
 #### LiveReload
->自动刷新页面插件    
+>自动刷新页面插件        
 >同时需要chrome浏览器也装上LiveReload插件    
 >用户配制 \{ "enabled_plugins": \["SimpleReloadPlugin","SimpleRefresh"\]\}
 
 #### liveStyle
->连接浏览器与编辑器的方式写CSS代码
+>连接浏览器与编辑器的方式写CSS代码     
 >同时需要chrome浏览器也装上liveStyle插件
 
 #### Emmet
