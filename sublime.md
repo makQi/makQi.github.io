@@ -64,6 +64,9 @@
 #### jquery
 >jquery方法补全
 
+#### HTMLAttributes
+>html属性提示、自动补全
+
 #### DocBlockr
 >编写文档 注释插件
 
@@ -71,7 +74,8 @@
 >编码插件，可自动转成UTF-8
 
 #### HTML-CSS-JS Prettify
->格式化代码（需要安装node）
+>格式化代码（需要安装node）     
+>更改快捷键：Ctrl+Alt+W
 
 #### All Autocomplete
 >路径自动补全
@@ -82,12 +86,6 @@
 #### CSSComb
 >css属性排序格式化
 
-#### ChineseLocalizations
->语言插件   中文翻译菜单
-
-#### HTMLAttributes
->html属性提示、自动补全
-
 #### nodejs
 >node运行插件
 
@@ -97,17 +95,20 @@
 #### HTML5
 >HTML5编写插件
 
+#### IMESupport
+>中文鼠标跟随BUG
+
+#### ChineseLocalizations
+>语言插件   中文翻译菜单
+
 #### CodeFormatte
 >代码格式化
-
-#### MarkdownEditing
->Markdown语法编辑插件
 
 #### Better Completion
 >支持Javascript、JQuery、Twitter Bootstrap框架、HTML5标签属性代码提示的插件
 
-#### IMESupport
->中文鼠标跟随BUG
+#### MarkdownEditing
+>Markdown语法编辑插件
 
 #### SyncedSidebarBg
 >根据活动视图的配色方案更改侧栏主题
