@@ -121,16 +121,18 @@
 #### Seti_UI
 >侧边栏图标
 
+#### Theme - Brogrammer
+
 #### 设置-用户
 ```
 {
-    "color_scheme": "Packages/User/SublimeLinter/brogrammer (SL).tmTheme",
+    "color_scheme": "Packages/User/SublimeLinter/brogrammer (SL).tmTheme",  // 主题配色
+    "theme": "Seti_orig.sublime-theme",     // 侧边栏配色
     "font_size": 12.0,
     "ignored_packages":
     [
         "Vintage"
     ],
-    "theme": "Seti_orig.sublime-theme",
     "update_check": false,
     "word_wrap": "auto",
     "show_encoding": true,  // 显示文件编码
