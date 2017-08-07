@@ -1,5 +1,8 @@
 # sublime插件
 
+#### Package Control
+>包管理器
+
 #### SublimeServer
 >localhost 以服务器方式打开网页
 
@@ -32,53 +35,8 @@
 #### Emmet
 >html标签连写，Emmet语法
 
-#### SublimeCodeIntel
->代码智能自动完成补全，同样适用于自己定义的方法、变量
-
-#### AutoFileName
->自动填充文件名
-
-#### jquery
->jquery方法补全
-
-#### ConvertToUTF8
->编码插件可自动把GBK转成UTF-8
-
 #### SideBarEnhancements
 >侧边栏增强工具
-
-#### HTML-CSS-JS Prettify
->格式化代码（需要安装node）
-
-#### CodeFormatte
->代码格式化
-
-#### Bracket Highlighter
->支架荧光笔
-
-#### Alignment
->代码对齐
-
-#### All Autocomplete
->路径自动补全
-
-#### HTMLAttributes
->html属性提示、自动补全
-
-#### ChineseLocalizations
->语言插件   中文翻译菜单
-
-#### DocBlockr
->编写文档 注释插件
-
-#### Better Completion
->支持Javascript、JQuery、Twitter Bootstrap框架、HTML5标签属性提示的插件
-
-#### MarkdownEditing
->Markdown语法编辑插件
-
-#### CSSComb
->css属性排序格式化
 
 #### SublimeLinte
 >代码语法检查错误提示
@@ -90,6 +48,63 @@
 #### SublimeLinter-csslint
 >css语法检查     
 >注意：需要安装 npm install -g csslint
+
+#### Bracket​Highlighter
+>支架荧光笔，标签高亮效果插件，实现代码括号与各种符号高亮匹配
+
+#### SublimeCodeIntel
+>代码智能自动完成补全，同样适用于自己定义的方法、变量
+
+#### Alignment
+>代码对齐
+
+#### jquery
+>jquery方法补全
+
+#### DocBlockr
+>编写文档 注释插件
+
+#### ConvertToUTF8
+>编码插件，可自动转成UTF-8
+
+#### HTML-CSS-JS Prettify
+>格式化代码（需要安装node）
+
+#### All Autocomplete
+>路径自动补全
+
+#### AutoFileName
+>自动填充文件名
+
+#### CSSComb
+>css属性排序格式化
+
+#### ChineseLocalizations
+>语言插件   中文翻译菜单
+
+#### HTMLAttributes
+>html属性提示、自动补全
+
+#### nodejs
+>node运行插件
+
+#### CSS3
+>css3编写插件
+
+#### HTML5
+>HTML5编写插件
+
+#### CodeFormatte
+>代码格式化
+
+#### MarkdownEditing
+>Markdown语法编辑插件
+
+#### Better Completion
+>支持Javascript、JQuery、Twitter Bootstrap框架、HTML5标签属性代码提示的插件
+
+#### Material Theme
+>主题插件
 
 #### Theme - Soda
 >侧边栏主题配色方案   改成   Soda Light 3 白色
