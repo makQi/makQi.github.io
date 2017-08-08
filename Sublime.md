@@ -22,31 +22,18 @@
 }
 ```
 
-#### LiveReload
->自动刷新页面插件            
-同时需要chrome浏览器也装上LiveReload插件         
-用户配制 \{ "enabled_plugins": \["SimpleReloadPlugin","SimpleRefresh"\]\}
-
-#### liveStyle
->连接浏览器与编辑器的方式写CSS代码          
-同时需要chrome浏览器也装上liveStyle插件
-
 #### Emmet
 >html标签连写，Emmet语法
 
 #### SideBarEnhancements
 >侧边栏增强工具
 
-#### SublimeLinte
+#### SublimeLinter
 >代码语法检查错误提示
 
 #### SublimeLinter-jshint
 >javaScript语法检查      
 注意：需要安装 npm install -g jshint
-
-#### SublimeLinter-csslint
->css语法检查        
-注意：需要安装 npm install -g csslint
 
 #### Bracket​Highlighter
 >支架荧光笔，标签高亮效果插件，实现代码括号与各种符号高亮匹配
@@ -71,7 +58,7 @@
 
 #### HTML-CSS-JS Prettify
 >格式化代码（需要安装node）       
-更改快捷键：Ctrl+Alt+W
+更改快捷键：Ctrl+Alt+F
 
 #### All Autocomplete
 >路径自动补全
@@ -95,6 +82,15 @@
 >JS代码提示、补全     
 Downloading关闭：Data/Packages/JavaScript Completions/node/installer.py     
 can_start_download函数，让它始终返回false
+
+#### LiveReload
+>自动刷新页面插件            
+同时需要chrome浏览器也装上LiveReload插件         
+用户配制 \{ "enabled_plugins": \["SimpleReloadPlugin","SimpleRefresh"\]\}
+
+#### liveStyle
+>连接浏览器与编辑器的方式写CSS代码          
+同时需要chrome浏览器也装上liveStyle插件
 
 #### IMESupport
 >中文鼠标跟随BUG
@@ -121,6 +117,10 @@ can_start_download函数，让它始终返回false
 
 #### MarkdownEditing
 >Markdown语法编辑插件
+
+#### SublimeLinter-csslint
+>css语法检查        
+注意：需要安装 npm install -g csslint
 
 #### SyncedSidebarBg
 >根据活动视图的配色方案更改侧栏主题
