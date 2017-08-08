@@ -137,7 +137,7 @@ can_start_download函数，让它始终返回false
 {
     "color_scheme": "Packages/User/SublimeLinter/brogrammer (SL).tmTheme",     // 主题配色
     "theme": "Seti_orig.sublime-theme",     // 侧边栏配色
-    "font_size": 12.0,
+    "font_size": 11.0,
     "ignored_packages":
     [
         "Vintage"
