@@ -62,7 +62,7 @@
 
 #### Autoprefixer
 >css属性前缀兼容   
-配置：{ "browsers": ["last 1 version", "> 1%", "> 1% in US", "ie 8", "ie 7", 'Firefox <= 20'] }        
+配置：{ "browsers": ["last 2 version", "> 1%", "> 1% in US", "ie 8", "ie 7", "Firefox <= 20"] }        
 注意：需要安装nodejs
 
 #### All Autocomplete
