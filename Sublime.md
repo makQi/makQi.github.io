@@ -86,7 +86,8 @@
 #### JavaScript Completions
 >JS代码提示、补全     
 Downloading关闭：Data/Packages/JavaScript Completions/node/installer.py     
-can_start_download函数，让它始终返回false
+can_start_download函数，让它始终返回false。     
+或者把文件名改成installer.txt    
 
 #### LiveReload
 >自动刷新页面插件            
