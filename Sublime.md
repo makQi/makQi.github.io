@@ -142,6 +142,8 @@ can_start_download函数，让它始终返回false
     [
         "Vintage"
     ],
+    "hot_exit": false,  // 取消记住上次打开
+    "remember_open_files":false,    // 取消记住上次打开
     "update_check": false,   // 是否检查更新
     "word_wrap": "auto",     // 自动换行
     "show_encoding": true,   // 显示文件编码
