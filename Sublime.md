@@ -1,4 +1,4 @@
-# Sublime插件
+## Sublime插件，使用前最好是把nodejs安装上。因为很多插件都依赖node。
 
 
 
@@ -59,6 +59,11 @@
 #### HTML-CSS-JS Prettify
 >格式化代码（需要安装node）       
 更改快捷键：Ctrl+Alt+F
+
+#### Autoprefixer
+>css属性前缀兼容   
+配置：{ "browsers": ["last 1 version", "> 1%", "> 1% in US", "ie 8", "ie 7", 'Firefox <= 20'] }        
+注意：需要安装nodejs
 
 #### All Autocomplete
 >路径自动补全
