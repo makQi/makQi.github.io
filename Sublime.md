@@ -1,7 +1,7 @@
 ## Sublime插件
 * <font color=#F9F9F9 face="microsoft yahei">Sublime官网下载地址：https://www.sublimetext.com/3</font>      
 * <font color=#F9F9F9 face="microsoft yahei">官网Sublime需要注册码，请自行百度、google解决</font>      
-* <font color=#F9F9F9 face="microsoft yahei">使用前最好把[nodejs](https://nodejs.org/en/)安装上，windows系统用户请不要更改安装路径。直接默认选项安装就可以了，因为很多插件都依赖node。</font>     
+* <font color=#F9F9F9 face="microsoft yahei">使用前最好把[nodejs](https://nodejs.org/en/)安装上，windows系统用户请不要更改安装路径。如果安装路径更改了，在使用nodejs与Sublime时，可能会报一些错误。直接默认选项安装就可以了，因为很多插件都依赖node。</font>     
 * <font color=#F9F9F9 face="microsoft yahei">以下全都是比较好的Sublime前端常用插件，插件地址：https://packagecontrol.io/</font>
 ***
 
