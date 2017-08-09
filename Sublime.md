@@ -1,7 +1,7 @@
 ## Sublime插件
-<font style="color: #F9F9F9;font-family: 'microsoft yahei' ">请注意，提示：</font>     
-<font style="color: #F9F9F9;font-family: 'microsoft yahei' ">使用前最好把nodejs安装上，windows系统用户请不要更改安装路径。</font>     
-<font style="color: #F9F9F9;font-family: 'microsoft yahei' ">直接默认选项安装就可以了，因为很多插件都依赖node。</font>
+<font color=#F9F9F9 face="microsoft yahei">请注意，提示：</font>      
+<font color=#F9F9F9 face="microsoft yahei">使用前最好把nodejs安装上，windows系统用户请不要更改安装路径。</font>     
+<font color=#F9F9F9 face="microsoft yahei">直接默认选项安装就可以了，因为很多插件都依赖node。</font> 
 
 #### Terminal
 ```
