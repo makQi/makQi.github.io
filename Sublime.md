@@ -5,9 +5,10 @@
 ***
 
 #### Terminal
+>请安装[git](https://git-scm.com/downloads)，windows系统用户请不要更改安装路径。     
+Ctrl+Shift+P，然后输入：terminal，回车。     
+
 ```
-请安装[git](https://git-scm.com/downloads)，windows系统用户请不要更改安装路径。 
-Ctrl+Shift+P，然后输入：terminal，回车。
 从当前文件路径下启动终端 （后台控制台），windows配制如下：
 {
     "terminal": "C:\\Program Files\\Git\\bin\\sh.exe",
