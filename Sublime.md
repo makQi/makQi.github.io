@@ -9,7 +9,7 @@
 Ctrl+Shift+P，然后输入：terminal，回车。     
 
 ```
-从当前文件路径下启动终端 （后台控制台），windows配制如下：
+从当前文件路径下启动git的Bash终端，windows系统的sublime-Terminal插件配制如下：
 {
     "terminal": "C:\\Program Files\\Git\\bin\\sh.exe",
     "parameters": ["-c", "cd \"%CWD%\" && \"C:\\Program Files\\Git\\bin\\sh.exe\" -i -l"]
@@ -119,18 +119,18 @@ can_start_download函数，让它始终返回false。
 #### Package Control
 >包管理器
 
-#### CodeFormatte
->代码格式化
-
-#### Better Completion
->支持Javascript、JQuery、Twitter Bootstrap框架、HTML5标签属性代码提示的插件
-
 #### MarkdownEditing
 >Markdown语法编辑插件
 
 #### SublimeLinter-csslint
 >css语法检查        
 注意：需要安装 npm install -g csslint
+
+#### CodeFormatte
+>代码格式化
+
+#### Better Completion
+>支持Javascript、JQuery、Twitter Bootstrap框架、HTML5标签属性代码提示的插件
 
 #### SyncedSidebarBg
 >根据活动视图的配色方案更改侧栏主题
@@ -163,7 +163,7 @@ can_start_download函数，让它始终返回false。
 
 #### sublimeText 添加鼠标右键打开功能
 ```
-新建一个sublime_addright.txt文件，
+新建一个sublime_addright.txt文件。
 然后，把以下内容复制并保存到文件，重命名为：sublime_addright.reg，在双击就可以了。
 其中，@="用 SublimeText 打开" 引号中的内容为出现在鼠标右键菜单中的文字内容。
 注意：需要把下面代码中的Sublime的安装目录（路径），替换成自已实际的Sublime安装目录（路径）。
