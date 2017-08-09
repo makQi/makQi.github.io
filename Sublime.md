@@ -2,7 +2,7 @@
 * <font color=#F9F9F9 face="microsoft yahei">Sublime官网下载地址：https://www.sublimetext.com/3</font>      
 * <font color=#F9F9F9 face="microsoft yahei">官网Sublime需要注册码，请自行百度、google解决</font>      
 * <font color=#F9F9F9 face="microsoft yahei">使用前最好把[nodejs](https://nodejs.org/en/)安装上，windows系统用户请不要更改安装路径。如果安装路径更改了，在使用nodejs与Sublime时，可能会报一些错误。直接默认选项安装就可以了，因为很多插件都依赖node。</font>     
-* <font color=#F9F9F9 face="microsoft yahei">以下全都是比较好的Sublime前端常用插件，插件地址：https://packagecontrol.io/</font>
+* <font color=#F9F9F9 face="microsoft yahei">以下全都是比较好的Sublime前端常用插件，插件地址：https://packagecontrol.io/</font>     
 ***
 
 #### Terminal
@@ -18,130 +18,136 @@ Ctrl+Shift+P，然后输入：terminal，回车。
 ```
 
 #### SublimeServer
->localhost 以服务器方式打开网页
+>localhost 以服务器方式打开网页     
+Ctrl+Shift+P，然后输入：SublimeServer，回车。     
+服务开启，鼠标右键：View in SublimeServer     
 
 #### Emmet
 >html标签连写插件，Emmet语法     
-例如：li*5，按下Tab键。
+例如：li*5，按下Tab键。      
 
 #### Alignment
 >代码自动对齐     
-快捷键：ctrl+alt+a
+快捷键：ctrl+alt+a     
 
 #### SideBarEnhancements
->侧边栏增强工具
+>侧边栏增强工具      
 
 #### Bracket​Highlighter
->支架荧光笔，标签高亮效果插件，实现代码符号的开始与结束高亮匹配。
+>支架荧光笔，标签高亮效果插件，实现代码符号的开始与结束高亮匹配。     
 
 #### DocBlockr
 >编写文档 注释插件     
-例如：/** , Enter回车。
+例如：/** , Enter回车。     
 
 #### ConvertToUTF8
->编码插件，可自动转成UTF-8
+>编码插件，可自动转成UTF-8     
 
 #### All Autocomplete
->路径自动补全
+>路径自动补全     
 
 #### AutoFileName
->自动填充文件名
+>自动填充文件名     
 
 #### SublimeLinter
->代码语法检查错误提示
+>代码语法检查错误提示     
 
 #### SublimeLinter-jshint
 >javaScript语法检查      
-注意：需要安装 npm install -g jshint
+注意：需要安装 npm install -g jshint     
 
 #### HTML-CSS-JS Prettify
 >HTML、CSS、JS等，多语言格式化       
-注意：需要安装nodejs
+鼠标右键：HTML-CSS-JS Prettify ——> Prettify Code     
+注意：需要安装nodejs     
 
 #### Autoprefixer
 >css属性前缀兼容生成      
 配置：{ "browsers": ["last 2 version", "> 1%", "> 1% in US", "ie 8", "ie 7", "Firefox <= 20"] }        
-注意：需要安装nodejs
+Ctrl+Shift+P，然后输入：Autoprefixer，Enter回车。    
+注意：需要安装nodejs      
 
 #### CSSComb
 >css属性排序并格式化    
-Ctrl+Shift+P，然后输入：CSSComb，Enter回车。
+Ctrl+Shift+P，然后输入：CSSComb，Enter回车。     
+或者，鼠标右键：CSSComb。     
 
 #### CSS Format
 >css格式化，只可对CSS格式化     
-鼠标右键，CSS Format选项，选择一个格式化CSS代码
+鼠标右键，CSS Format ——>  任意选择一个。     
 
 #### HTMLAttributes
->html属性提示、自动补全
+>html属性提示、自动补全     
 
 #### HTML5
->HTML5编写提示
+>HTML5编写提示     
 
 #### CSS3
->css3编写提示
+>css3编写提示     
 
 #### jquery
->jquery提示，补全
+>jquery提示，补全     
 
 #### SublimeCodeIntel
->代码智能自动完成补全，同样适用于自己定义的方法、变量
+>代码智能自动完成补全，同样适用于自己定义的方法、变量     
 
 #### JavaScript Completions
 >JS代码提示、补全，Ctrl+Alt+w     
 Downloading关闭：Data/Packages/JavaScript Completions/node/installer.py     
 can_start_download函数，让它始终返回false。     
-或者把文件名改成installer.txt  
+或者把文件名改成installer.txt       
 
 #### nodejs
 >node运行插件    
+Alt+r     
 
 #### LiveReload
 >自动刷新页面插件            
 同时需要chrome浏览器也装上LiveReload插件         
-用户配制 \{ "enabled_plugins": \["SimpleReloadPlugin","SimpleRefresh"\]\}
+用户配制 \{ "enabled_plugins": \["SimpleReloadPlugin","SimpleRefresh"\]\}     
 
 #### liveStyle
 >连接浏览器与编辑器的方式写CSS代码          
-同时需要chrome浏览器也装上liveStyle插件
+同时需要chrome浏览器也装上liveStyle插件     
 
 #### IMESupport
->中文鼠标跟随BUG
+>中文鼠标跟随BUG     
 
 #### ChineseLocalizations
->语言插件   中文翻译菜单
+>语言插件   中文翻译菜单     
 
 #### Theme - Brogrammer
 >主题插件，配置属性：          
-"color_scheme": "Packages/User/SublimeLinter/brogrammer (SL).tmTheme",
+"color_scheme": "Packages/User/SublimeLinter/brogrammer (SL).tmTheme",     
 
 #### Seti_UI
 >侧边栏图标，配置属性：      
-"theme": "Seti_orig.sublime-theme",
+"theme": "Seti_orig.sublime-theme",     
 
 #### Package Control
->包管理器
+>包管理器     
 
 #### MarkdownEditing
->Markdown语法编辑插件
+>Markdown语法编辑插件     
 
 #### SublimeLinter-csslint
 >css语法检查        
-注意：需要安装 npm install -g csslint
+注意：需要安装 npm install -g csslint     
 
 #### CodeFormatte
->代码格式化
+>代码格式化     
 
 #### Better Completion
->支持Javascript、JQuery、Twitter Bootstrap框架、HTML5标签属性代码提示的插件
+>支持Javascript、JQuery、Twitter Bootstrap框架、HTML5标签属性代码提示的插件     
 
 #### SyncedSidebarBg
->根据活动视图的配色方案更改侧栏主题
+>根据活动视图的配色方案更改侧栏主题     
 
 #### Material Theme
->主题插件
+>主题插件     
 
 #### Theme - Soda
->侧边栏主题配色方案   改成   Soda Light 3 白色
+>侧边栏主题配色方案   改成   Soda Light 3 白色     
 
 
 #### 设置-用户
