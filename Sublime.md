@@ -1,32 +1,50 @@
-## Sublime插件，使用前最好是把nodejs安装上。因为很多插件都依赖node。
-
-
-
-#### SublimeServer
->localhost 以服务器方式打开网页
+## Sublime插件
+```
+请注意，提示：     
+使用前最好把nodejs安装上，windows系统用户请不要更改安装路径，     
+直接默认选项安装就可以了，因为很多插件都依赖node。
+```
 
 #### Terminal
 ```
+请安装git，windows系统用户请不要更改安装路径。 
+Ctrl+Shift+P，然后输入：terminal，回车。
 从当前文件路径下启动终端 （后台控制台），windows配制如下：
 {
-    // The command to execute for the terminal, leave blank for the OS default
-    // On OS X the terminal can be set to iTerm.sh to execute iTerm
-    // "terminal": "C:\\Windows\\System32\\cmd.exe",
-    // A list of default parameters to pass to the terminal, this can be
-    // overridden by passing the "parameters" key with a list value to the args
-    // dict when calling the "open_terminal" or "open_terminal_project_folder"
-    // commands
-    // "parameters": ["/START", "%CWD%"]
     "terminal": "C:\\Program Files\\Git\\bin\\sh.exe",
     "parameters": ["-c", "cd \"%CWD%\" && \"C:\\Program Files\\Git\\bin\\sh.exe\" -i -l"]
 }
 ```
 
+#### SublimeServer
+>localhost 以服务器方式打开网页
+
 #### Emmet
 >html标签连写，Emmet语法
+例如：li*5，按下Tab键。
+
+#### Alignment
+>代码自动对齐     
+快捷键：ctrl+alt+a
 
 #### SideBarEnhancements
 >侧边栏增强工具
+
+#### Bracket​Highlighter
+>支架荧光笔，标签高亮效果插件，实现代码符号的开始与结束高亮匹配。
+
+#### DocBlockr
+>编写文档 注释插件     
+例如：/** , Enter回车。
+
+#### ConvertToUTF8
+>编码插件，可自动转成UTF-8
+
+#### All Autocomplete
+>路径自动补全
+
+#### AutoFileName
+>自动填充文件名
 
 #### SublimeLinter
 >代码语法检查错误提示
@@ -35,47 +53,24 @@
 >javaScript语法检查      
 注意：需要安装 npm install -g jshint
 
-#### Bracket​Highlighter
->支架荧光笔，标签高亮效果插件，实现代码括号与各种符号高亮匹配
-
-#### SublimeCodeIntel
->代码智能自动完成补全，同样适用于自己定义的方法、变量
-
-#### Alignment
->代码对齐
-
-#### jquery
->jquery方法补全
-
-#### HTMLAttributes
->html属性提示、自动补全
-
-#### DocBlockr
->编写文档 注释插件
-
-#### ConvertToUTF8
->编码插件，可自动转成UTF-8
-
 #### HTML-CSS-JS Prettify
->格式化代码（需要安装node）       
-更改快捷键：Ctrl+Alt+F
+>HTML、CSS、JS等，多语言格式化       
+注意：需要安装nodejs
+
+#### CSS Format
+>只对CSS格式化
+
+#### CSSComb
+>css属性排序并格式化    
+Ctrl+Shift+P，然后输入：CSSComb，Enter回车。
 
 #### Autoprefixer
->css属性前缀兼容   
+>css属性前缀兼容生成      
 配置：{ "browsers": ["last 2 version", "> 1%", "> 1% in US", "ie 8", "ie 7", "Firefox <= 20"] }        
 注意：需要安装nodejs
 
-#### All Autocomplete
->路径自动补全
-
-#### AutoFileName
->自动填充文件名
-
-#### CSSComb
->css属性排序格式化
-
-#### nodejs
->node运行插件
+#### HTMLAttributes
+>html属性提示、自动补全
 
 #### HTML5
 >HTML5编写提示
@@ -83,11 +78,20 @@
 #### CSS3
 >css3编写提示
 
+#### jquery
+>jquery提示，补全
+
+#### SublimeCodeIntel
+>代码智能自动完成补全，同样适用于自己定义的方法、变量
+
 #### JavaScript Completions
->JS代码提示、补全     
+>JS代码提示、补全，Ctrl+Alt+w     
 Downloading关闭：Data/Packages/JavaScript Completions/node/installer.py     
 can_start_download函数，让它始终返回false。     
-或者把文件名改成installer.txt    
+或者把文件名改成installer.txt  
+
+#### nodejs
+>node运行插件    
 
 #### LiveReload
 >自动刷新页面插件            
