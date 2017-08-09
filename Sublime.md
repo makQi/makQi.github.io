@@ -21,7 +21,7 @@ Ctrl+Shift+P，然后输入：terminal，回车。
 >localhost 以服务器方式打开网页
 
 #### Emmet
->html标签连写，Emmet语法
+>html标签连写插件，Emmet语法     
 例如：li*5，按下Tab键。
 
 #### Alignment
@@ -58,17 +58,18 @@ Ctrl+Shift+P，然后输入：terminal，回车。
 >HTML、CSS、JS等，多语言格式化       
 注意：需要安装nodejs
 
-#### CSS Format
->只对CSS格式化
+#### Autoprefixer
+>css属性前缀兼容生成      
+配置：{ "browsers": ["last 2 version", "> 1%", "> 1% in US", "ie 8", "ie 7", "Firefox <= 20"] }        
+注意：需要安装nodejs
 
 #### CSSComb
 >css属性排序并格式化    
 Ctrl+Shift+P，然后输入：CSSComb，Enter回车。
 
-#### Autoprefixer
->css属性前缀兼容生成      
-配置：{ "browsers": ["last 2 version", "> 1%", "> 1% in US", "ie 8", "ie 7", "Firefox <= 20"] }        
-注意：需要安装nodejs
+#### CSS Format
+>css格式化，只可对CSS格式化     
+鼠标右键，CSS Format选项，选择一个格式化CSS代码
 
 #### HTMLAttributes
 >html属性提示、自动补全
