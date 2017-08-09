@@ -1,11 +1,12 @@
 ## Sublime插件
 <font color=#F9F9F9 face="microsoft yahei">请注意，提示：</font>      
-<font color=#F9F9F9 face="microsoft yahei">使用前最好把nodejs安装上，windows系统用户请不要更改安装路径。</font>     
+<font color=#F9F9F9 face="microsoft yahei">使用前最好把[nodejs](https://nodejs.org/en/)安装上，windows系统用户请不要更改安装路径。</font>     
 <font color=#F9F9F9 face="microsoft yahei">直接默认选项安装就可以了，因为很多插件都依赖node。</font> 
+***
 
 #### Terminal
 ```
-请安装git，windows系统用户请不要更改安装路径。 
+请安装[git](https://git-scm.com/downloads)，windows系统用户请不要更改安装路径。 
 Ctrl+Shift+P，然后输入：terminal，回车。
 从当前文件路径下启动终端 （后台控制台），windows配制如下：
 {
