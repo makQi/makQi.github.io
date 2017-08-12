@@ -7,9 +7,9 @@
 
 #### Terminal
 >Ctrl+Shift+P，然后输入：terminal，回车。      
-如果，您想从当前文件路径下启动git的Bash终端，请先安装[git](https://git-scm.com/downloads)。     
+如果，想从当前文件路径下启动git的Bash终端，请先安装[git](https://git-scm.com/downloads)。     
 windows系统用户请不要更改安装路径，默认安装即可。     
-如果您安装的git不是默认安装，请更改配制路径。     
+如果，安装的git不是默认安装，请更改配制路径。     
 ```
 windows系统的sublime-Terminal插件配制如下：
 {
