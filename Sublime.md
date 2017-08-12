@@ -6,11 +6,12 @@
 ***
 
 #### Terminal
->请安装[git](https://git-scm.com/downloads)，windows系统用户请不要更改安装路径。     
+>请安装[git](https://git-scm.com/downloads)。windows系统用户请不要更改安装路径，默认安装即可。     
 Ctrl+Shift+P，然后输入：terminal，回车。     
 
 ```
-从当前文件路径下启动git的Bash终端，windows系统的sublime-Terminal插件配制如下：
+从当前文件路径下启动git的Bash终端。如果你安装的git不是默认安装，请更改配制路径。
+windows系统的sublime-Terminal插件配制如下：
 {
     "terminal": "C:\\Program Files\\Git\\bin\\sh.exe",
     "parameters": ["-c", "cd \"%CWD%\" && \"C:\\Program Files\\Git\\bin\\sh.exe\" -i -l"]
@@ -44,31 +45,31 @@ Ctrl+Shift+P，然后输入：SublimeServer，回车。
 >编码插件，可自动转成UTF-8     
 
 #### All Autocomplete
->路径自动补全     
+>路径提示、自动补全     
 
 #### AutoFileName
->自动填充文件名     
+>自动提示文件名     
 
 #### SublimeLinter
 >代码语法检查错误提示     
 
 #### SublimeLinter-jshint
 >javaScript语法检查      
-注意：需要安装 npm install -g jshint     
+请注意：需要安装 npm install -g jshint     
 
 #### HTML-CSS-JS Prettify
 >HTML、CSS、JS等，多语言格式化       
 鼠标右键：HTML-CSS-JS Prettify ——> Prettify Code     
-注意：需要安装nodejs     
+请注意：需要安装nodejs     
 
 #### Autoprefixer
->css属性前缀兼容生成      
+>css属性，前缀兼容生成      
 配置：{ "browsers": ["last 2 version", "> 1%", "> 1% in US", "ie 8", "ie 7", "Firefox <= 20"] }        
 Ctrl+Shift+P，然后输入：Autoprefixer，Enter回车。    
-注意：需要安装nodejs      
+请注意：需要安装nodejs      
 
 #### CSSComb
->css属性排序并格式化    
+>css属性，排序并格式化    
 Ctrl+Shift+P，然后输入：CSSComb，Enter回车。     
 或者，鼠标右键：CSSComb。     
 
@@ -77,29 +78,24 @@ Ctrl+Shift+P，然后输入：CSSComb，Enter回车。
 鼠标右键，CSS Format ——>  任意选择一个。     
 
 #### HTMLAttributes
->html属性提示、自动补全     
+>html属性提示、补全     
 
 #### HTML5
->HTML5编写提示     
+>HTML5编写提示、补全     
 
 #### CSS3
->css3编写提示     
+>css3编写提示、补全      
 
 #### jquery
->jquery提示，补全     
+>jquery提示、补全     
 
 #### SublimeCodeIntel
->代码智能自动完成补全，同样适用于自己定义的方法、变量     
-
-#### JavaScript Completions
->JS代码提示、补全，Ctrl+Alt+w     
-Downloading关闭：Data/Packages/JavaScript Completions/node/installer.py     
-can_start_download函数，让它始终返回false。     
-或者把文件名改成installer.txt       
+>代码智能提示、补全，同样适用于自己定义的方法、变量           
 
 #### nodejs
 >node运行插件    
 Alt+r     
+请注意：需要安装nodejs     
 
 #### LiveReload
 >自动刷新页面插件            
@@ -107,14 +103,11 @@ Alt+r
 用户配制 \{ "enabled_plugins": \["SimpleReloadPlugin","SimpleRefresh"\]\}     
 
 #### liveStyle
->连接浏览器与编辑器的方式写CSS代码          
-同时需要chrome浏览器也装上liveStyle插件     
-
-#### IMESupport
->中文鼠标跟随BUG     
+>连接chrome浏览器与Sublime编辑器，写CSS代码同步。          
+同时需要chrome浏览器也装上liveStyle插件         
 
 #### ChineseLocalizations
->语言插件   中文翻译菜单     
+>语言插件，中文菜单翻译        
 
 #### Theme - Brogrammer
 >主题插件，配置属性：          
@@ -124,15 +117,24 @@ Alt+r
 >侧边栏图标，配置属性：      
 "theme": "Seti_orig.sublime-theme",     
 
+#### IMESupport
+>中文输入法下，光标跟随BUG 
+
 #### Package Control
 >包管理器     
+
+#### JavaScript Completions
+>JS代码提示、补全，Ctrl+Alt+w     
+Downloading关闭：Data/Packages/JavaScript Completions/node/installer.py     
+can_start_download函数，让它始终返回false。     
+或者把文件名改成installer.txt      
 
 #### MarkdownEditing
 >Markdown语法编辑插件     
 
 #### SublimeLinter-csslint
 >css语法检查        
-注意：需要安装 npm install -g csslint     
+请注意：需要安装 npm install -g csslint     
 
 #### CodeFormatte
 >代码格式化     
@@ -145,9 +147,6 @@ Alt+r
 
 #### Material Theme
 >主题插件     
-
-#### Theme - Soda
->侧边栏主题配色方案   改成   Soda Light 3 白色     
 
 
 #### 设置-用户
@@ -187,7 +186,6 @@ Windows Registry Editor Version 5.00
 "Icon"="C:\\Program Files\\Sublime Text 3\\sublime_text.exe,0"
 [HKEY_CLASSES_ROOT\Directory\shell\SublimeText3\command]
 @="C:\\Program Files\\Sublime Text 3\\sublime_text.exe %1"
-
 ```
 
 #### 快捷键
