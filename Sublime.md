@@ -123,6 +123,11 @@ Alt+r
 #### Package Control
 >包管理器     
 
+#### Vue Syntax Highlight
+>语法高亮插件     
+HTML-CSS-JS Prettify插件格式化*.vue文件，Plugin Options中修改：     
+"allowed_file_extensions": ["htm", "html", "xhtml", "shtml", "xml", "svg", "vue"]
+
 #### JavaScript Completions
 >JS代码提示、补全，Ctrl+Alt+w     
 Downloading关闭：Data/Packages/JavaScript Completions/node/installer.py     
