@@ -124,8 +124,8 @@ Alt+r
 >包管理器     
 
 #### Vue Syntax Highlight
->*.vue文件语法高亮插件     
-HTML-CSS-JS Prettify插件格式化*.vue文件，Plugin Options中修改：     
+>(.vue)文件语法高亮插件     
+HTML-CSS-JS Prettify插件格式化(.vue)文件，Plugin Options中修改：     
 "allowed_file_extensions": ["htm", "html", "xhtml", "shtml", "xml", "svg", "vue"]
 
 #### JavaScript Completions
