@@ -6,11 +6,11 @@ myCookies.expiresItem('github', 7);
 
 /**
  * 数值转化成货币格式
- * 参数名places：保留小数位数，默认保留2位。
- * 参数名symbol：货币符号。
- * 参数名thousand：整数部分千位分隔符
- * 参数名decimal：小数分隔符
  * 例如：Number(123456.25687).formatMoney(3, '￥');
+ * @param  {[Number]} places   [保留小数位数，默认保留2位]
+ * @param  {[String]} symbol   [货币符号]
+ * @param  {[String]} thousand [整数部分千位分隔符]
+ * @param  {[String]} decimal  [小数分隔符]
  */
 Number.prototype.formatMoney = function(places, symbol, thousand, decimal) {
     places = !isNaN(places = Math.abs(places)) ? places : 2;
@@ -24,10 +24,11 @@ Number.prototype.formatMoney = function(places, symbol, thousand, decimal) {
     return symbol + negative + (j ? i.substr(0, j) + thousand : "") + i.substr(j).replace(/(\d{3})(?=\d)/g, "$1" + thousand) + (places ? decimal + Math.abs(number - i).toFixed(places).slice(2) : "");
 };
 
+
 /**
  * 数值转化成货币格式
- * 参数名num：保留小数位数，默认保留2位。
  * 例如：Number(123456.25687).monetaryUnit(3);
+ * @param  {[Number]} num [保留小数位数，默认保留2位]
  */
 Number.prototype.monetaryUnit = function(num) {
     var res;
@@ -52,9 +53,9 @@ Number.prototype.monetaryUnit = function(num) {
 
 /**
  * 数组去重
- * 参数名key：数组中每一项为对象时，传入对象的某一项key值去重。
  * 例如：arr.removeWeight('key') 以数组中对象去重
- * 		arr.removeWeight() 数组去重
+ *      arr.removeWeight() 数组去重
+ * @param  {[String]} key [数组中每一项为对象时，传入对象的某一项key值去重]
  */
 Array.prototype.removeWeight = function(key) {
     var newArr = [];
@@ -89,11 +90,11 @@ $(window).bind('beforeunload', function(event) {
     }
 });
 /*window.onbeforeunload = function (){
-	if(event.clientX>document.body.clientWidth && event.clientY < 0 || event.altKey){
-		alert('关闭浏览器时执行');
-	}else{
-		alert('刷新页面时执行');
-	}
+    if(event.clientX>document.body.clientWidth && event.clientY < 0 || event.altKey){
+        alert('关闭浏览器时执行');
+    }else{
+        alert('刷新页面时执行');
+    }
 }*/
 
 /**
@@ -172,7 +173,9 @@ function DocCookies() {
 
 function MakBaseFn() {
 
-    // 中文字符转unicode码
+    /**
+     * 中文字符转unicode码
+     */
     this.toUnicode = function() {
         if (str == '') {
             return '请输入汉字';
@@ -186,10 +189,10 @@ function MakBaseFn() {
 
     /**
      * 数组排序方法
-     * 参数key：数组中每一项为对象时，传入对象的某一项key值排序。
      * 例如：arr.sort(mak.dropCompare('key')) 以数组中对象排序
-     * 		arr.sort(mak.dropCompare()) 数组排序
-     * arr.reverse() 反转数组
+     *      arr.sort(mak.dropCompare()) 数组排序
+     *      arr.reverse() 反转数组
+     * @param  {[String]} key [数组中每一项为对象时，传入对象的某一项key值排序]
      */
     this.dropCompare = function(key) { // 升序排列
         return function(a, b) {
@@ -205,7 +208,10 @@ function MakBaseFn() {
         };
     };
 
-    // 获取字符串的字节长度
+    /**
+     * 获取字符串的字节长度
+     * @param  {[String]} str [字符串]
+     */
     this.charsLen = function(str) {
         var realLength = 0,
             len = str.length,
@@ -223,8 +229,7 @@ function MakBaseFn() {
 
     /**
      * 获取当前时间字符串
-     * 参数名linkSymbol：为时间链接符，不传参数返回时间属性对象
-     * 例如：mak.getCurrentTime('-');
+     * @param  {[String]} linkSymbol [为时间链接符，不传参数返回时间属性对象]
      */
     this.getCurrentTime = function(linkSymbol) {
         var time = new Date();
@@ -247,8 +252,8 @@ function MakBaseFn() {
 
     /**
      * 获取相对路径返程方法
-     * 参数名str：文件夹名称。
      * 例如：mak.getLinkPath('templates');
+     * @param  {[String]} str [文件夹名称]
      */
     this.getLinkPath = function(str) {
         var url = document.location.toString();
@@ -270,7 +275,7 @@ function MakBaseFn() {
 
     /**
      * 时间差方法
-     * 参数名endTime：结束时间。
+     * @param  {[type]} endTime [结束时间]
      */
     this.getDateDiff = function(endTime) {
         if (typeof(endTime) == 'string' && endTime.indexOf('-') > -1) { // IE兼容处理
@@ -308,29 +313,29 @@ function MakBaseFn() {
     };
 
     // http://gosspublic.alicdn.com/aliyun-oss-sdk-4.4.4.min.js 引包
-    /*var client = new OSS.Wrapper({	// 上传图片方法
-    	region: 'oss-cn-beijing',
-    	accessKeyId: 'LTAI5UVyE7lQndTX',
-    	accessKeySecret: 'R3FZMMrxfJbmE0IO87pc8cpc7aU4gO',
-    	bucket: 'thfundfile'
+    /*var client = new OSS.Wrapper({    // 上传图片方法
+        region: 'oss-cn-beijing',
+        accessKeyId: 'LTAI5UVyE7lQndTX',
+        accessKeySecret: 'R3FZMMrxfJbmE0IO87pc8cpc7aU4gO',
+        bucket: 'thfundfile'
     });
-    checkFileExt(input.value, ["ppt","docx","doc","xlsx","xls"], function(e){	// e是input事件对像
-    	var fileName = Date.now();
-    	var file = e.target.files[0];
-    	var storeAs = ''+fileName;
-    	client.multipartUpload(storeAs, file).then(function (result) {
-    		// console.log(result);
-    		console.log('http://thfundfile.oss-cn-beijing.aliyuncs.com/'+fileName);
-    	}).catch(function (err) {
-    		console.log(err);
-    	});
+    checkFileExt(input.value, ["ppt","docx","doc","xlsx","xls"], function(e){   // e是input事件对像
+        var fileName = Date.now();
+        var file = e.target.files[0];
+        var storeAs = ''+fileName;
+        client.multipartUpload(storeAs, file).then(function (result) {
+            // console.log(result);
+            console.log('http://thfundfile.oss-cn-beijing.aliyuncs.com/'+fileName);
+        }).catch(function (err) {
+            console.log(err);
+        });
     });*/
 
     /**
      * 判断上传文件格式
-     * 参数名filename：上传按扭input.value值 ,event事件对像
-     * 参数名nameArr: 文件名后缀数组
-     * 参数名callback: 上传回调方法
+     * @param  {[type]}   filename [上传按扭input.value值 ,event事件对像]
+     * @param  {[Array]}   nameArr  [文件名后缀数组]
+     * @param  {Function} callback [上传回调方法]
      */
     this.checkFileExt = function(filename, nameArr, callback) {
         var flag = false; //状态
@@ -344,7 +349,7 @@ function MakBaseFn() {
                 }
             }
 
-            if (flag) { //	判断是否有文件名合法
+            if (flag) { //  判断是否有文件名合法
                 console.log("文件名合法");
                 callback();
             } else {
@@ -358,9 +363,10 @@ function MakBaseFn() {
 
     };
 
+
     /**
      * cookie过期时间
-     * 参数名daysNum：以天为单位 , 不传参数默认为7天
+     * @param  {[Number]} daysNum [以天为单位 , 默认为：7]
      */
     this.cookieExpires = function(daysNum) {
         if (!Date.now) { // 兼容不支持该方法的引擎, 时间戳毫秒值
@@ -374,7 +380,9 @@ function MakBaseFn() {
         return new Date(sExpires);
     };
 
-    // 获取URL地址全部数据
+    /**
+     * 获取URL地址全部数据
+     */
     this.getUrlSearch = function() {
         var arr = decodeURI(location.search).slice(1).split("&");
         var obj = {};
@@ -387,7 +395,7 @@ function MakBaseFn() {
 
     /**
      * 获取URL地址单个数据
-     * 参数名name：url数据名称
+     * @param  {[String]} name [url数据名称]
      */
     this.getUrlParam = function(name) {
         var reg = new RegExp("(^|&)" + name + "=([^&]*)(&|$)");
@@ -398,12 +406,57 @@ function MakBaseFn() {
         return null;
     };
 
-    // 自动获取当前服务器IP,端口,主目录入口
+    /**
+     * 自动获取当前服务器IP,端口,主目录入口
+     */
     this.rootPath = function() {
         var pathName = window.location.pathname.substring(1);
         var webName = pathName == '' ? '' : pathName.substring(0, pathName
             .indexOf('/'));
         return window.location.protocol + '//' + window.location.host + '/' + webName;
+    };
+
+    /**
+     * 算出对象数组中连续相同字段，的开始索引与结束索引
+     * @param  {[Array]} arr [对象数组]
+     * @param  {[String]} key [字段名]
+     * @param  {[Number]} num [连续num个相同字段才会被记录，默认值：1]
+     */
+    this.recordIndex = function(arr, key, num) {
+        var str = arr[0][key];
+        var len = arr.length - 1;
+        var indexArr = [];
+        var startIndex = 0;
+        var n = num != undefined ? Math.abs(num) : 1;
+        for (var i = 0; i < len; i++) {
+            while (i < len) {
+                if (arr[i][key] === str && arr[i + 1][key] !== str) {
+                    if ((i + 1 - startIndex) >= n) {
+                        indexArr.push((function() {
+                            var obj = {};
+                            obj[key] = str;
+                            obj.startIndex = startIndex;
+                            obj.endIndex = i + 1;
+                            return obj;
+                        })());
+                    }
+                    str = arr[i + 1][key];
+                    startIndex = i + 1;
+                    break;
+                }
+                i++;
+            }
+        }
+        if (arr.length - 1 - startIndex >= n) {
+            indexArr.push((function() {
+                var obj = {};
+                obj[key] = arr[startIndex][key];
+                obj.startIndex = startIndex;
+                obj.endIndex = arr.length - 1;
+                return obj;
+            })());
+        }
+        return indexArr;
     };
 
 }
