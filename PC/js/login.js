@@ -1,110 +1,93 @@
+$(function() {
 
-$.ajax({
-	url: 'templates/models/login.html',
-	type: 'GET',
-	dataType: 'html',
-	success: function(data){
-		$('body').prepend(data);
-		if(!docCookies.getItem(currentUser)){
-			$('#currentUser').text('登录实验室');
-			$('#currentUser').parent().off();
-		}else{
-			$("#currentUser").text("我的实验室").attr('data-username', currentUser);
-		}
+    $('#switch_qlogin').click(function() {
+        $('#switch_login').removeClass("switch_btn_focus").addClass('switch_btn');
+        $('#switch_qlogin').removeClass("switch_btn").addClass('switch_btn_focus');
+        $('#switch_bottom').animate({ left: '0px', width: '70px' });
+        $('#qlogin').css('display', 'none');
+        $('#web_qr_login').css('display', 'block');
+    });
 
-		$('#currentUser').on('click', function(){
-			if($(this).text()=='登录实验室'){
-				$('.popup_loginBox').fadeIn();
-			}
-		});
+    $('#switch_login').click(function() {
+        $('#switch_login').removeClass("switch_btn").addClass('switch_btn_focus');
+        $('#switch_qlogin').removeClass("switch_btn_focus").addClass('switch_btn');
+        $('#switch_bottom').animate({ left: '154px', width: '70px' });
+        $('#qlogin').css('display', 'block');
+        $('#web_qr_login').css('display', 'none');
+        $('#user').val('');
+        $('#passwd').val('');
+        $('#passwd2').val('');
+        $('#qq').val('');
+        $('#userCue').hide();
+    });
 
-		$('.closeed_login').click(function(){
-			$('.popup_loginBox').fadeOut();
-		});
+    $('#subin').on('click', register);
+    $('#p').on('keyup', function(e) {
+        if (e.keyCode === 13) {
+            register();
+        }
+    });
 
-		$('#remember').click(function(){
-			if(this.checked){
-				$('.radiobg').addClass('radiobg_bg')
-			}else{
-				$('.radiobg').removeClass('radiobg_bg');
-			}
-		});
+    $('#reg').click(function() {
+        var newpword = $('#passwd2').val();
+        if (newpword.length < 6 || newpword.length > 20) {
+            $('#userCue').show().text('新密码不能为空，大于等6位，小于等20位。');
+            return;
+        }
+        if (newpword === $('#qq').val()) {
+            /*$.ajax({
+                url: 'http://10.139.57.176/soa_research/data/index?type=user_login',
+                type: 'get',
+                dataType: 'json',
+                data: {
+                    uname: $('#user').val(),
+                    pword: $('#passwd').val(),
+                    login_type: 0,
+                    newpword: newpword
+                },
+                success: function(data) {
+                    if (data.data[0].count !== 1) {
+                        $('#userCue').show().text('用户名或密码有误，请重新输入。');
+                    } else {
+                        $('#userCue').show().text('修改密码成功，请用新密码登录。');
+                        $('#switch_bottom').animate({ left: '0px', width: '70px' });
+                        $('#qlogin').hide();
+                        $('#web_qr_login').show();
+                        $('#u').focus();
+                    }
+                }
+            });*/
+        } else {
+            $('#userCue').show().text('新密码不相同，请重新输入。');
+        }
+    });
 
-		$('#password').keyup(function(e){
-			if(e.keyCode==13){
-				loginRequest();
-			}
-		});
-
-		$('#loginButton').click(function(){
-			loginRequest();
-		});
-
-		function loginRequest(){
-			var userName = $.trim($('#username').val());
-			var password = $.trim($('#password').val());
-			var remember = $('#remember')[0].checked;
-			var expires = cookieExpires(15);
-			if((userName=='admin'&&password=='admin')||
-				(userName=='th'&&password=='th')||
-				(userName=='test'&&password=='test')||
-				(userName=='test1'&&password=='test1')||
-				(userName=='test2'&&password=='test2')||
-				(userName=='test3'&&password=='test3')||
-				(userName=='wq'&&password=='wq')){
-				docCookies.setItem(userName, userName, expires, '/');
-				if(remember){
-					docCookies.setItem('49BAC005-7D5B-4231-8CEA-16939BEACD67', userName, expires, '/');
-					docCookies.setItem('login', 'true', expires, '/');
-				}else{
-					docCookies.setItem('49BAC005-7D5B-4231-8CEA-16939BEACD67', userName);
-					docCookies.setItem('login', 'true');
-					docCookies.setItem('autoLogin', 'no');
-				}
-				$('.popup_loginBox').hide();
-				location.reload();
-			}else{
-				$('.login-topbox p').show();
-			}
-			/*$.ajax({
-				url: 'http://cia.thfund.com.cn/login',
-				type: 'GET',
-				dataType: 'json',
-				data:{
-					userName: userName,
-					password: password
-				},
-				success: function(data){
-					if(data===true){
-						docCookies.setItem(userName, userName, expires, '/');
-						if(remember){
-							docCookies.setItem('49BAC005-7D5B-4231-8CEA-16939BEACD67', userName, expires, '/');
-							docCookies.setItem('login', 'true', expires, '/');
-						}else{
-							docCookies.setItem('49BAC005-7D5B-4231-8CEA-16939BEACD67', userName);
-							docCookies.setItem('login', 'true');
-							docCookies.setItem('autoLogin', 'no');
-						}
-						$('.popup_loginBox').hide();
-						location.reload();
-					}else{
-						$('.login-topbox p').show();
-					}
-				}
-			});*/
-		}
-
-		function cookieExpires(daysNum){
-			if (!Date.now) {
-				Date.now = function now() {
-					return new Date().getTime();
-				};
-			}
-			var sExpires;
-			daysNum = (daysNum!=undefined&&daysNum!=null&&daysNum!='')?daysNum:7;
-			sExpires = daysNum*24*60*60*1000+Date.now();
-			return new Date(sExpires);
-		}
-
-	}
 });
+
+function register() {
+    /*$.ajax({
+        url: 'http://10.139.57.176/soa_research/data/index?type=user_login',
+        type: 'get',
+        dataType: 'json',
+        data: {
+            uname: $('#u').val(),
+            pword: $('#p').val(),
+            login_type: 1,
+            newpword: ''
+        },
+        success: function(data) {
+            if (data.data[0].result === 'true') {
+                $.cookie('macrostate', 'true', { path: '/' });
+                window.open('allMacrostate.html', '_self');
+            } else {
+                
+            }
+        }
+    });*/
+    if ($('#u').val() === 'admin' && $('#p').val() === 'admin') {
+        $.cookie('admin', 'true', { path: '/' });
+        window.open('indexHome.html', '_self');
+    } else {
+        $('#web_qr_login').children('p').text('用户名或密码有误，请重新输入。').show();
+    }
+}
