@@ -459,6 +459,25 @@ function MakBaseFn() {
         return indexArr;
     };
 
+    /**
+     * 给数组中对象补值
+     * @param  {[Array]} arr [对象数组]
+     * @param  {[String]} key [字段名]
+     */
+    this.dataDispose = function(arr, key) {
+        var newArr = arr;
+        for (var i = 0; i < newArr.length; i++) {
+            if (newArr[i][key] == null) {
+                var pre = newArr[i - 1][key];
+                var next = newArr[(i + 1) == newArr.length ? i : i + 1][key];
+                if (pre !== null && next !== null) {
+                    newArr[i][key] = Number(((pre + next) / 2).toFixed(1));
+                }
+            }
+        }
+        return newArr;
+    };
+
 }
 
 
