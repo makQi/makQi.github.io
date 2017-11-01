@@ -38,8 +38,13 @@ table {width:100%;border-collapse: collapse;}
     cursor: pointer;
 }
 .tables .home_page, .tables .trailer_page {
-    /* display: none; */
-    margin:0 15px;
+    display: none;
+}
+.tables .home_page {
+    margin-right: 15px;
+}
+.tables .trailer_page {
+    margin-left: 15px;
 }
 .tables .page_number {
     display:inline-block;
