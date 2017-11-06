@@ -97,10 +97,18 @@ input[type="number"] {
 
 
 /* 排序样式 */
-.litre,
-.drop {
+.drop,
+.litre {
     margin-bottom: 0;
     border-bottom: 0;
+}
+
+.tables .drop:after {
+    display: inline-block;
+    content: '';
+    border-top: 5px solid #000;
+    border-right: 5px solid transparent;
+    border-left: 5px solid transparent;
 }
 
 .tables .litre:after {
@@ -109,14 +117,6 @@ input[type="number"] {
     content: '';
     border-right: 5px solid transparent;
     border-bottom: 5px solid #000;
-    border-left: 5px solid transparent;
-}
-
-.tables .drop:after {
-    display: inline-block;
-    content: '';
-    border-top: 5px solid #000;
-    border-right: 5px solid transparent;
     border-left: 5px solid transparent;
 }
 /* 排序样式 */
