@@ -94,3 +94,29 @@ input[type="number"] {
     -moz-appearance: textfield;
 }
 /* 表格翻页样式 */
+
+
+/* 排序样式 */
+.litre,
+.drop {
+    margin-bottom: 0;
+    border-bottom: 0;
+}
+
+.tables .litre:after {
+    display: inline-block;
+    margin-bottom: 5px;
+    content: '';
+    border-right: 5px solid transparent;
+    border-bottom: 5px solid #000;
+    border-left: 5px solid transparent;
+}
+
+.tables .drop:after {
+    display: inline-block;
+    content: '';
+    border-top: 5px solid #000;
+    border-right: 5px solid transparent;
+    border-left: 5px solid transparent;
+}
+/* 排序样式 */
