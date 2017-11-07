@@ -1,0 +1,118 @@
+/* 表格翻页样式 */
+html, body {height:100%;}
+table {width:100%;border-collapse: collapse;}
+.tables {
+    position: relative;
+    overflow: hidden;
+}
+.tables th, .tables td {
+    text-align: center;
+    box-sizing: border-box;
+}
+.tables tr {
+    width:100%;
+    height:auto;
+    box-sizing: border-box;
+}
+.tables .paging {
+    position:absolute;
+    top:50%;
+    left:50%;
+    transform: translate(-50%, -50%);
+    -webkit-transform: translate(-50%, -50%);
+}
+.tables .paging_box {
+    position: relative;
+    height: 60px;
+}
+.tables .previous_page, .tables .next_page, .tables .home_page, .tables .trailer_page, .tables .page_number {
+    height: 26px;
+    line-height:26px;
+    box-sizing:border-box;
+    color: #71AFFF;
+    border: 1px solid #71AFFF;
+    background-color: transparent;
+}
+.tables .previous_page, .tables .next_page, .tables .home_page, .tables .trailer_page { 
+    padding: 0 10px;
+    cursor: pointer;
+}
+.tables .home_page, .tables .trailer_page {
+    display: none;
+}
+.tables .home_page {
+    margin-right: 15px;
+}
+.tables .trailer_page {
+    margin-left: 15px;
+}
+.tables .page_number {
+    display:inline-block;
+    vertical-align:bottom;
+    width:auto;
+    margin:0 15px;
+    padding:0 15px;
+    font-size:16px;
+}
+.tables .record {
+    color:#787878;
+    font-size:12px;
+    position:absolute;
+    top:50%;
+    right:0;
+    -webkit-transform: translateY(-50%);
+    -moz-transform: translateY(-50%);
+    -ms-transform: translateY(-50%);
+    -o-transform: translateY(-50%);
+    transform: translateY(-50%);
+}
+.tables .min {
+    padding: 0;
+    margin: 0;
+    /* width: 11.38px; */
+    height: 21px;
+    color: #71AFFF;
+    font-family: "Helvetica Neue", "Noto Sans", "Microsoft Yahei", SimSun, 
+    PingFang, Helvetica, Tahoma, "Source Han Sans CN", 
+    "Noto Sans S Chinese", "Hiragino Sans GB", "sans-serif";
+    font-size: 16px;
+    text-align: center;
+    letter-spacing: 2px;
+    background-color: transparent;
+}
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button{
+    -webkit-appearance: none !important;
+    margin: 0; 
+}
+input[type="number"] {
+    -moz-appearance: textfield;
+}
+/* 表格翻页样式 */
+
+
+/* 排序样式 */
+.drop,
+.litre
+{
+    margin-bottom: 0;
+    border-bottom: 0;
+}
+
+.tables .drop:after {
+    display: inline-block;
+    content: '';
+    border-top: 5px solid #000;
+    border-right: 5px solid transparent;
+    border-left: 5px solid transparent;
+}
+
+.tables .litre:after {
+    display: inline-block;
+    margin-bottom: 5px;
+    content: '';
+    border-right: 5px solid transparent;
+    border-bottom: 5px solid #000;
+    border-left: 5px solid transparent;
+}
+/* 排序样式 */
