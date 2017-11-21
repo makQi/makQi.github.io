@@ -92,27 +92,19 @@ input[type="number"] {
 
 
 /* 排序样式 */
-.drop,
-.litre
-{
-    margin-bottom: 0;
-    border-bottom: 0;
-}
-
+.tables .litre:after,
 .tables .drop:after {
-    display: inline-block;
     content: '';
-    border-top: 5px solid #000;
-    border-right: 5px solid transparent;
-    border-left: 5px solid transparent;
+    display: inline-block;
+    border-right: 4px solid transparent;
+    border-left: 4px solid transparent;
 }
-
-.tables .litre:after {
-    display: inline-block;
-    margin-bottom: 5px;
-    content: '';
-    border-right: 5px solid transparent;
-    border-bottom: 5px solid #000;
-    border-left: 5px solid transparent;
+.tables .litre:after {  /* 升序 */
+    margin-bottom: 4px;
+    border-bottom: 7px solid #DCDCDC;
+}
+.tables .drop:after {   /* 降序 */
+    margin-bottom: -4px;
+    border-top: 7px solid #DCDCDC;
 }
 /* 排序样式 */
