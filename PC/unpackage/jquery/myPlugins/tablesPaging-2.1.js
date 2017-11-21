@@ -141,7 +141,7 @@
 
 
 				var thead_html = $this.find('thead').html();
-				$this.on('click', 'th .sort', function(){	// 排序
+				$this.on('click', 'table .sort', function(){	// 排序
 					var $sort= $(this);
 					var key = $sort.attr('data-key');
 					if($sort.hasClass('drop')){
