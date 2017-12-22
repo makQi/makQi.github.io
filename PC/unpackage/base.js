@@ -80,7 +80,7 @@ Array.prototype.removeWeight = function(key) {
 };
 
 /**
- * 删除数组中一项
+ * 删除数组中的一项
  * 例如：arr.removeWeight(val)
  *         arr.removeWeight(val, key)
  */

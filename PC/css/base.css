@@ -92,7 +92,7 @@ select {
 
 select,
 input {
-    vertical-align: middle;
+    vertical-align: middle; /* 文字与input对齐 */
 }
 
 select,
