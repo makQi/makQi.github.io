@@ -80,6 +80,29 @@ Array.prototype.removeWeight = function(key) {
 };
 
 /**
+ * 删除数组中一项
+ * 例如：arr.removeWeight(val)
+ *         arr.removeWeight(val, key)
+ */
+Array.prototype.removeByVal = function(val, key){
+    if(key){
+        for(var i=0; i<this.length; i++){
+            if(this[i][key]==val){
+                this.splice(i, 1);
+                break;
+            }
+        }
+    }else{
+        for(var j=0; j<this.length; j++){
+            if(this[j]==val){
+                this.splice(j, 1);
+                break;
+            }
+        }
+    }
+};
+
+/**
  * 页面刷新与关闭浏览器时触发的事件
  */
 $(window).bind('beforeunload', function(event) {
