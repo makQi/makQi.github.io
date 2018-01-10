@@ -37,8 +37,7 @@ body {
     SimSun, PingFang, Helvetica, Tahoma, "Source Han Sans CN", 
     "Noto Sans S Chinese", "Hiragino Sans GB", "sans-serif", Arial, Verdana, "\5b8b\4f53"; */
     cursor: default;
-    letter-spacing: 2px;
-    /* 文字之间的间隔 */
+    letter-spacing: 2px;    /* 文字之间的间隔 */
 }
 
 fieldset,
