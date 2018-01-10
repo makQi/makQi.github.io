@@ -44,16 +44,14 @@ body {
 fieldset,
 img,
 input,
-button {
-    /* fieldset组合表单中的相关元素 */
+button {    /* fieldset组合表单中的相关元素 */
     border: none;
     outline-style: none;
 }
 
 ul,
 ol {
-    /* 清除列表风格 */
-    list-style: none;
+    list-style: none;   /* 清除列表风格 */
 }
 
 button {
@@ -101,19 +99,16 @@ textarea {
     font-size: 12px;
 }
 
-textarea {
-    /* 防止多行文本框拖动 */
+textarea {  /* 防止多行文本框拖动 */
     resize: none;
 }
 
-img {
+img {   /* 去掉图片低测默认的3像素空白缝隙 */
     vertical-align: middle;
-    /* 去掉图片低测默认的3像素空白缝隙 */
     border: 0;
 }
 
-table {
-    /* 合并外边线 */
+table { /* 合并表格外边线 */
     width: 100%;
     table-layout: fixed;
     border-collapse: collapse;
@@ -147,14 +142,11 @@ em {
     display: table;
     content: '';
 }
-
 .clearfix:after {
     clear: both;
 }
-
 .clearfix {
-    zoom: 1;
-    /* IE/7/6 */
+    zoom: 1;    /* IE/7/6 */
 }
 
 
@@ -171,19 +163,21 @@ em {
 
 .inline-align {
     display: inline-block;
-    vertical-align: top;
-    /* 行内块元素顶部对齐 */
+    vertical-align: top;    /* 行内块元素顶部对齐 */
 }
 
-.text-beyond {
-    /* 文字超出容器... */
+.text-beyond {  /* 文字超出容器... */
     overflow: hidden;
     white-space: nowrap;
     text-overflow: ellipsis;
 }
+.text-word-wrap {   /* 文字超出自动换行 */
+    white-space: normal;
+    word-break: break-all;
+    word-wrap: break-word;
+}
 
-.tag-noChecked {
-    /* 标签内容不可以被选中 标签加上属性onselectstart="return false;" unselectable="on" */
+.tag-noChecked {    /* 标签内容不可以被选中 标签加上属性onselectstart="return false;" unselectable="on" */
     -webkit-user-select: none;
     -moz-user-select: none;
     -ms-user-select: none;
@@ -216,10 +210,8 @@ em {
 }
 
 @font-face {
-    font-family: 'myFont';
-    /*字体名称*/
-    src: url('iconFont/Gotham-Book.ttf');
-    /*字体源文件*/
+    font-family: 'myFont';  /*字体名称*/
+    src: url('iconFont/Gotham-Book.ttf');   /*字体源文件*/
 }
 
 @font-face {
