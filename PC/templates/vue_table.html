@@ -6,22 +6,24 @@
 	<title>vue</title>
 	<link rel="icon" href="../img/star.png">
 	<link rel="stylesheet" href="../css/base.css">
-	<link rel="stylesheet" href="../css/headerNav.css">
+	<link rel="stylesheet" href="../css/navHtml.css">
 	<link rel="stylesheet" href="../css/templates/vue_table.css">
 </head>
 <body>
-
-	<div id="demo">
-		<form id="search">
-			Search <input name="query" v-model="searchQuery">
-		</form>
-		<demo-grid
-		:data="gridData"
-		:columns="gridColumns"
-		:filter-key="searchQuery">
-		</demo-grid>
+	
+	<div class="main">
+		<div id="demo">
+			<form id="search">
+				Search <input name="query" v-model="searchQuery">
+			</form>
+			<demo-grid
+			:data="gridData"
+			:columns="gridColumns"
+			:filter-key="searchQuery">
+			</demo-grid>
+		</div>
 	</div>
-
+	
 	<script type="text/x-template" id="grid-template">
 		<table>
 			<thead>
@@ -47,7 +49,7 @@
 	
 	<script src="../unpackage/jquery/jquery-1.11.3.min.js"></script>
 	<script src="../unpackage/vue/vue.min.js"></script>
-	<script src="../js/headerHtml.js"></script>
+	<script src="../js/navHtml.js"></script>
 	<script src="../js/templates/vue_table.js"></script>
 </body>
 </html>

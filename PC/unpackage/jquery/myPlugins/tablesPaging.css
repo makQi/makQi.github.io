@@ -1,3 +1,6 @@
+table {
+    color: #C4C4C4;
+}
 thead {
     background-color: #161F3E;
 }
@@ -7,9 +10,13 @@ tbody {
 tr, td {
     border: 1px solid #272F5C;
 }
+th {
+    color: #4A89E6;
+}
 #tableBox .record {
     display:none;
 }
+
 
 
 /* 表格翻页样式 */
@@ -39,7 +46,11 @@ table {width:100%;border-collapse: collapse;}
     position: relative;
     height: 60px;
 }
-.tables .previous_page, .tables .next_page, .tables .page_number {
+.tables .previous_page, 
+.tables .next_page, 
+.tables .home_page, 
+.tables .trailer_page,
+.tables .page_number {
     height: 26px;
     line-height:26px;
     box-sizing:border-box;
@@ -47,9 +58,18 @@ table {width:100%;border-collapse: collapse;}
     border: 1px solid #71AFFF;
     background-color: transparent;
 }
-.tables .previous_page, .tables .next_page { 
+.tables .previous_page, 
+.tables .next_page,
+.tables .home_page, 
+.tables .trailer_page {
     padding: 0 10px;
     cursor: pointer;
+}
+.tables .home_page {
+    margin-right: 15px;
+}
+.tables .trailer_page {
+    margin-left: 15px;
 }
 .tables .page_number {
     display:inline-block;
@@ -77,6 +97,7 @@ table {width:100%;border-collapse: collapse;}
     /* width: 11.38px; */
     height: 21px;
     color: #71AFFF;
+    vertical-align: baseline;
     font-family: "Helvetica Neue", "Noto Sans", "Microsoft Yahei", SimSun, 
     PingFang, Helvetica, Tahoma, "Source Han Sans CN", 
     "Noto Sans S Chinese", "Hiragino Sans GB", "sans-serif";
@@ -94,7 +115,6 @@ input[type="number"] {
     -moz-appearance: textfield;
 }
 /* 表格翻页样式 */
-
 
 /* 排序样式 */
 .drop,

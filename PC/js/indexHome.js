@@ -1,3 +1,14 @@
+var linkPath = 'templates/';
+$.ajax({
+	url: linkPath + '/models/navHtml.html',
+	type: 'GET',
+	// async:false,
+	dataType: 'html',
+	success:function(data){
+		$('body').prepend(data);
+	}
+});
+
 var myCharts = echarts.init($('#chart')[0]);
 window.onresize = function (){
 	myCharts.resize();

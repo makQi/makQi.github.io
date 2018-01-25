@@ -23,6 +23,7 @@ legend,
 img,
 tr,
 td,
+span,
 input,
 button,
 select {
@@ -117,6 +118,9 @@ a {
     text-decoration: none;
     color: inherit;
 }
+a:link, a:hover, a:visited, a:active {
+    text-decoration: none;
+}
 
 h1,
 h2,
@@ -150,7 +154,9 @@ em {
 
 
 /* 公共类 */
-
+.main {
+    padding-top: 60px;
+}
 .w {
     width: 1210px;
     margin: 0 auto;
