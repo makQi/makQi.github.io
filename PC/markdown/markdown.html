@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title></title>
+    <link rel="stylesheet" href="markdown.css">
+    <script src="marded_0.3.6.js"></script>
+    <script src="lodash_4.16.0.js"></script>
+    <script src="vue.js"></script>
+</head>
+
+<body>
+    <div id="editor">
+        <textarea :value="input" @input="update"></textarea>
+        <div v-html="compiledMarkdown"></div>
+    </div>
+    <script type="text/javascript">
+    new Vue({
+        el: '#editor',
+        data: {
+            input: '# hello'
+        },
+        computed: {
+            compiledMarkdown: function() {
+                return marked(this.input, {
+                    gfm: true,
+                    tables: true,
+                    breaks: false,
+                    pedantic: false,
+                    sanitize: true,
+                    smartLists: true,
+                    smartypants: false
+                });
+            }
+        },
+        methods: {
+            update: _.debounce(function(e) {
+                this.input = e.target.value;
+            }, 300)
+        }
+    });
+    </script>
+</body>
+
+</html>
