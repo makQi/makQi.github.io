@@ -1,5 +1,11 @@
 $(function() {
 
+    (function(){
+        if(myCookies.getItem('admin')=='true'){
+            location.href = mak.rootPath() + '/PC/indexHome.html';
+        }
+    })();
+
     $('#switch_qlogin').click(function() {
         $('#switch_login').removeClass("switch_btn_focus").addClass('switch_btn');
         $('#switch_qlogin').removeClass("switch_btn").addClass('switch_btn_focus');
