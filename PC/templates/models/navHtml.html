@@ -1,6 +1,6 @@
 <header class="header">
     <div class="header-box">
-        <a class="login_ico" title="markdown网页编辑器"></a>
+        <a class="login_ico path_link" herf="markdown/markdown.html" title="markdown网页编辑器"></a>
         <nav class="center">
             <ul class="clearfix">
                 <li class="fl">
@@ -333,10 +333,6 @@
 
 
 	<script type="text/javascript">
-
-		$('.login_ico').on('click', function(){	// markdown
-			window.open(linkPath + '/markdown/markdown.html');
-		});
 
 		$('.path_link').each(function(index, el) { // 给a链接重新加上路径
 		    $(el).attr('href', linkPath + $(el).attr('href'));
