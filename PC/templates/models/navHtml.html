@@ -4,7 +4,7 @@
         <nav class="center">
             <ul class="clearfix">
                 <li class="fl">
-                    <a class="path_link" href="indexHome.html">首页</a>
+                    <a class="index_home" href="indexHome.html">首页</a>
                     <s></s>
                 </li>
                 <li class="fl">
@@ -333,6 +333,9 @@
 
 
 	<script type="text/javascript">
+		console.log(mak.rootPath());
+		console.log(window.location.protocol + '//' + window.location.host);
+		// $('.index_home').attr('href', mak.);
 
 		$('.path_link').each(function(index, el) { // 给a链接重新加上路径
 		    $(el).attr('href', linkPath + $(el).attr('href'));
