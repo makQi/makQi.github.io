@@ -1,6 +1,6 @@
 <header class="header">
     <div class="header-box">
-        <div class="login_ico"></div>
+        <a class="login_ico"></a>
         <nav class="center">
             <ul class="clearfix">
                 <li class="fl">
@@ -334,8 +334,9 @@
 
 	<script type="text/javascript">
 
-		$('.login_ico').on('click', function(){
-			console.log(1);
+		$('.login_ico').on('click', function(){	// markdown
+			console.log(mak.rootPath());
+			window.open(mak.rootPath()+'/PC/markdown/markdown.html');
 		});
 
 		$('.path_link').each(function(index, el) { // 给a链接重新加上路径
