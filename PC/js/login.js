@@ -1,10 +1,9 @@
 $(function() {
 
     (function(){
-        console.log(mak.rootPath());
-        /*if(myCookies.getItem('admin')=='true'){
+        if(myCookies.getItem('admin')=='true'){
             location.href = mak.rootPath() + '/indexHome.html';
-        }*/
+        }
     })();
 
     $('#switch_qlogin').click(function() {
