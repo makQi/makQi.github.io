@@ -4,6 +4,25 @@
  * https://github.com/chjj/marked
  */
 
+function markdownMdFile(fileName, ele){
+  $.ajax({
+    url: 'md/' + fileName,
+    dataType: 'text',
+    success: function(data){
+      var mdData = marked(data, {
+            gfm: true,
+            tables: true,
+            breaks: false,
+            pedantic: false,
+            sanitize: true,
+            smartLists: true,
+            smartypants: false
+        });
+      $(ele).html(mdData);
+    }
+  });
+}
+
 ;(function() {
 
 /**
