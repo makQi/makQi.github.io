@@ -404,14 +404,14 @@ $('.dsg').on('click', 'a', function() {
 
 function myOptionalFn() { // 我的自选数据
     $.ajax({
-        url: 'http://10.139.57.176/soa_official/data/index?type=zntz_op_my_choice',
+        url: '',
         type: 'GET',
         // async: false,
         dataType: 'json',
         data: {
             op: 0,
             pid: '',
-            userName: docCookies.getItem('49BAC005-7D5B-4231-8CEA-16939BEACD67'),
+            userName: '',
             stockCode: '',
             company: '',
             companyCode: '',

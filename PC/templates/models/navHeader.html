@@ -115,7 +115,7 @@ function searchFunData(inputVal) {
     $('#bpsearch').attr('href', linkPath + 'intelligentSearch/brainpowerSearch.html?q=' + inputVal);
 
     searchfd = $.ajax({ // 股票数据
-        url: IP + '/soa_stock/data/index?type=fs_queryCode',
+        url: '',
         type: 'GET',
         dataType: 'json',
         data: {
@@ -142,7 +142,7 @@ function searchFunData(inputVal) {
 
             // 债券数据
             $.ajax({
-                url: IP + '/soa_official/data/index?type=yuqing_fund_search_news',
+                url: '',
                 type: 'GET',
                 dataType: 'json',
                 data: {
@@ -155,7 +155,7 @@ function searchFunData(inputVal) {
                     var bondData1 = data1.data;
 
                     $.ajax({
-                        url: IP + '/soa_bond/data/index?type=query_company',
+                        url: '',
                         type: 'GET',
                         dataType: 'json',
                         data: {
