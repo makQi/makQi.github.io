@@ -1,0 +1,257 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<title>产品与服务</title>
+	<link rel="icon" href="../img/star.png">
+	<link rel="stylesheet" href="../css/base.css">
+	<link rel="stylesheet" href="../css/navHtml.css">
+	<style type="text/css">
+		/* 产品与服务开始 */
+		.product {
+			height:740px;
+			margin-top:140px;
+			background-color:#0F1D3B;
+		}
+		.product_serve {
+			text-align:center;
+			padding-top:60px;
+		}
+		.product_serve h2 {
+			text-decoration: none;
+		    font-weight: normal;
+		    font-size:30px;
+		}
+		.product_serve div {
+			width:26px;
+			margin:28px auto;
+			border-bottom:1px solid #71AFFF;
+		}
+		.all_produc {
+			display:inline-block;
+			width:80px;
+			text-align:center;
+			color:#41669b;
+			line-height:26px;
+			border:1px solid #41669b;
+		}
+		.product_fun {
+			height:400px;
+			margin-top:70px;
+		}
+		.item {
+			box-sizing:border-box;
+			position:relative;
+			float:left;
+			width:25%;
+			height:100%;
+			border-right:1px solid #132345;
+			background-color:#14274C;
+		}
+		.product_fun > div:last-child {
+			border-right:none;
+		}
+		.item_abs {
+			width:100%;
+			height:100%;
+			overflow:hidden;
+		}
+		.item_img {
+			height:160px;
+			padding-top:50px;
+			box-sizing:border-box;
+			background-color:#101B2F;
+			/* background-image: linear-gradient(-225deg, #4071EE, #183FA1); */
+		}
+		.item_img img {
+			display:block;
+			/* width:33px;
+			height:29px; */
+			margin:0 auto;
+		}
+		.item_img h4 {
+			text-decoration: none;
+		    font-weight: normal;
+		    font-size:14px;
+		    text-align:center;
+		    margin-top:14px;
+		}
+		.item_con {
+			position:relative;
+			box-sizing:border-box;
+			height:240px;
+			color:#CADBF5;
+			padding-top:30px;
+			padding-left:46px;
+			background-color:transparent;
+			/* background-color:#14274C; */
+		}
+		.item_con p {
+			font-size:16px;
+		}
+		.item_con .line {
+			width:36px;
+			margin-top:6px;
+			border-bottom:1px solid #CADBF5;
+		}
+		.item_con li {
+			margin-top:12px;
+		}
+		.item_con a {
+			display:none;
+			position:absolute;
+			left:50%;
+			bottom:8px;
+			transform:translateX(-50%);
+		    width:80px;
+		    text-align: center;
+		    color:#41669b;
+		    line-height:26px;
+		    border: 1px solid #41669b;
+		}
+		.item_con a:hover {
+			-webkit-transition: all .3s ease-in;
+		    -moz-transition: all .3s ease-in;
+		    -ms-transition: all .3s ease-in;
+		    -o-transition: all .3s ease-in;
+		    transition: all .3s ease-in;
+		    background-color: #2157DA;
+		    color: #fff;
+		}
+		.product_fun .tran {
+			-webkit-transition: all .3s cubic-bezier(.4,0,.2,1);
+		    -moz-transition: all .3s cubic-bezier(.4,0,.2,1);
+		    -ms-transition: all .3s cubic-bezier(.4,0,.2,1);
+		    -o-transition: all .3s cubic-bezier(.4,0,.2,1);
+		    transition: all .3s cubic-bezier(.4,0,.2,1);
+		    background:#fff;
+		    width:320px;
+		    height:430px;
+		    margin:-15px -10px;
+		    /* padding:15px; */
+		    position: relative;
+		    z-index: 77;
+		}
+		/* 产品与服务结束*/
+	</style>
+</head>
+<body>
+	<!-- 产品与服务 -->
+	<div class="product">
+		<div class="w">
+			<div class="product_serve">
+				<h2>产品与服务</h2>
+				<div class="line"></div>
+				<a class="all_produc" href="myOptions.html">所有产品</a>
+			</div>
+			<div class="product_fun">
+				<div class="item">
+					<div class="item_abs tran">
+						<div class="item_img" style="background-image:linear-gradient(-225deg, #4071EE, #183FA1);">
+							<img style="width:34px;height:30px;" src="../common/img/map2.png">
+							<h4>舆情地图</h4>
+						</div>
+						<div class="item_con" style="color: #000">
+							<p>主要功能</p>
+							<div class="line" style="border-bottom: 1px solid #000"></div>
+							<ul>
+								<li>定制化查询舆情分布</li>
+								<li>实时显示地区舆情预警</li>
+								<li>地区企业舆情负面增量排名</li>
+								<li>地区舆情指数统计</li>
+							</ul>
+							<a href="map.html" style="display: block;">进入使用</a>
+						</div>
+					</div>
+				</div>
+				<div class="item">
+					<div class="item_abs">
+						<div class="item_img">
+							<img style="width:30px;height:30px;" src="../common/img/deploy.png">
+							<h4>大数据经济研究</h4>
+						</div>
+						<div class="item_con">
+							<p>主要功能</p>
+							<div class="line"></div>
+							<ul>
+								<li>行业大数据监控</li>
+								<li>行业大数据分析</li>
+								<li>行业指标与指数</li>
+								<li>行业大数据查询</li>
+							</ul>
+							<a href="bigData.html">进入使用</a>
+						</div>
+					</div>
+				</div>
+				<div class="item">
+					<div class="item_abs">
+						<div class="item_img">
+							<img style="width:45px;height:30px;" src="../common/img/eagle_eye.png">
+							<h4>鹰眼舆情监测</h4>
+						</div>
+						<div class="item_con">
+							<p>主要功能</p>
+							<div class="line"></div>
+							<ul>
+								<li>舆情正负面判断</li>
+								<li>最新企业舆情追踪</li>
+								<li>企业舆情指数监测</li>
+								<li>企业舆情分类查询</li>
+							</ul>
+							<a href="monitor/monitoring.html">进入使用</a>
+						</div>
+					</div>
+				</div>
+				<div class="item">
+					<div class="item_abs">
+						<div class="item_img">
+							<img style="width:44px;height:30px;" src="../common/img/finance.png">
+							<h4>财务异常模型</h4>
+						</div>
+						<div class="item_con">
+							<p>主要功能</p>
+							<div class="line"></div>
+							<ul>
+								<li>上市公司财务报表查询</li>
+								<li>账务报表指标单项分析</li>
+								<li>上市公司财务异常预警</li>
+								<li>上市公司财务报表评分</li>
+							</ul>
+							<a href="finance/financialAppraisal-ranking.html">进入使用</a>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+	<!-- 产品与服务 -->
+	<script src="../unpackage/jquery/jquery-1.11.3.min.js"></script>
+	<script src="../unpackage/base.js"></script>
+	<script src="../unpackage/verify.js"></script>
+	<script src="../js/navHtml.js"></script>
+	<script type="text/javascript">
+		var magnifyTimer;
+		$('.item_abs').each(function(index, el) {
+		    $(this).on('mouseenter', function() {
+		        magnifyTimer = setTimeout(function() {
+		            var $this = $('.item_abs').eq(index);
+		            var $items = $this.parent().siblings();
+
+		            $items.children().removeClass('tran').find('a').hide();
+		            $items.find('.item_img').removeAttr('style');
+		            $items.find('.item_con').removeAttr('style');
+		            $items.find('.line').removeAttr('style');
+
+		            $this.addClass('tran').find('a').show();
+		            $this.children('.item_img').css('background-image', 'linear-gradient(-225deg, #4071EE, #183FA1)');
+		            $this.children('.item_con').css('color', '#000');
+		            $this.find('.line').css('border-bottom', '1px solid #000');
+		        }, 200);
+		    }).on('mouseleave', function() {
+		        clearTimeout(magnifyTimer);
+		    });
+		});
+	</script>
+</body>
+</html>
