@@ -1,0 +1,216 @@
+<header class="header">
+    <div class="header-box">
+        <div class="left"></div>
+        <nav class="center">
+            <ul class="clearfix">
+                <li class="fl">
+                    <a href="indexHome.html">首页</a>
+                </li>
+                <li class="fl">
+                    <a>模型列表</a>
+                </li>
+                <li class="fl">
+                    <a>研究工具</a>
+                </li>
+                <li class="optional fl">
+                    <a id="currentUser">我的自选</a>
+                </li>
+            </ul>
+        </nav>
+        <div class="nav_search search searBox">
+            <div class="search_img">
+                <div class="inputpd">
+                    <input class="search_input" id="search_input" placeholder="输入搜索内容"></input>
+                </div>
+            </div>
+            <div class="search_content" id="search_content">
+            </div>
+            <script id="search_content_tpl" type="text/template">
+                <div class="nav_search_bp">
+                    <h3>智能搜索</h3>
+                    <a id="bpsearch" class="bpsearch" href="">继续搜索关键词：</a>
+                </div>
+                <div class="nav_search_stock">
+                    <h3>股票</h3>
+                    <ul></ul>
+                </div>
+                <div class="nav_search_bond">
+                    <h3>债券</h3>
+                    <ul></ul>
+                </div>
+            </script>
+        </div>
+    </div>
+</header>
+<script type="text/javascript">
+// 给a链接重新加上路径
+$('.header').find('nav li>a:first-child').each(function(index, el) {
+    var $this = $(this);
+    if (index == 0) {
+        $this.attr('href', linkPath + $this.attr('href'));
+    }
+});
+
+$('.center li>a:first-child').after('<s></s>'); // 导航下划线
+
+// 导航搜索动画开始
+var timerSearch;
+$('.nav_search').on('mouseenter click', function(e) {
+    e.stopPropagation();
+    var $this = $(this);
+    timerSearch = setTimeout(function() {
+        $this.find('.inputpd').animate({
+            width: '240px',
+            left: '-240px'
+        }, 'speed', function() {
+            $('.search_input').focus();
+        });
+    }, 360);
+}).on('mouseleave', function() {
+    clearTimeout(timerSearch);
+});
+$(document).on('click', function() {
+    $('.search_content').hide();
+    $('.nav_search').find('.inputpd').animate({
+        width: '0',
+        left: '0'
+    }, 'speed', function() {
+        $('.search_input').val('');
+    });
+});
+// 导航搜索动画结束
+
+// 导航搜索
+var searchfd;
+$('#search_input').on('input', function() {
+    var val = $(this).val();
+    if (val == '') {
+        $('.search_content').hide();
+        return;
+    }
+    $('.search_content').show();
+    searchFunData(val);
+}).on('keydown', function(e) {
+    if ($(this).val() == '') {
+        return;
+    }
+    if (e.keyCode == 13) {
+        window.open(linkPath + 'intelligentSearch/brainpowerSearch.html?q=' + $('#search_input').val(), '_self');
+    }
+});
+
+// 导航搜索数据
+function searchFunData(inputVal) {
+    var IP = 'http://10.139.57.176';
+    if (searchfd) {
+        searchfd.abort();
+    } // 对上一次请求发起终止
+    if (inputVal == '') {
+        $('#bpsearch').removeAttr('href');
+        return;
+    }
+
+    $('#search_content').html($('#search_content_tpl').html());
+    $('.bpsearch').text('继续搜索关键词：' + inputVal);
+    $('#bpsearch').attr('href', linkPath + 'intelligentSearch/brainpowerSearch.html?q=' + inputVal);
+
+    searchfd = $.ajax({ // 股票数据
+        url: IP + '/soa_stock/data/index?type=fs_queryCode',
+        type: 'GET',
+        dataType: 'json',
+        data: {
+            var_code: inputVal
+        },
+        success: function(data3) {
+            var stockData = data3.data;
+            $('.nav_search_stock>ul').html(function() {
+                if (stockData == null) {
+                    return '无相关信息';
+                }
+                var _html = '';
+                var data = stockData.slice(0, 3);
+                for (var i = 0; i < data.length; i++) {
+                    _html += '<li>' +
+                        '<a href="' + linkPath + 'company.html?companyCode=' + data[i].S_INFO_WINDCODE + '&company=' + data[i].S_INFO_NAME + '&type=stock">' +
+                        data[i].S_INFO_NAME +
+                        '<p>' + data[i].S_INFO_WINDCODE + '</p>' +
+                        '</a>' +
+                        '</li>';
+                }
+                return _html;
+            });
+
+            // 债券数据
+            $.ajax({
+                url: IP + '/soa_official/data/index?type=yuqing_fund_search_news',
+                type: 'GET',
+                dataType: 'json',
+                data: {
+                    issuername: inputVal
+                },
+                success: function(data1) {
+                    if ($('#search_input').val() != inputVal) {
+                        return;
+                    }
+                    var bondData1 = data1.data;
+
+                    $.ajax({
+                        url: IP + '/soa_bond/data/index?type=query_company',
+                        type: 'GET',
+                        dataType: 'json',
+                        data: {
+                            var_text: inputVal
+                        },
+                        success: function(data2) {
+                            var bondData2 = data2.data || [];
+                            if (bondData1 != null) {
+                                for (var i = 0; i < bondData1.length; i++) {
+                                    bondData2.push({
+                                        "COMP_CODE": bondData1[i].COMP_CODE,
+                                        "BOND_NAME": bondData1[i].s_name,
+                                        "INDUSTRY_CODE": '',
+                                        "COMP_NAME": bondData1[i].s_issuer,
+                                        "BOND_CODE": bondData1[i].wincode,
+                                        "INDUSTRY_NAME": '',
+                                        "PINYIN": '',
+                                        "ORDER_STR": ''
+                                    });
+                                }
+                            }
+
+                            var newBondData = arrToRepeat(bondData2, 'BOND_CODE');
+                            $('.nav_search_bond>ul').html(function() {
+                                if (newBondData.length == 0) {
+                                    return '无相关信息';
+                                }
+                                var _html = '';
+                                var data = newBondData.slice(0, 3);
+                                for (var i = 0; i < data.length; i++) {
+                                    _html += '<li>' +
+                                        '<a href=' + linkPath + 'company.html?stockCode=' + data[i].BOND_CODE + '&company=' + data[i].COMP_NAME + '&companyCode=' + data[i].COMP_CODE + '&type=bond&industry_code=' + data[i].INDUSTRY_CODE + '&industry=' + data[i].INDUSTRY_NAME + '>' + data[i].COMP_NAME + '</a>' +
+                                        '<p>' + data[i].BOND_CODE + '</p>' +
+                                        '<p>' + data[i].BOND_NAME + '</p>' +
+                                        '</li>';
+                                }
+                                return _html;
+                            });
+                        }
+                    });
+                }
+            });
+        }
+    });
+
+    function arrToRepeat(arr, key) { // 数组去重
+        var newArr = [],
+            json = {};
+        for (var i = 0; i < arr.length; i++) {
+            if (!json[arr[i][key]]) {
+                newArr.push(arr[i]);
+                json[arr[i][key]] = 1;
+            }
+        }
+        return newArr;
+    }
+}
+</script>
