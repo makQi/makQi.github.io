@@ -136,14 +136,15 @@ Alt+r
 >侧边栏图标，配置属性：      
 "theme": "Seti_orig.sublime-theme",     
 
+#### Status Bar File Size
+>状态栏，显示文件大小
+
 #### IMESupport
 >中文输入法下，光标跟随BUG 
 
 #### Package Control
 >包管理器     
 
-#### Status Bar File Size
->状态栏，显示文件大小
 
 #### Vue Syntax Highlight
 >(.vue)文件语法高亮插件     
