@@ -5,6 +5,25 @@
 * <font color=#F9F9F9 face="microsoft yahei">以下全都是比较好的Sublime前端常用插件，插件地址：https://packagecontrol.io/</font>     
 ***
 
+#### 设置-用户
+```
+{
+    "color_scheme": "Packages/User/SublimeLinter/brogrammer (SL).tmTheme",     // 主题配色
+    "theme": "Seti_orig.sublime-theme",     // 侧边栏配色
+    "font_size": 11.0,
+    "ignored_packages":
+    [
+        "Vintage"
+    ],
+    "hot_exit": false,  // 取消记住上次打开
+    "remember_open_files":false,    // 取消记住上次打开
+    "update_check": false,   // 是否检查更新
+    "word_wrap": "auto",     // 自动换行
+    "show_encoding": true,   // 显示文件编码
+    "show_line_endings": true   // 显示文件编码
+}
+```
+
 #### Terminal
 >Ctrl+Shift+P，然后输入：terminal，回车。      
 如果，想从当前文件路径下启动git的Bash终端，请先安装[git](https://git-scm.com/downloads)。     
@@ -156,25 +175,6 @@ can_start_download函数，让它始终返回false。
 #### Material Theme
 >主题插件     
 
-
-#### 设置-用户
-```
-{
-    "color_scheme": "Packages/User/SublimeLinter/brogrammer (SL).tmTheme",     // 主题配色
-    "theme": "Seti_orig.sublime-theme",     // 侧边栏配色
-    "font_size": 11.0,
-    "ignored_packages":
-    [
-        "Vintage"
-    ],
-    "hot_exit": false,  // 取消记住上次打开
-    "remember_open_files":false,    // 取消记住上次打开
-    "update_check": false,   // 是否检查更新
-    "word_wrap": "auto",     // 自动换行
-    "show_encoding": true,   // 显示文件编码
-    "show_line_endings": true   // 显示文件编码
-}
-```
 
 #### sublimeText 添加鼠标右键打开功能
 ```
