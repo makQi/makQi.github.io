@@ -78,6 +78,7 @@ Ctrl+Shift+P，然后输入：SublimeServer，回车。
 
 #### HTML-CSS-JS Prettify
 >HTML、CSS、JS等，多语言格式化       
+快捷键：ctrl+alt+q     
 鼠标右键：HTML-CSS-JS Prettify ——> Prettify Code     
 请注意：需要安装nodejs     
 
