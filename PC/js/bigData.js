@@ -1,0 +1,325 @@
+var data = {
+	data:[
+	{
+		category:"上游能源",
+		industry:[
+			{
+				industryName:"石油天然气",
+				industryPage:[
+					{
+						pageName:"景气周期-乙烯",
+						pageUrl:"chemical/chemicalProductPrice.html?code=11404&name=乙烯",
+						// pNum:2
+					},
+					{
+						pageName:"美国石油钻井数",
+						pageUrl:"chemical/petroleumZJ.html",
+					}
+				]
+			},
+			{
+				industryName:"煤炭",
+				industryPage:null
+			}
+		]
+	},
+	{
+		category:"中游材料与化工",
+		industry:[
+			{
+				industryName:"农业造纸",
+				industryPage:[
+					{
+						pageName:"白羽鸡存栏量及价格走势分析",
+						pageUrl:"agriculture/AnimalHusbandryAndFishery.html",
+						// pNum:31
+					}
+				]
+			},
+			{
+				industryName:"材料化工",
+				industryPage:[
+					{
+						pageName:"化工价格监测",
+						pageUrl:"chemical/chemicalIndustry.html"
+					},
+					{
+						pageName:"拐点判断",
+						pageUrl:"chemical/chemicalDownWeek.html"
+					},
+					{
+						pageName:"化工价格预警",
+						pageUrl:"chemical/chemicalIndustry_warn.html"
+					},
+					{
+						pageName:"能化指数",
+						pageUrl:"chemical/capabilityIndex.html"
+					},
+					{
+						pageName:"利润监测",
+						pageUrl:"chemical/profit_monitoring.html"
+					},
+					{
+						pageName:"库存监测",
+						pageUrl:"chemical/inventory_monitoring.html"
+					},
+					{
+						pageName:"进出口",
+						pageUrl:"chemical/import_and_export.html"
+					},
+					{
+						pageName:"供需数据",
+						pageUrl:"chemical/supply_and_demand.html"
+					},
+					{
+						pageName:"产品和公司关系",
+						pageUrl:"chemical/productAndCompanyRelationship.html"
+					}
+				]
+			},
+			{
+				industryName:"电力设备",
+				industryPage:null
+			},
+			{
+				industryName:"机械军工",
+				industryPage:null
+			}
+		]
+	},
+	{
+		category:"下游商业与消费",
+		industry:[
+			{
+				industryName:"地产家电",
+				industryPage:[
+					{
+						pageName:"重点房地产上市公司大数据NAV估值分析",
+						pageUrl:"realEstate/RealEstate_home.html"
+					},
+					{
+						pageName:"利率监测",
+						pageUrl:"realEstate/RealEstate_interestRateMonitoring.html"
+					},
+					{
+						pageName:"二手房监测",
+						pageUrl:"realEstate/secondHandHousing.html"
+					},
+					{
+						pageName:"家电行业格局",
+						pageUrl:"appliances/setUp.html"
+					},
+					{
+						pageName:"家电行业价格走势",
+						pageUrl:"appliances/refrigeratorPrice.html"
+					},
+					{
+						pageName:"家电行业整体趋势",
+						pageUrl:"appliances/appliancesSales.html"
+					}
+				]
+			},
+			{
+				industryName:"汽车及零部件",
+				industryPage:[
+					{
+						pageName:"汽车销售分析",
+						pageUrl:"car/carSalesAnalysis.html"
+					},
+					{
+						pageName:"中长期趋势",
+						pageUrl:"car/carTendency.html"
+					}
+				]
+			},
+			{
+				industryName:"医疗保健",
+				industryPage:[
+					{
+						pageName:"公司竞争力分析",
+						pageUrl:"medical/medicine_CompanyCompetitivePower.html"
+					},
+					{
+						pageName:"药品价格分析",
+						pageUrl:"medical/drugPriceAnalysis.html"
+					},
+					{
+						pageName:"药品竞争力分析",
+						pageUrl:"medical/medicinesCompete.html"
+					},
+					{
+						pageName:"药品排名",
+						pageUrl:"medical/medicineRanking.html"
+					},
+					{
+						pageName:"药品研发pipeline",
+						pageUrl:"medical/pipeline.html"
+					}
+				]
+			},
+			{
+				industryName:"商贸服务",
+				industryPage:null	
+			},
+			{
+				industryName:"食品饮料",
+				industryPage:null	
+			},
+			{
+				industryName:"纺织家居",
+				industryPage:[
+					{
+						pageName:"公司销量分析",
+						pageUrl:"garmentIndustry/garment_companySales.html"
+					},
+					{
+						pageName:"服装进出口分析",
+						pageUrl:"garmentIndustry/garment_importAndExport.html"
+					},
+					{
+						pageName:"销售分析",
+						pageUrl:"garmentIndustry/salesAnalysis.html"
+					},
+					{
+						pageName:"销售指数",
+						pageUrl:"garmentIndustry/salesIndex.html"
+					},
+					{
+						pageName:"旗舰店分析",
+						pageUrl:"garmentIndustry/storeSales.html"
+					}
+				]	
+			}
+		]
+	},
+	{
+		category:"服务与支撑",
+		industry:[
+			{
+				industryName:"TMT系统",
+				industryPage:[
+					{
+						pageName:"总票房分析",
+						pageUrl:"TMT/box_office.html"
+					},
+					{
+						pageName:"院线及影投分析",
+						pageUrl:"TMT/yxjty.html"
+					},
+					{
+						pageName:"国产片与进口片票房分析",
+						pageUrl:"TMT/domesticAndImported.html"
+					},
+					{
+						pageName:"出品及发行公司分析",
+						pageUrl:"TMT/ProductionAdnDistribution.html"
+					}
+				]
+			},
+			{
+                industryName:"金融服务",
+				industryPage:null	
+			},
+			{
+				industryName:"公共事业",
+				industryPage:null	
+			},
+			{
+				industryName:"物流系统",
+				industryPage:null	
+			},
+			{
+				industryName:"综合信息",
+				industryPage:null	
+			}
+		]
+	},
+	{
+		category:"行业因子",
+		industry:[
+			{
+				industryName:"行业指标与指数",
+				industryPage:[
+					{
+						pageName:"相关性验证",
+						pageUrl:"industryFactor/industryFactorRelevance.html"
+					},
+					{
+						pageName:"同向性验证",
+						pageUrl:"industryFactor/industryFactorTX.html"
+					}
+				]
+			}
+		]
+	}
+	]
+};
+setSideBar(data.data);
+function setSideBar(data){
+	var html = "";
+	for(var i=0;i<data.length;i++){
+		var industries = "";
+		for(var j=0;j<data[i].industry.length;j++){
+
+				var industryPages = data[i].industry[j].industryPage;
+				var Page = "";
+				if(industryPages!=null){
+					for (var s = 0; s < industryPages.length; s++) {
+						Page+='<li><i></i><a data-href="'+industryPages[s].pageUrl+'" data-num="'+industryPages[s].pNum+'">'+industryPages[s].pageName+'</a></li>';
+					}
+					Page = '<ul class="boxC">'+Page+'</ul>';
+				}
+				
+			industries += '<li><a>'+data[i].industry[j].industryName+'</a><span class="WebpageNum">'+(industryPages!=null?industryPages.length:0)+'项</span>'+Page+'</li>';
+		}
+		html+='<h3 class="blue">'+data[i].category+'</h3>'+'<ul class="topnav">'+industries+'</ul>';
+		$(".bb-custom-wrapper").html(html);
+		$("#sideNav").mCustomScrollbar({
+			axis:"y",
+			theme:"rounded-dots",
+			scrollbarPosition:"inside",
+			scrollInertia:10,
+			alwaysShowScrollbar:2
+		});
+	}
+}
+/*var U= getURLSearch().U;
+if(U){
+	$.each($(".sideNav").find('a'),function(){
+		if($(this).text()==U){
+			$(this).parent().addClass("active");
+			$("#rightIframe").attr("src","bigDataResearch/"+$(this).attr("data-href"),"_self");
+		}
+	});
+}else{
+	$($(".boxC")[0]).children('li:first').addClass("active");
+	$.ajax({
+		url: "bigDataResearch/"+$($(".boxC")[0]).children('li:first').children('a').attr("data-href"),
+		type: 'GET',
+		async:false,
+		dataType: 'html',
+		success:function(d){
+			
+		}
+	})
+	
+	$("#rightIframe").attr("src","bigDataResearch/"+$($(".boxC")[0]).children('li:first').children('a').attr("data-href"),"_self");
+}*/
+$(document).ready(function() {
+	$(".topnav").accordion({
+		accordion:false,
+		speed: 400,
+	});
+});	
+var lo = location.href+'/';
+$(".boxC a").on("click",function(e){
+	e.stopPropagation();
+	$(".boxC i").removeClass("checked");
+	$(this).siblings('i').addClass("checked");
+	$("#rightIframe").attr("src","bigDataResearch/"+$(this).attr("data-href"),"_self");
+});
+
+$(document).on('click', function(){
+	var $iframeDocNode=$('#rightIframe').contents();
+	$iframeDocNode.find('.screen').hide();
+});

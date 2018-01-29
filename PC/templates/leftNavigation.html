@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<title>左导航</title>
+	<link rel="Shortcut Icon" href="../img/star.png"/>
+	<link rel="stylesheet" href="../css/base.css">
+	<link rel="stylesheet" href="../css/leftNavigation.css">
+</head>
+<body>
+	<div class="main-con">
+		<div class="mainBox">
+		<div class="mainLeftBox">
+			<div class="list" data-flag="on">
+				<h3 class="unfold">因子VS资产同向性</h3>
+				<ul>
+					<li class="bgs" data-html="divisorVSassetAll.html">所有因子</li>
+					<li data-html="divisorVSassetOpt.html">自选因子</li>
+				</ul>
+			</div>
+			<div class="list" data-flag="off">
+				<h3 class="withdraw">因子VS因子同向性</h3>
+				<ul style="display: none">
+					<li data-html="divisorVSdivisorAll.html">所有因子</li>
+					<li data-html="divisorVSdivisorOpt.html">自选因子</li>
+				</ul>
+			</div>
+			<div class="list" data-flag="off">
+				<h3 class="withdraw">基础数据配置</h3>
+				<ul style="display: none">
+					<li data-html="sourceIndustryFactor.html">源行业因子</li>
+					<li data-html="sourceIndustryFactorConversion.html">源行业因子转换</li>
+					<li data-html="industryFactorFrequencyConversion.html">行业因子频率转换</li>
+				</ul>
+			</div>
+			<div class="list">
+				<h3 class="withdraw">权限配置</h3>
+			</div>
+		</div>
+		<div class="mainRightBox">
+			<iframe id="myiframe" name="myiframe" src="divisorVSassetAll.html" style="width:100%; height:100%; overflow-y:hidden;"></iframe>
+		</div>
+	</div>
+	</div>
+
+	<script src="../unpackage/jquery/jquery-1.11.3.min.js"></script>
+	<!-- <script src="../../dist/jquery/jquery.select.js"></script> -->
+	<script src="../unpackage/base.js"></script>
+	<script src="../js/leftNavigation.js"></script>
+</body>
+</html>
