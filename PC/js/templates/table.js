@@ -2,12 +2,12 @@
 var tabData = [];
 for(var i=0; i<800; i++){
 	tabData.push({
-		a:'20170427',
+		a:2017+i,
 		b:i+1
 	});
 }
 $('#tab').tablesPaging({
-	titleName:[
+	/*titleName:[
 		{
 			name:'时间',
 			dataKey:'a'
@@ -15,7 +15,8 @@ $('#tab').tablesPaging({
 			name:'指数',
 			dataKey:'b'
 		}
-	],
+	],*/
+	template:'tab_tpl',
 	listNum:5,
 	lineNum:10,
 	autoHeight:false,

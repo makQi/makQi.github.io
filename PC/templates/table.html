@@ -15,6 +15,25 @@
 		<div id="tab" class="tab"></div>	
 	</div>
 
+	<script id="tab_tpl" type="text/html">
+		<table>
+			<thead>
+				<tr>
+					<th class="sort" data-key="a">时间</th>
+					<th class="sort" data-key="b">指数</th>
+				</tr>
+			</thead>
+			<tbody>
+				<% for(var i=0; i<data.length; i++) {%>
+					<tr>
+						<td><%= data[i].a %></td>
+						<td><%= data[i].b %></td>
+					</tr>
+				<% } %>
+			</tbody>
+		</table>
+	</script>
+
 	<script src="../unpackage/jquery/jquery-1.11.3.min.js"></script>
 	<script src="../unpackage/base.js"></script>
 	<script src="../unpackage/verify.js"></script>

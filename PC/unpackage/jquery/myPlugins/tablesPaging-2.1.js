@@ -10,7 +10,7 @@
  * autoHeight: 自动高度   默认值:true,lineNum会不起做用
  * trHeight: tr标签高度	默认值:32
  * data: 数据
- * template: 模版
+ * template: 模版ID
  * titleName: [{name:表头th名称,datakey:对应数据key}]  template启用时titleName属性不起作用
  */
 
