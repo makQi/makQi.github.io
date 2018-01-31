@@ -145,13 +145,13 @@
 					var $sort= $(this);
 					var key = $sort.attr('data-key');
 					if($sort.hasClass('drop')){
-						$sort.addClass('litre').removeClass('drop').parents('th').siblings().find('.sort').removeClass('drop litre');
+						$sort.addClass('litre').removeClass('drop').siblings('.sort').removeClass('drop litre');
 						opts.data.reverse();
 					}else if($sort.hasClass('litre')){
-						$sort.addClass('drop').removeClass('litre').parents('th').siblings().find('.sort').removeClass('drop litre');
+						$sort.addClass('drop').removeClass('litre').siblings('.sort').removeClass('drop litre');
 						opts.data.reverse();
 					}else {
-						$sort.addClass('drop').parents('th').siblings().find('.sort').removeClass('drop litre');
+						$sort.addClass('drop').siblings('.sort').removeClass('drop litre');
 						opts.data.sort(function(a, b){
 							a = a[key];
 							b = b[key];
