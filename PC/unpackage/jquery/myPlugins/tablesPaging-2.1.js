@@ -141,7 +141,7 @@
 
 
 				var thead_html = $this.find('thead').html();
-				$this.on('click', 'table .sort', function(){	// 排序
+				$this.find('li:last-child').on('click', '.sort', function(){	// 排序
 					var $sort= $(this);
 					var key = $sort.attr('data-key');
 					if($sort.hasClass('drop')){
@@ -153,12 +153,12 @@
 					}else {
 						$sort.addClass('drop').siblings('.sort').removeClass('drop litre');
 						opts.data.sort(function(a, b){
-							a = a[key];
-							b = b[key];
-							if (a > b) {
-								return 1;
-							} else if (a < b) {
+							var nameA = a[key];
+							var nameB = b[key];
+							if (nameA < nameB) {
 								return -1;
+							} else if (nameA > nameB) {
+								return 1;
 							} else {
 								return 0;
 							}
