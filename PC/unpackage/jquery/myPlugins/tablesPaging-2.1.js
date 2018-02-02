@@ -153,12 +153,12 @@
 					}else {
 						$sort.addClass('drop').siblings('.sort').removeClass('drop litre');
 						opts.data.sort(function(a, b){
-							a = a[key];
-							b = b[key];
-							if (a > b) {
-								return 1;
-							} else if (a < b) {
+							var nameA = a[key];
+							var nameB = b[key];
+							if (nameA < nameB) {
 								return -1;
+							} else if (nameA > nameB) {
+								return 1;
 							} else {
 								return 0;
 							}
