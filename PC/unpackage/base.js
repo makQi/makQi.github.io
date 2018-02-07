@@ -610,3 +610,42 @@ function Base64() {
         return string;
     };
 }
+
+
+
+/*series: [{
+    type: 'line',
+    name: nameArr[1],
+    data: data.data.map(function(item) {
+        return item.industry_value == null ? '---' : item.industry_value;
+    }),
+    itemStyle: {
+        normal: {
+            color: colors[1]
+        }
+    },
+    markPoint: {
+        label: {
+            normal: {
+                show: false,
+            }
+        },
+        data: getmarkPoint(data.data, 'industry_value', 'fundstatus', 'indexstatus')
+    }
+}]
+
+function getmarkPoint(data, key, compare, compare2) {
+    var arr = [];
+    for (var i = 0; i < data.length; i++) {
+        if (data[i][compare] == data[i][compare2]) {
+            arr.push({
+                xAxis: data[i].confirmmonth,
+                yAxis: data[i][key],
+                symbol: data[i][compare] == 1 ? 'triangle' : "pin",
+                symbolSize: data[i][compare] == 1 ? 10 : 20,
+                symbolOffset: data[i][compare] == 1 ? [0, 4] : [0, 0],
+            });
+        }
+    }
+    return arr;
+}*/
