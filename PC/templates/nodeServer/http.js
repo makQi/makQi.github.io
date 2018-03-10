@@ -41,4 +41,4 @@ var server = http.createServer(function(request, response) {
     });
 });
 server.listen(PORT);
-console.log("服务成功启动，Server runing at port: " + PORT + ".");
+console.log("服务成功启动，http://localhost:" + PORT + "/index.html");
