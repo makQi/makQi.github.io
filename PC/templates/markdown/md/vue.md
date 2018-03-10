@@ -1,5 +1,17 @@
 # vue常用API与options
 
+
+### vue基本命令
+```
+# 全局安装 vue-cli
+$ npm install --global vue-cli	创建一个基于 webpack 模板的新项目
+$ vue init webpack my-project	安装依赖，走你
+$ cd my-project
+$ npm install
+$ npm run dev	启动
+$ npm run build	把生成的文件放服务器
+```
+
 ***
 ### 全局 API
 #### Vue.component
