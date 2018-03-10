@@ -9,7 +9,7 @@ $ vue init webpack my-project	安装依赖，走你
 $ cd my-project
 $ npm install
 $ npm run dev	启动
-$ npm run build	把生成的文件放服务器
+$ npm run build	自动生成dist文件夹，把生成的文件放服务器
 ```
 
 ***
