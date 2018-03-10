@@ -3,5 +3,5 @@
 * http.js为node服务器搭建代码。
 * mine.js可解析的文件类型。
 `node http.js`
->启动服务
+>启动服务，打开地址 http://localhost:8000/index.html
 

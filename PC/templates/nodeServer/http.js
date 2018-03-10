@@ -5,7 +5,7 @@ var url = require('url');
 var fs = require('fs');
 var mine = require('./mine').types; //
 var path = require('path');
-var projectsFolder = 'dist'; //这里是项目文件夹名称;
+var projectsFolder = 'dist'; //这里是项目文件夹名称与路径;
 
 var server = http.createServer(function(request, response) {
     var pathname = url.parse(request.url).pathname;
