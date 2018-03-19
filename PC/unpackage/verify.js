@@ -1,8 +1,10 @@
-(function(){
-	var use = myCookies.getItem('admin');
-	if(use!='true'||use==null){
-		location.href = window.location.protocol + '//' + window.location.host;
-	}
+(function() {
+    var user = $.cookie('user');
+    var pas = $.cookie('pas');
+    if (user !== 'admin' && pas !== 'true') {
+        // location.href = mak.rootPath() + '/PC/login.html';
+        location.href = mak.rootPath() + '/login.html';
+    }
 })();
 
 function newsfontColor() { // 新闻标题，字体颜色

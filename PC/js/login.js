@@ -1,7 +1,10 @@
 $(function() {
 
-    (function(){
-        if(myCookies.getItem('admin')=='true'){
+    (function() {
+        var user = $.cookie('user');
+        var pas = $.cookie('pas');
+        if (user === 'admin' && pas === 'true') {
+            // location.href = mak.rootPath() + '/PC/indexHome.html';
             location.href = mak.rootPath() + '/indexHome.html';
         }
     })();
@@ -34,7 +37,7 @@ $(function() {
         }
     });
 
-    $('#reg').click(function() {
+    $('#reg').click(function() { //修改密码
         var newpword = $('#passwd2').val();
         if (newpword.length < 6 || newpword.length > 20) {
             $('#userCue').show().text('新密码不能为空，大于等6位，小于等20位。');
@@ -71,28 +74,11 @@ $(function() {
 });
 
 function register() {
-    /*$.ajax({
-        url: 'http://10.139.57.176/soa_research/data/index?type=user_login',
-        type: 'get',
-        dataType: 'json',
-        data: {
-            uname: $('#u').val(),
-            pword: $('#p').val(),
-            login_type: 1,
-            newpword: ''
-        },
-        success: function(data) {
-            if (data.data[0].result === 'true') {
-                $.cookie('macrostate', 'true', { path: '/' });
-                window.open('allMacrostate.html', '_self');
-            } else {
-                
-            }
-        }
-    });*/
     if ($('#u').val() === 'admin' && $('#p').val() === 'admin') {
-        $.cookie('admin', 'true', { path: '/' });
-        window.open('indexHome.html', '_self');
+        $.cookie('user', 'admin', { expires: 7, path: '/' });
+        $.cookie('pas', 'true', { expires: 7, path: '/' });
+        // location.href = mak.rootPath() + '/PC/indexHome.html';
+        location.href = mak.rootPath() + '/indexHome.html';
     } else {
         $('#web_qr_login').children('p').text('用户名或密码有误，请重新输入。').show();
     }

@@ -1,8 +1,4 @@
 ﻿var mak = new MakBaseFn();
-var myCookies = new DocCookies();
-
-myCookies.setItem('github', 'makqi.github.io');
-myCookies.expiresItem('github', 7);
 
 /**
  * 数值转化成货币格式
@@ -499,6 +495,15 @@ function MakBaseFn() {
             }
         }
         return newArr;
+    };
+
+    this.registerVerify = function(){
+        var user = $.cookie('user');
+        var pas = $.cookie('pas');
+        if (user !== 'admin' && pas !== 'true') {
+            // location.href = mak.rootPath() + '/PC/login.html';
+            location.href = mak.rootPath() + '/login.html';
+        }
     };
 
 }

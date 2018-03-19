@@ -450,5 +450,12 @@
 		        window.open(linkPath + 'bigData.html?U=' + $this.text());
 		    }
 		});
+
+		// 注销登录
+		$('#logout').click(function(){
+		    $.removeCookie('user', { path: '/' });
+		    $.removeCookie('pas', { path: '/' });
+		    location.href = mak.rootPath() + '/PC/login.html';
+		});
 	</script>
 </header>
