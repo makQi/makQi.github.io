@@ -326,12 +326,12 @@ function MakBaseFn() {
     };
 
     /**
-     * 时间差方法
-     * @param  {[type]} endTime [结束时间]
+     * 时间差方法，开始时间到当前时间
+     * @param  {[type]} startTime [开始时间]
      */
-    this.getDateDiff = function(endTime) {
-        if (typeof(endTime) == 'string' && endTime.indexOf('-') > -1) { // IE兼容处理
-            endTime = endTime.replace(/-/g, '/');
+    this.getDateDiff = function(startTime) {
+        if (typeof(startTime) == 'string' && startTime.indexOf('-') > -1) { // IE兼容处理
+            startTime = startTime.replace(/-/g, '/');
         }
         var result;
         var minute = 1000 * 60;
@@ -339,7 +339,7 @@ function MakBaseFn() {
         var day = hour * 24;
         var month = day * 30;
         var now = new Date().getTime();
-        var diffValue = now - new Date(endTime).getTime();
+        var diffValue = now - new Date(startTime).getTime();
         if (diffValue < 0) {
             return '本机时间有误';
         }
