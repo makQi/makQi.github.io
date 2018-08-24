@@ -37,8 +37,11 @@ body {
     font-family: "Helvetica Neue", "Noto Sans", "Microsoft Yahei", 
     SimSun, PingFang, Helvetica, Tahoma, "Source Han Sans CN", 
     "Noto Sans S Chinese", "Hiragino Sans GB", "sans-serif", Arial, Verdana, "\5b8b\4f53"; */
+    /* font: 14px/1.5 "myFont", "-apple-system", "BlinkMacSystemFont", 
+    "Helvetica Neue", "PingFang SC", "Microsoft YaHei", "Source Han Sans SC",
+    "Noto Sans CJK SC", "WenQuanYi Micro Hei", sans-serif; */
     cursor: default;
-    letter-spacing: 2px;    /* 文字之间的间隔 */
+    letter-spacing: 1px;    /* 文字之间的间隔 */
 }
 
 fieldset,
@@ -176,6 +179,7 @@ em {
     white-space: nowrap;
     text-overflow: ellipsis;
 }
+
 .text-word-wrap {   /* 文字超出自动换行 */
     white-space: normal;
     word-break: break-all;
@@ -214,6 +218,26 @@ em {
     display: none;
 }
 
+.drop:after {
+    content: '';
+    border-left: 6px solid transparent;
+    border-right: 6px solid transparent;
+    border-bottom: 6px solid #9B9B9B;
+    position: absolute;
+    top: 4px;
+    right: -14px;
+}
+
+.litre:before {
+    content: '';
+    border-top: 6px solid #9B9B9B;
+    border-right: 6px solid transparent;
+    border-left: 6px solid transparent;
+    position: absolute;
+    top: 10px;
+    right: -14px;
+}
+
 @font-face {
     font-family: 'myFont';  /*字体名称*/
     src: url('iconFont/Gotham-Book.ttf');   /*字体源文件*/
@@ -222,7 +246,10 @@ em {
 @font-face {
     font-family: 'iconfont';
     src: url('iconFont/iconfont.eot');
-    src: url('iconFont/iconfont.eot?#iefix') format('embedded-opentype'), url('iconFont/iconfont.woff') format('woff'), url('iconFont/iconfont.ttf') format('truetype'), url('iconFont/iconfont.svg#iconfont') format('svg');
+    src: url('iconFont/iconfont.eot?#iefix') format('embedded-opentype'),
+         url('iconFont/iconfont.woff') format('woff'),
+         url('iconFont/iconfont.ttf') format('truetype'),
+         url('iconFont/iconfont.svg#iconfont') format('svg');
 }
 
 .iconfont {
