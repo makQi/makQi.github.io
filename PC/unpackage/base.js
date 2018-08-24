@@ -191,6 +191,28 @@ function DocCookies() {
 
 
 function MakBaseFn() {
+    /**
+     * [random 生成一个随机数]
+     * @param  {[type]} num [随机数倍数]
+     * @return {[type]}     [返回一个随机数]
+     */
+    this.random = function(num) {
+        var multiple = num ? num : 100000;
+        return Math.floor(Math.random() * multiple);
+    };
+
+    /**
+     * [getFloat 四舍五入，保留n小数]
+     * @param  {[type]} number [须要处理的四舍五入数字]
+     * @param  {[type]} n      [保留多少位小数]
+     * @return {[type]}        [返回四舍五入后的数字]
+     */
+    this.getFloat = function(number, n) {
+        n = n ? parseInt(n) : 0;
+        if (n <= 0) return Math.round(number);
+        number = Math.round(number * Math.pow(10, n)) / Math.pow(10, n);
+        return number;
+    };
     
     /**
      * 获取窗口滚动条卷曲的高度
@@ -203,7 +225,7 @@ function MakBaseFn() {
             scrollTop = document.body.scrollTop;
         }
         return scrollTop;
-    }
+    };
     
     /**
      * 获取窗口可视范围的高度
@@ -216,14 +238,14 @@ function MakBaseFn() {
             clientHeight = (document.body.clientHeight > document.documentElement.clientHeight) ? document.body.clientHeight : document.documentElement.clientHeight;
         }
         return clientHeight;
-    }
+    };
     
     /**
      * 获取文档内容实际高度
      */
     this.getScrollHeight = function() {
         return Math.max(document.body.scrollHeight, document.documentElement.scrollHeight);
-    }
+    };
 
     /**
      * 中文字符转unicode码
