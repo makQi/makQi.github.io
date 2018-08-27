@@ -220,6 +220,53 @@ function MakBaseFn() {
     };
     
     /**
+     * [searchNotes 数据搜索]
+     * @param  {[Arr]} data [数据数组]
+     * @param  {[String]} key  [数组中对象的key]
+     * @param  {[type]} val  [要匹配的字符串]
+     * @return {[Arr]}      [返回一个新数组]
+     */
+    this.searchNotes = function (data, key, val) {
+        var aData = [],
+            aSearch = val.split(' '),
+            k = 0,
+            regStr = '',
+            reg;
+        for (var r = 0, lenR = aSearch.length; r < lenR; r++) {
+            regStr += '(' + aSearch[r] + ')([\\s\\S]*)';
+        }
+        reg = new RegExp(regStr);
+
+        for (var i = 0, lenI = data.length; i < lenI; i++) {
+            var title = data[i][key],
+                regMatch = title.match(reg),
+                searchData = {};
+            k = 0;
+            if (regMatch !== null) {
+                var replaceReturn = "";
+                for (var j = 1, lenJ = regMatch.length; j < lenJ; j++) {
+                    if (regMatch[j] === aSearch[k]) {
+                        // replaceReturn += '<span style="color:red;">$' + j + '</span>';
+                        replaceReturn += '$' + j;
+                        k++;
+                    } else {
+                        replaceReturn += '$' + j;
+                    }
+                }
+
+                for (var obj in data[i]) {
+                    if (data[i].hasOwnProperty(obj)) {
+                        searchData[obj] = data[i][obj];
+                    }
+                }
+                searchData[key] = searchData[key].replace(reg, replaceReturn);
+                aData.push(searchData);
+            }
+        }
+        return aData;
+    }
+    
+    /**
      * [getScrollTop 获取窗口滚动条卷曲的高度]
      * @return {[Number]} [description]
      */
