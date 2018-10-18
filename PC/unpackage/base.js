@@ -471,6 +471,69 @@ function MakBaseFn() {
         }
         return result;
     };
+    
+    /**
+     * [获取上一个月]
+     * @param  {[String]} date [格式为yyyy-mm-dd的日期，如：2014-01-25]
+     * @return {[String]}      [上一个月日期]
+     */
+    this.getPreMonth = function(date) {
+        var arr = date.split('-');
+        var year = arr[0];
+        var month = arr[1];
+        var day = arr[2];
+        var days = new Date(year, month, 0);
+        days = days.getDate();
+        var year2 = year;
+        var month2 = parseInt(month) - 1;
+        if (month2 == 0) {
+            year2 = parseInt(year2) - 1;
+            month2 = 12;
+        }
+        var day2 = day;
+        var days2 = new Date(year2, month2, 0);
+        days2 = days2.getDate();
+        if (day2 > days2) {
+            day2 = days2;
+        }
+        if (month2 < 10) {
+            month2 = '0' + month2;
+        }
+        var t2 = year2 + '-' + month2 + '-' + day2;
+        return t2;
+    }
+    
+    /**
+     * [获取下一个月]
+     * @param  {[String]} date [格式为yyyy-mm-dd的日期，如：2014-01-25]
+     * @return {[String]}      [下一个月日期]
+     */
+    this.getNextMonth = function(date) {
+        var arr = date.split('-');
+        var year = arr[0];
+        var month = arr[1];
+        var day = arr[2];
+        var days = new Date(year, month, 0);
+        days = days.getDate();
+        var year2 = year;
+        var month2 = parseInt(month) + 1;
+        if (month2 == 13) {
+            year2 = parseInt(year2) + 1;
+            month2 = 1;
+        }
+        var day2 = day;
+        var days2 = new Date(year2, month2, 0);
+        days2 = days2.getDate();
+        if (day2 > days2) {
+            day2 = days2;
+        }
+        if (month2 < 10) {
+            month2 = '0' + month2;
+        }
+
+        var t2 = year2 + '-' + month2 + '-' + day2;
+        return t2;
+    }
 
     // http://gosspublic.alicdn.com/aliyun-oss-sdk-4.4.4.min.js 引包
     /*var client = new OSS.Wrapper({    // 上传图片方法
