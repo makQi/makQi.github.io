@@ -196,6 +196,27 @@ function DocCookies() {
 
 
 function MakBaseFn() {
+    
+    /**
+     * [取出一个数组中的连续部份]
+     * @param  {[Arr]} arr [传入的数组]
+     * @return {[Arr]}     [返回一个新数组]
+     */
+    this.arrSection = function(arr) {
+        var newArr = [];
+        var n = NaN;
+        for (var i = 0; i < arr.length; i++) {
+            var g = arr[i];
+            if (g != n+1) {
+                newArr.push([g]);
+            } else {
+                newArr[newArr.length - 1].push(g);
+            }
+            n = g;
+        }
+        return newArr;
+    }
+    
     /**
      * [random 生成一个随机数]
      * @param  {[Number]} num [随机数倍数]
