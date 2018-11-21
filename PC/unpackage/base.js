@@ -359,6 +359,20 @@ function MakBaseFn() {
             }
         };
     };
+    
+    this.litreCompare = function(key) { // 降序排列
+        return function(a, b) {
+            a = a[key] != 'undefined' ? a[key] : a;
+            b = b[key] != 'undefined' ? b[key] : b;
+            if (a < b) {
+                return 1;
+            } else if (a > b) {
+                return -1;
+            } else {
+                return 0;
+            }
+        };
+    };
 
     /**
      * [charsLen 获取字符串的字节长度]
