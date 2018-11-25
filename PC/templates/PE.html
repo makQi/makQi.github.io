@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title></title>
+    <!-- <link rel="stylesheet" href="../css/base.css"> -->
+</head>
+
+<body>
+    <div id="pe_j" class="pe_j">
+        <h3>市盈率（静），对股价市值推算</h3>
+        <div>
+            <ul>
+                <li>
+                    <label>市盈率（静）:</label>
+                    <input class="pe_j_value" type="num">
+                </li>
+                <li>
+                    <label>上年度净利润:</label>
+                    <input class="equity" type="num">
+                </li>
+                <li>
+                    <label>总股本:</label>
+                    <input class="net_argin" type="num">
+                </li>
+            </ul>
+            <div>
+                <button class="pe_j_count" type="text">计算</button>
+                <span class="valuation"></span>
+                <span class="total_value"></span>
+            </div>
+        </div>
+    </div>
+    <script src="../unpackage/jquery/jquery-1.11.3.min.js"></script>
+    <script type="text/javascript">
+    $('.pe_j_count').on('click', function() {
+        var $pe_j = $('#pe_j');
+        var a = Number($pe_j.find('li:nth-child(1)>input').val());
+        var b = Number($pe_j.find('li:nth-child(2)>input').val());
+        var c = Number($pe_j.find('li:nth-child(3)>input').val());
+        var d;
+
+        if (a != 0 && b != 0 && c != 0) {
+            d = (a * b / c).toFixed(2);
+            $pe_j.find('.valuation').text('股价=' + d);
+        }
+
+        if (a != 0 && b != 0 && c != 0) {
+            $pe_j.find('.total_value').text('总市值=' + (c * d).toFixed(2));
+        }
+
+    });
+    </script>
+</body>
+
+</html>
