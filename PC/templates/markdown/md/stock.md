@@ -3,8 +3,11 @@
 * 不要贪心，小赚也是赚，见好就收。
 * 另可错过，不要盲目买入，耐心等待时机。
 * 重要技术指标：[K线图](https://baike.baidu.com/item/K%E7%BA%BF%E5%9B%BE/85028?fromtitle=K%E7%BA%BF&fromid=590751&fr=aladdin)、[成交量](https://baike.baidu.com/item/%E6%88%90%E4%BA%A4%E9%87%8F/649336?fr=aladdin)、[MA移动平均线](https://baike.baidu.com/item/%E7%A7%BB%E5%8A%A8%E5%B9%B3%E5%9D%87%E7%BA%BF/217887?fr=aladdin)、[筹码分布](https://baike.baidu.com/item/%E7%AD%B9%E7%A0%81%E5%88%86%E5%B8%83/6389265)、[kdj短线](https://baike.baidu.com/item/KDJ%E6%8C%87%E6%A0%87/6328421?fr=aladdin)、[换手率](https://baike.baidu.com/item/%E6%8D%A2%E6%89%8B%E7%8E%87/631895?fr=aladdin)。
+
 >kdj短线：日K值低于20，买入时机。且10日线下穿20日线后，第1-3天时间为最佳。5日线触碰K线图第二天是为好时机。
+
 >MA移动平均线：5日、10日、20日、30日平均线战法。30日线为生命线。均线高度集中且K线图在30日线下方，下跌趋势以形成，割肉也要跑。均线高度集中且K线图在30日线上方，成交量放大，上升趋势以形成，买入。
+
 >筹码分布：集中度在10%左右，且近期成交量小，后期大涨可能性大。集中度百分比越低越好，集中度大于17%要考虑卖出。且筹码在低位集中为最佳时机。
 
 ## 超跌股
