@@ -7,7 +7,7 @@
  * @param  {[String]} symbol   [货币符号]
  * @param  {[String]} thousand [整数部分千位分隔符]
  * @param  {[String]} decimal  [小数分隔符]
- * @return {[type]}          [description]
+ * @return {[String]}
  */
 Number.prototype.formatMoney = function(places, symbol, thousand, decimal) {
     places = !isNaN(places = Math.abs(places)) ? places : 2;
@@ -25,7 +25,7 @@ Number.prototype.formatMoney = function(places, symbol, thousand, decimal) {
  * 例如：Number(123456.25687).monetaryUnit(3);
  * [monetaryUnit 数值转化成货币格式]
  * @param  {[Number]} num [保留小数位数，默认保留2位]
- * @return {[type]}     [description]
+ * @return {[String]}
  */
 Number.prototype.monetaryUnit = function(num) {
     var res;
@@ -53,52 +53,33 @@ Number.prototype.monetaryUnit = function(num) {
  *       arr.removeWeight() 数组去重
  * [removeWeight 数组去重]
  * @param  {[String]} key [数组中每一项为对象时，传入对象的某一项key值去重]
- * @return {[type]}     [description]
+ * @return {[Array]}
  */
 Array.prototype.removeWeight = function(key) {
     var newArr = [];
-    if (key) {
-        var json = {};
-        for (var i = 0; i < this.length; i++) {
-            var k = this[i][key];
-            if (!json[k]) {
-                newArr.push(this[i]);
-                json[k] = 1;
-            }
+    var json = {};
+    for (var i = 0; i < this.length; i++) {
+        var k = key ? this[i][key] : this[i];
+        if (!json[k]) {
+            newArr.push(this[i]);
+            json[k] = 1;
         }
-        return newArr;
-    } else {
-        for (var j = 0; j < this.length; j++) {
-            if (newArr.indexOf(this[j]) == -1) {
-                newArr.push(this[j]);
-            }
-        }
-        return newArr;
     }
+    return newArr;
 };
 
 /**
  * 例如：arr.removeWeight(val)
  *       arr.removeWeight(val, key)
  * [removeByVal 删除数组中的一项]
- * @param  {[String]} val [description]
- * @param  {[String]} key [description]
- * @return {[type]}     [description]
+ * @param  {[Number || String]} val
+ * @param  {[String]} key
  */
-Array.prototype.removeByVal = function(val, key){
-    if(key){
-        for(var i=0; i<this.length; i++){
-            if(this[i][key]==val){
-                this.splice(i, 1);
-                break;
-            }
-        }
-    }else{
-        for(var j=0; j<this.length; j++){
-            if(this[j]==val){
-                this.splice(j, 1);
-                break;
-            }
+Array.prototype.removeByVal = function(val, key) {
+    for (var i = 0; i < this.length; i++) {
+        if (this[i][key] == val || this[i] == val) {
+            this.splice(i, 1);
+            break;
         }
     }
 };
@@ -196,18 +177,18 @@ function DocCookies() {
 
 
 function MakBaseFn() {
-    
+
     /**
      * [取出一个数组中的连续部份]
-     * @param  {[Arr]} arr [传入的数组]
-     * @return {[Arr]}     [返回一个新数组]
+     * @param  {[Array]} arr [传入的数组]
+     * @return {[Array]}     [返回一个新数组]
      */
     this.arrSection = function(arr) {
         var newArr = [];
         var n = NaN;
         for (var i = 0; i < arr.length; i++) {
             var g = arr[i];
-            if (g != n+1) {
+            if (g != n + 1) {
                 newArr.push([g]);
             } else {
                 newArr[newArr.length - 1].push(g);
@@ -216,7 +197,7 @@ function MakBaseFn() {
         }
         return newArr;
     }
-    
+
     /**
      * [random 生成一个随机数]
      * @param  {[Number]} num [随机数倍数]
@@ -239,15 +220,15 @@ function MakBaseFn() {
         number = Math.round(number * Math.pow(10, n)) / Math.pow(10, n);
         return number;
     };
-    
+
     /**
      * [searchNotes 数据搜索]
-     * @param  {[Arr]} data [数据数组]
+     * @param  {[Array]} data [数据数组]
      * @param  {[String]} key  [数组中对象的key]
-     * @param  {[type]} val  [要匹配的字符串]
-     * @return {[Arr]}      [返回一个新数组]
+     * @param  {[String]} val  [要匹配的字符串]
+     * @return {[Array]}      [返回一个新数组]
      */
-    this.searchNotes = function (data, key, val) {
+    this.searchNotes = function(data, key, val) {
         var aData = [],
             aSearch = val.split(' '),
             k = 0,
@@ -286,10 +267,10 @@ function MakBaseFn() {
         }
         return aData;
     }
-    
+
     /**
      * [getScrollTop 获取窗口滚动条卷曲的高度]
-     * @return {[Number]} [description]
+     * @return {[Number]}
      */
     this.getScrollTop = function() {
         var scrollTop = 0;
@@ -300,10 +281,10 @@ function MakBaseFn() {
         }
         return scrollTop;
     };
-    
+
     /**
      * [getClientHeight 获取窗口可视范围的高度]
-     * @return {[Number]} [description]
+     * @return {[Number]}
      */
     this.getClientHeight = function() {
         var clientHeight = 0;
@@ -314,10 +295,10 @@ function MakBaseFn() {
         }
         return clientHeight;
     };
-    
+
     /**
      * [getScrollHeight 获取文档内容实际高度]
-     * @return {[Number]} [description]
+     * @return {[Number]}
      */
     this.getScrollHeight = function() {
         return Math.max(document.body.scrollHeight, document.documentElement.scrollHeight);
@@ -325,7 +306,7 @@ function MakBaseFn() {
 
     /**
      * [toUnicode 中文字符转unicode码]
-     * @return {[String]} [description]
+     * @return {[String]}
      */
     this.toUnicode = function() {
         if (str == '') {
@@ -344,7 +325,7 @@ function MakBaseFn() {
      *       arr.reverse() 反转数组
      * [dropCompare 数组排序方法]
      * @param  {[String]} key [数组中每一项为对象时，传入对象的某一项key值排序]
-     * @return {[type]}     [description]
+     * @return {[Array]}
      */
     this.dropCompare = function(key) { // 升序排列
         return function(a, b) {
@@ -359,7 +340,7 @@ function MakBaseFn() {
             }
         };
     };
-    
+
     this.litreCompare = function(key) { // 降序排列
         return function(a, b) {
             a = a[key] != 'undefined' ? a[key] : a;
@@ -377,7 +358,7 @@ function MakBaseFn() {
     /**
      * [charsLen 获取字符串的字节长度]
      * @param  {[String]} str [字符串]
-     * @return {[Number]}     [description]
+     * @return {[Number]}
      */
     this.charsLen = function(str) {
         var realLength = 0,
@@ -397,7 +378,7 @@ function MakBaseFn() {
     /**
      * [getCurrentTime 获取当前时间字符串]
      * @param  {[String]} linkSymbol [为时间链接符，不传参数返回时间属性对象]
-     * @return {[type]}            [description]
+     * @return {[String]}
      */
     this.getCurrentTime = function(linkSymbol) {
         var time = new Date();
@@ -422,7 +403,7 @@ function MakBaseFn() {
      * 例如：mak.getLinkPath('templates');
      * [getLinkPath 获取相对路径返程方法]
      * @param  {[String]} str [文件夹名称]
-     * @return {[type]}     [description]
+     * @return {[String]}
      */
     this.getLinkPath = function(str) {
         var url = document.location.toString();
@@ -445,7 +426,7 @@ function MakBaseFn() {
     /**
      * [getDateDiff 时间差方法，开始时间到当前时间]
      * @param  {[type]} startTime [开始时间]
-     * @return {[type]}           [description]
+     * @return {[String]}
      */
     this.getDateDiff = function(startTime) {
         if (typeof(startTime) == 'string' && startTime.indexOf('-') > -1) { // IE兼容处理
@@ -485,7 +466,7 @@ function MakBaseFn() {
         }
         return result;
     };
-    
+
     /**
      * [获取上一个月]
      * @param  {[String]} date [格式为yyyy-mm-dd的日期，如：2014-01-25]
@@ -516,7 +497,7 @@ function MakBaseFn() {
         var t2 = year2 + '-' + month2 + '-' + day2;
         return t2;
     }
-    
+
     /**
      * [获取下一个月]
      * @param  {[String]} date [格式为yyyy-mm-dd的日期，如：2014-01-25]
@@ -570,10 +551,10 @@ function MakBaseFn() {
 
     /**
      * [checkFileExt 判断上传文件格式]
-     * @param  {[type]}   filename [上传按扭input.value值 ,event事件对像]
+     * @param  {[String]}   filename [上传按扭input.value值 ,event事件对像]
      * @param  {[Array]}   nameArr  [文件名后缀数组]
      * @param  {Function} callback [上传回调方法]
-     * @return {[type]}            [description]
+     * @return {[String]}
      */
     this.checkFileExt = function(filename, nameArr, callback) {
         var flag = false; //状态
@@ -620,7 +601,7 @@ function MakBaseFn() {
 
     /**
      * [getUrlSearch 获取URL地址全部数据]
-     * @return {[obj]} [json数据对象]
+     * @return {[Object]} [json数据对象]
      */
     this.getUrlSearch = function() {
         var arr = decodeURI(location.search).slice(1).split("&");
@@ -635,7 +616,7 @@ function MakBaseFn() {
     /**
      * [getUrlParam 获取URL地址单个数据]
      * @param  {[String]} name [url数据名称]
-     * @return {[type]}      [description]
+     * @return {[type]}
      */
     this.getUrlParam = function(name) {
         var reg = new RegExp("(^|&)" + name + "=([^&]*)(&|$)");
@@ -648,7 +629,7 @@ function MakBaseFn() {
 
     /**
      * [rootPath 自动获取当前服务器IP,端口,主目录入口]
-     * @return {[type]} [description]
+     * @return {[String]}
      */
     this.rootPath = function() {
         var pathName = window.location.pathname.substring(1);
@@ -662,7 +643,7 @@ function MakBaseFn() {
      * @param  {[Array]} arr [对象数组]
      * @param  {[String]} key [字段名]
      * @param  {[Number]} num [连续num个相同字段才会被记录，默认值：1]
-     * @return {[type]}     [description]
+     * @return {[Array]}
      */
     this.recordIndex = function(arr, key, num) {
         var str = arr[0][key];
@@ -705,7 +686,7 @@ function MakBaseFn() {
      * [dataDispose 给数组中对象补值]
      * @param  {[Array]} arr [对象数组]
      * @param  {[String]} key [字段名]
-     * @return {[type]}     [description]
+     * @return {[Array]}
      */
     this.dataDispose = function(arr, key) {
         var newArr = arr;
@@ -721,7 +702,7 @@ function MakBaseFn() {
         return newArr;
     };
 
-    this.registerVerify = function(){
+    this.registerVerify = function() {
         var user = $.cookie('user');
         var pas = $.cookie('pas');
         if (user !== 'admin' && pas !== 'true') {
