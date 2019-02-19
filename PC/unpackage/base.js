@@ -306,18 +306,25 @@ function MakBaseFn() {
 
     /**
      * [toUnicode 中文字符转unicode码]
+     * @param  {[String]} str [要转换的字符]
      * @return {[String]}
      */
-    this.toUnicode = function() {
-        if (str == '') {
-            return '请输入汉字';
-        }
-        var str = '';
-        for (var i = 0; i < str.length; i++) {
-            str += "\\u" + parseInt(str[i].charCodeAt(0), 10).toString(16);
-        }
-        return str.replace('/', '\\');
+    this.toUnicode = function(str) {
+        if (!str) { return '请输入汉字'; }
+        return str.replace(/([\u4E00-\u9FA5]|[\uFE30-\uFFA0])/g, function(newStr) {
+            return "\\u" + newStr.charCodeAt(0).toString(16);
+        });
     };
+
+    /**
+     * [getBLen 计算字符长度]
+     * @param  {[String]} str [要计算的字符串]
+     * @return {[String]}
+     */
+    this.getBLen = function(str) {
+        if (!str && str != 0) { return 0; }
+        return str.toString().replace(/[^\x00-\xff]/g, "ab").length;
+    }
 
     /**
      * 例如：arr.sort(mak.dropCompare('key')) 以数组中对象排序
@@ -469,7 +476,7 @@ function MakBaseFn() {
             result = '刚刚';
         }
         return result;
-        
+
     };
 
     /**
