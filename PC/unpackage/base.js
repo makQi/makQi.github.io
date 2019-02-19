@@ -426,45 +426,50 @@ function MakBaseFn() {
     /**
      * [getDateDiff 时间差方法，开始时间到当前时间]
      * @param  {[type]} startTime [开始时间]
+     * @param  {[type]} endTime [结束时间，可以不传]
      * @return {[String]}
      */
-    this.getDateDiff = function(startTime) {
-        if (typeof(startTime) == 'string' && startTime.indexOf('-') > -1) { // IE兼容处理
+    this.getDateDiff = function(startTime, endTime) {
+        if (typeof(startTime) == 'string' && startTime.indexOf('-') > -1) {
             startTime = startTime.replace(/-/g, '/');
         }
-        var result;
-        var minute = 1000 * 60;
-        var hour = minute * 60;
-        var day = hour * 24;
-        var month = day * 30;
-        var year = month * 12;
-        var now = new Date().getTime();
+
+        var now = endTime ? new Date(endTime).getTime() : new Date().getTime();
         var diffValue = now - new Date(startTime).getTime();
+        var result;
+
+        var minute = 1000 * 60,
+            hour = minute * 60,
+            day = hour * 24,
+            month = day * 30,
+            year = month * 12;
+
+        var yearC = diffValue / year,
+            monthC = diffValue / month,
+            weekC = diffValue / (7 * day),
+            dayC = diffValue / day,
+            hourC = diffValue / hour,
+            minC = diffValue / minute;
+
         if (diffValue < 0) {
-            return '本机时间有误';
-        }
-        var yearC = diffValue / year;
-        var monthC = diffValue / month;
-        var weekC = diffValue / (7 * day);
-        var dayC = diffValue / day;
-        var hourC = diffValue / hour;
-        var minC = diffValue / minute;
-        if (yearC >= 1) {
-            result = parseInt(yearC) + "年前";
+            result = '本机时间有误';
+        } else if (yearC >= 1) {
+            result = parseInt(yearC) + '年前';
         } else if (monthC >= 1) {
-            result = parseInt(monthC) + "月前";
+            result = parseInt(monthC) + '个月前';
         } else if (weekC >= 1) {
-            result = parseInt(weekC) + "周前";
+            result = parseInt(weekC) + '周前';
         } else if (dayC >= 1) {
-            result = parseInt(dayC) + "天前";
+            result = parseInt(dayC) + '天前';
         } else if (hourC >= 1) {
-            result = parseInt(hourC) + "小时前";
+            result = parseInt(hourC) + '小时前';
         } else if (minC >= 1) {
-            result = parseInt(minC) + "分钟前";
+            result = parseInt(minC) + '分钟前';
         } else {
-            result = "刚刚";
+            result = '刚刚';
         }
         return result;
+        
     };
 
     /**
