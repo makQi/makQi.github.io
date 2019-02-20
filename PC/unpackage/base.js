@@ -102,123 +102,116 @@ $(window).bind('beforeunload', function(event) {
     }
 }*/
 
-/**
- * Cookies 添加，删除，查询小框架。
- * 参数名sKey：对象key键值。
- * 参数名sValue：某一项的值。
- * 参数名daysNum：过期时间，以天为单位
- * 参数名vEnd：过期时间
- * 参数名sPath：路径
- */
-function DocCookies() {
-
-    // 获取cookie中某一项的值
-    this.getItem = function(sKey) {
-        return decodeURIComponent(document.cookie.replace(new RegExp("(?:(?:^|.*;)\\s*" + encodeURIComponent(sKey).replace(/[\-\.\+\*]/g, "\\$&") + "\\s*\\=\\s*([^;]*).*$)|^.*$"), "$1")) || null;
-    };
-
-    // 增加某一项到cookie中
-    this.setItem = function(sKey, sValue, vEnd, sPath, sDomain, bSecure) {
-        if (!sKey || /^(?:expires|max\-age|path|domain|secure)$/i.test(sKey)) {
-            return false;
-        }
-        var sExpires = "";
-        if (vEnd) {
-            switch (vEnd.constructor) {
-                case Number:
-                    sExpires = vEnd === Infinity ? "; expires=Fri, 31 Dec 9999 23:59:59 GMT" : "; max-age=" + vEnd;
-                    break;
-                case String:
-                    sExpires = "; expires=" + vEnd;
-                    break;
-                case Date:
-                    sExpires = "; expires=" + vEnd.toUTCString();
-                    break;
-            }
-        }
-        document.cookie = encodeURIComponent(sKey) + "=" + encodeURIComponent(sValue) + sExpires + (sDomain ? "; domain=" + sDomain : "") + (sPath ? "; path=" + sPath : "") + (bSecure ? "; secure" : "");
-        return true;
-    };
-
-    // 在cookie中移除某一项
-    this.removeItem = function(sKey, sPath, sDomain) {
-        if (!sKey || !this.hasItem(sKey)) {
-            return false;
-        }
-        document.cookie = encodeURIComponent(sKey) + "=; expires=Thu, 01 Jan 1970 00:00:00 GMT" + (sDomain ? "; domain=" + sDomain : "") + (sPath ? "; path=" + sPath : "");
-        return true;
-    };
-
-    // 查看cookie里面有没有某一项
-    this.hasItem = function(sKey) {
-        return (new RegExp("(?:^|;\\s*)" + encodeURIComponent(sKey).replace(/[\-\.\+\*]/g, "\\$&") + "\\s*\\=")).test(document.cookie);
-    };
-
-    // 返回所有cookie
-    this.keys = function() {
-        var aKeys = document.cookie.replace(/((?:^|\s*;)[^\=]+)(?=;|$)|^\s*|\s*(?:\=[^;]*)?(?:\1|$)/g, "").split(/\s*(?:\=[^;]*)?;\s*/);
-        for (var nIdx = 0; nIdx < aKeys.length; nIdx++) { aKeys[nIdx] = decodeURIComponent(aKeys[nIdx]); }
-        return aKeys;
-    };
-
-    // cookie过期时间，参数以天为单位 , 不传参数默认为7天
-    this.expiresItem = function(sKey, daysNum) {
-        var sExpires;
-        if (!Date.now) { // 兼容不支持该方法的引擎, 时间戳毫秒值
-            Date.now = function now() {
-                return new Date().getTime();
-            };
-        }
-        daysNum = (daysNum != undefined && daysNum != null && daysNum != '') ? daysNum : 7;
-        sExpires = daysNum * 24 * 60 * 60 * 1000 + Date.now();
-        this.setItem(sKey, this.getItem(sKey), new Date(sExpires));
-    };
-}
-
-
 function MakBaseFn() {
 
     /**
-     * [取出一个数组中的连续部份]
-     * @param  {[Array]} arr [传入的数组]
-     * @return {[Array]}     [返回一个新数组]
+     * [rootPath 自动获取当前服务器IP,端口,主目录入口]
+     * @return {[String]}
      */
-    this.arrSection = function(arr) {
-        var newArr = [];
-        var n = NaN;
-        for (var i = 0; i < arr.length; i++) {
-            var g = arr[i];
-            if (g != n + 1) {
-                newArr.push([g]);
-            } else {
-                newArr[newArr.length - 1].push(g);
-            }
-            n = g;
-        }
-        return newArr;
-    }
-
-    /**
-     * [random 生成一个随机数]
-     * @param  {[Number]} num [随机数倍数]
-     * @return {[Number]}     [返回一个随机数]
-     */
-    this.random = function(num) {
-        var multiple = num ? num : 100000;
-        return Math.floor(Math.random() * multiple);
+    this.rootPath = function() {
+        var pathName = window.location.pathname.substring(1);
+        var webName = pathName == '' ? '' : pathName.substring(0, pathName
+            .indexOf('/'));
+        return window.location.protocol + '//' + window.location.host + '/' + webName;
     };
 
     /**
-     * [getFloat 四舍五入，保留n小数]
-     * @param  {[Number]} number [须要处理的四舍五入数字]
+     * [getUrlSearch 获取URL地址全部数据]
+     * @return {[Object]} [json数据对象]
+     */
+    this.getUrlParam = function() {
+        var data = decodeURI(location.search).slice(1).split("&");
+        var json = {};
+        var newArr;
+        for (var i = 0; i < data.length; i++) {
+            newArr = data[i].split("=");
+            json[a[0]] = a[1];
+        }
+        return json;
+    };
+
+    /**
+     * [random 生成一个随机数，不传参数默认生成一个5位随机数]
+     * @param  {[Number]} n [随机数位数]
+     * @return {[Number]}   [返回随机数]
+     */
+    this.random = function(n) {
+        var s = '1';
+        var len = n ? Number(n) : 5;
+        for (var i = 0; i < len; i++) {
+            s += '0';
+        }
+        return Math.floor(Math.random() * Number(s));
+    };
+
+    /**
+     * [getFloat 四舍五入，保留n位小数]
+     * @param  {[Number]} number [需要处理的数字]
      * @param  {[Number]} n      [保留多少位小数]
      * @return {[Number]}        [返回四舍五入后的数字]
      */
     this.getFloat = function(number, n) {
-        n = n ? parseInt(n) : 0;
-        if (n <= 0) return Math.round(number);
-        number = Math.round(number * Math.pow(10, n)) / Math.pow(10, n);
-        return number;
+        var m = n ? parseInt(n) : 0;
+        if (m <= 0) { return Math.round(number) };
+        return Math.round(number * Math.pow(10, m)) / Math.pow(10, m);
+    };
+
+    /**
+     * [getBLen 获取字符串长度]
+     * @param  {[String]} str [字符串]
+     * @return {[Number]}
+     */
+    this.getBLen = function(str) {
+        if (!str && str != 0) { return 0; }
+        return str.toString().replace(/[^\x00-\xff]/g, "ab").length;
+    }
+
+    /**
+     * [toUnicode 中文字符转unicode码]
+     * @param  {[String]} str [要转换的字符]
+     * @return {[String]}
+     */
+    this.toUnicode = function(str) {
+        if (!str) { return '请输入汉字'; }
+        return str.replace(/([\u4E00-\u9FA5]|[\uFE30-\uFFA0])/g, function(newStr) {
+            return "\\u" + newStr.charCodeAt(0).toString(16);
+        });
+    };
+
+    /**
+     * 例如：arr.sort(mak.dropCompare('key')) 以数组中对象排序
+     *       arr.sort(mak.dropCompare()) 数组排序
+     *       arr.reverse() 反转数组
+     * [dropCompare 数组排序方法]
+     * @param  {[String]} key [数组中每一项为对象时，传入对象的某一项key值排序]
+     * @return {[Array]}
+     */
+    this.dropCompare = function(key) { // 升序排列
+        return function(a, b) {
+            a = a[key] != 'undefined' ? a[key] : a;
+            b = b[key] != 'undefined' ? b[key] : b;
+            if (a > b) {
+                return 1;
+            } else if (a < b) {
+                return -1;
+            } else {
+                return 0;
+            }
+        };
+    };
+
+    this.litreCompare = function(key) { // 降序排列
+        return function(a, b) {
+            a = a[key] != 'undefined' ? a[key] : a;
+            b = b[key] != 'undefined' ? b[key] : b;
+            if (a < b) {
+                return 1;
+            } else if (a > b) {
+                return -1;
+            } else {
+                return 0;
+            }
+        };
     };
 
     /**
@@ -269,120 +262,6 @@ function MakBaseFn() {
     }
 
     /**
-     * [getScrollTop 获取窗口滚动条卷曲的高度]
-     * @return {[Number]}
-     */
-    this.getScrollTop = function() {
-        var scrollTop = 0;
-        if (document.documentElement && document.documentElement.scrollTop) {
-            scrollTop = document.documentElement.scrollTop;
-        } else if (document.body) {
-            scrollTop = document.body.scrollTop;
-        }
-        return scrollTop;
-    };
-
-    /**
-     * [getClientHeight 获取窗口可视范围的高度]
-     * @return {[Number]}
-     */
-    this.getClientHeight = function() {
-        var clientHeight = 0;
-        if (document.body.clientHeight && document.documentElement.clientHeight) {
-            clientHeight = (document.body.clientHeight < document.documentElement.clientHeight) ? document.body.clientHeight : document.documentElement.clientHeight;
-        } else {
-            clientHeight = (document.body.clientHeight > document.documentElement.clientHeight) ? document.body.clientHeight : document.documentElement.clientHeight;
-        }
-        return clientHeight;
-    };
-
-    /**
-     * [getScrollHeight 获取文档内容实际高度]
-     * @return {[Number]}
-     */
-    this.getScrollHeight = function() {
-        return Math.max(document.body.scrollHeight, document.documentElement.scrollHeight);
-    };
-
-    /**
-     * [toUnicode 中文字符转unicode码]
-     * @param  {[String]} str [要转换的字符]
-     * @return {[String]}
-     */
-    this.toUnicode = function(str) {
-        if (!str) { return '请输入汉字'; }
-        return str.replace(/([\u4E00-\u9FA5]|[\uFE30-\uFFA0])/g, function(newStr) {
-            return "\\u" + newStr.charCodeAt(0).toString(16);
-        });
-    };
-
-    /**
-     * [getBLen 计算字符长度]
-     * @param  {[String]} str [要计算的字符串]
-     * @return {[String]}
-     */
-    this.getBLen = function(str) {
-        if (!str && str != 0) { return 0; }
-        return str.toString().replace(/[^\x00-\xff]/g, "ab").length;
-    }
-
-    /**
-     * 例如：arr.sort(mak.dropCompare('key')) 以数组中对象排序
-     *       arr.sort(mak.dropCompare()) 数组排序
-     *       arr.reverse() 反转数组
-     * [dropCompare 数组排序方法]
-     * @param  {[String]} key [数组中每一项为对象时，传入对象的某一项key值排序]
-     * @return {[Array]}
-     */
-    this.dropCompare = function(key) { // 升序排列
-        return function(a, b) {
-            a = a[key] != 'undefined' ? a[key] : a;
-            b = b[key] != 'undefined' ? b[key] : b;
-            if (a > b) {
-                return 1;
-            } else if (a < b) {
-                return -1;
-            } else {
-                return 0;
-            }
-        };
-    };
-
-    this.litreCompare = function(key) { // 降序排列
-        return function(a, b) {
-            a = a[key] != 'undefined' ? a[key] : a;
-            b = b[key] != 'undefined' ? b[key] : b;
-            if (a < b) {
-                return 1;
-            } else if (a > b) {
-                return -1;
-            } else {
-                return 0;
-            }
-        };
-    };
-
-    /**
-     * [charsLen 获取字符串的字节长度]
-     * @param  {[String]} str [字符串]
-     * @return {[Number]}
-     */
-    this.charsLen = function(str) {
-        var realLength = 0,
-            len = str.length,
-            charCode = -1;
-        for (var i = 0; i < len; i++) {
-            charCode = str.charCodeAt(i);
-            if (charCode >= 0 && charCode <= 128) {
-                realLength += 1;
-            } else {
-                realLength += 2;
-            }
-        }
-        return realLength;
-    };
-
-    /**
      * [getCurrentTime 获取当前时间字符串]
      * @param  {[String]} linkSymbol [为时间链接符，不传参数返回时间属性对象]
      * @return {[String]}
@@ -399,35 +278,8 @@ function MakBaseFn() {
             'seconds': time.getSeconds().toString(), // 秒
             'millisecond': time.getMilliseconds().toString() // 微秒
         };
-        if (linkSymbol || linkSymbol == '') {
-            return timeObj.year + linkSymbol + timeObj.month + linkSymbol + timeObj.date;
-        } else {
-            return timeObj;
-        }
-    };
-
-    /**
-     * 例如：mak.getLinkPath('templates');
-     * [getLinkPath 获取相对路径返程方法]
-     * @param  {[String]} str [文件夹名称]
-     * @return {[String]}
-     */
-    this.getLinkPath = function(str) {
-        var url = document.location.toString();
-        var arrUrl = url.split(str);
-        var start = arrUrl[1].indexOf("/");
-        var relUrl = arrUrl[1].substring(start);
-        if (relUrl.indexOf("?") != -1) {
-            relUrl = relUrl.split("?")[0];
-        }
-        var l = relUrl.match(/\//g).length - 1;
-        var s = "";
-        var i = 0;
-        while (i < l) {
-            s += "../";
-            i++;
-        }
-        return s;
+        if (linkSymbol || linkSymbol == '') { return timeObj.year + linkSymbol + timeObj.month + linkSymbol + timeObj.date; }
+        return timeObj;
     };
 
     /**
@@ -477,6 +329,87 @@ function MakBaseFn() {
         }
         return result;
 
+    };
+
+    /**
+     * [取出一个数组中的连续部份]
+     * @param  {[Array]} arr [传入的数组]
+     * @return {[Array]}     [返回一个新数组]
+     */
+    this.arrSection = function(arr) {
+        var newArr = [];
+        var n = NaN;
+        var g;
+        for (var i = 0; i < arr.length; i++) {
+            g = arr[i];
+            if (g != n + 1) {
+                newArr.push([g]);
+            } else {
+                newArr[newArr.length - 1].push(g);
+            }
+            n = g;
+        }
+        return newArr;
+    }
+
+    /**
+     * [getScrollTop 获取窗口滚动条卷曲的高度]
+     * @return {[Number]}
+     */
+    this.getScrollTop = function() {
+        var scrollTop = 0;
+        if (document.documentElement && document.documentElement.scrollTop) {
+            scrollTop = document.documentElement.scrollTop;
+        } else if (document.body) {
+            scrollTop = document.body.scrollTop;
+        }
+        return scrollTop;
+    };
+
+    /**
+     * [getClientHeight 获取窗口可视范围的高度]
+     * @return {[Number]}
+     */
+    this.getClientHeight = function() {
+        var clientHeight = 0;
+        if (document.body.clientHeight && document.documentElement.clientHeight) {
+            clientHeight = (document.body.clientHeight < document.documentElement.clientHeight) ? document.body.clientHeight : document.documentElement.clientHeight;
+        } else {
+            clientHeight = (document.body.clientHeight > document.documentElement.clientHeight) ? document.body.clientHeight : document.documentElement.clientHeight;
+        }
+        return clientHeight;
+    };
+
+    /**
+     * [getScrollHeight 获取文档内容实际高度]
+     * @return {[Number]}
+     */
+    this.getScrollHeight = function() {
+        return Math.max(document.body.scrollHeight, document.documentElement.scrollHeight);
+    };
+
+    /**
+     * 例如：mak.getLinkPath('templates');
+     * [getLinkPath 获取相对路径返程方法]
+     * @param  {[String]} str [文件夹名称]
+     * @return {[String]}
+     */
+    this.getLinkPath = function(str) {
+        var url = document.location.toString();
+        var arrUrl = url.split(str);
+        var start = arrUrl[1].indexOf("/");
+        var relUrl = arrUrl[1].substring(start);
+        if (relUrl.indexOf("?") != -1) {
+            relUrl = relUrl.split("?")[0];
+        }
+        var l = relUrl.match(/\//g).length - 1;
+        var s = "";
+        var i = 0;
+        while (i < l) {
+            s += "../";
+            i++;
+        }
+        return s;
     };
 
     /**
@@ -612,45 +545,6 @@ function MakBaseFn() {
     };
 
     /**
-     * [getUrlSearch 获取URL地址全部数据]
-     * @return {[Object]} [json数据对象]
-     */
-    this.getUrlSearch = function() {
-        var arr = decodeURI(location.search).slice(1).split("&");
-        var obj = {};
-        for (var i = 0; i < arr.length; i++) {
-            var a = arr[i].split("=");
-            obj[a[0]] = a[1];
-        }
-        return obj;
-    };
-
-    /**
-     * [getUrlParam 获取URL地址单个数据]
-     * @param  {[String]} name [url数据名称]
-     * @return {[type]}
-     */
-    this.getUrlParam = function(name) {
-        var reg = new RegExp("(^|&)" + name + "=([^&]*)(&|$)");
-        var r = window.location.search.substr(1).match(reg);
-        if (r != null) {
-            return unescape(r[2]);
-        }
-        return null;
-    };
-
-    /**
-     * [rootPath 自动获取当前服务器IP,端口,主目录入口]
-     * @return {[String]}
-     */
-    this.rootPath = function() {
-        var pathName = window.location.pathname.substring(1);
-        var webName = pathName == '' ? '' : pathName.substring(0, pathName
-            .indexOf('/'));
-        return window.location.protocol + '//' + window.location.host + '/' + webName;
-    };
-
-    /**
      * [recordIndex 算出对象数组中连续相同字段，的开始索引与结束索引]
      * @param  {[Array]} arr [对象数组]
      * @param  {[String]} key [字段名]
@@ -723,6 +617,80 @@ function MakBaseFn() {
         }
     };
 
+}
+
+
+/**
+ * Cookies 添加，删除，查询小框架。
+ * 参数名sKey：对象key键值。
+ * 参数名sValue：某一项的值。
+ * 参数名daysNum：过期时间，以天为单位
+ * 参数名vEnd：过期时间
+ * 参数名sPath：路径
+ */
+function DocCookies() {
+
+    // 获取cookie中某一项的值
+    this.getItem = function(sKey) {
+        return decodeURIComponent(document.cookie.replace(new RegExp("(?:(?:^|.*;)\\s*" + encodeURIComponent(sKey).replace(/[\-\.\+\*]/g, "\\$&") + "\\s*\\=\\s*([^;]*).*$)|^.*$"), "$1")) || null;
+    };
+
+    // 增加某一项到cookie中
+    this.setItem = function(sKey, sValue, vEnd, sPath, sDomain, bSecure) {
+        if (!sKey || /^(?:expires|max\-age|path|domain|secure)$/i.test(sKey)) {
+            return false;
+        }
+        var sExpires = "";
+        if (vEnd) {
+            switch (vEnd.constructor) {
+                case Number:
+                    sExpires = vEnd === Infinity ? "; expires=Fri, 31 Dec 9999 23:59:59 GMT" : "; max-age=" + vEnd;
+                    break;
+                case String:
+                    sExpires = "; expires=" + vEnd;
+                    break;
+                case Date:
+                    sExpires = "; expires=" + vEnd.toUTCString();
+                    break;
+            }
+        }
+        document.cookie = encodeURIComponent(sKey) + "=" + encodeURIComponent(sValue) + sExpires + (sDomain ? "; domain=" + sDomain : "") + (sPath ? "; path=" + sPath : "") + (bSecure ? "; secure" : "");
+        return true;
+    };
+
+    // 在cookie中移除某一项
+    this.removeItem = function(sKey, sPath, sDomain) {
+        if (!sKey || !this.hasItem(sKey)) {
+            return false;
+        }
+        document.cookie = encodeURIComponent(sKey) + "=; expires=Thu, 01 Jan 1970 00:00:00 GMT" + (sDomain ? "; domain=" + sDomain : "") + (sPath ? "; path=" + sPath : "");
+        return true;
+    };
+
+    // 查看cookie里面有没有某一项
+    this.hasItem = function(sKey) {
+        return (new RegExp("(?:^|;\\s*)" + encodeURIComponent(sKey).replace(/[\-\.\+\*]/g, "\\$&") + "\\s*\\=")).test(document.cookie);
+    };
+
+    // 返回所有cookie
+    this.keys = function() {
+        var aKeys = document.cookie.replace(/((?:^|\s*;)[^\=]+)(?=;|$)|^\s*|\s*(?:\=[^;]*)?(?:\1|$)/g, "").split(/\s*(?:\=[^;]*)?;\s*/);
+        for (var nIdx = 0; nIdx < aKeys.length; nIdx++) { aKeys[nIdx] = decodeURIComponent(aKeys[nIdx]); }
+        return aKeys;
+    };
+
+    // cookie过期时间，参数以天为单位 , 不传参数默认为7天
+    this.expiresItem = function(sKey, daysNum) {
+        var sExpires;
+        if (!Date.now) { // 兼容不支持该方法的引擎, 时间戳毫秒值
+            Date.now = function now() {
+                return new Date().getTime();
+            };
+        }
+        daysNum = (daysNum != undefined && daysNum != null && daysNum != '') ? daysNum : 7;
+        sExpires = daysNum * 24 * 60 * 60 * 1000 + Date.now();
+        this.setItem(sKey, this.getItem(sKey), new Date(sExpires));
+    };
 }
 
 
