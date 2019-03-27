@@ -167,6 +167,33 @@ function MakBaseFn() {
     }
 
     /**
+     * HTML实体与网页编码(汉字转化为了html实体)，编码
+     * @param  {[String]} str [中文字符]
+     * @return {[String]}
+     */
+    this.htmlEntities = function(str) {
+        var charCodeStr = "";
+        for (i = 0; i < str.length; i++) {
+            temp = str.charCodeAt(i);
+            charCodeStr += "&#" + temp + ";";
+        }
+        //  也可以用一句正则表达式解决
+        // charCodeStr = str.replace(/[\d\D]/g, function($0) { return "&#" + $0.charCodeAt(0) + ";"; });
+        return charCodeStr;
+    }
+
+    /**
+     * HTML实体与网页编码(汉字转化为了html实体)，解码
+     * @param  {[String]} str [中文字符]
+     * @return {[String]}
+     */
+    this.decodeHtmlEntities = function(str) {
+        var div = document.createElement('div');
+        div.innerHTML = str;
+        return div.innerHTML;
+    }
+
+    /**
      * [toUnicode 中文字符转unicode码]
      * @param  {[String]} str [要转换的字符]
      * @return {[String]}
