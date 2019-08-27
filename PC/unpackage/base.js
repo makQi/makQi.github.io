@@ -501,6 +501,51 @@ function MakBaseFn() {
         var t2 = year2 + '-' + month2 + '-' + day2;
         return t2;
     }
+    
+    /**
+     * [近三个月]
+     * @return {[String]}      [近三个月日期]
+     */
+    this.get3MonthBefor = function() { // 近三个月
+        var currDate = new Date();
+        var resultDate, year, month, date, hms;
+        year = currDate.getFullYear();
+        month = currDate.getMonth() + 1;
+        date = currDate.getDate();
+        hms = currDate.getHours() + ':' + currDate.getMinutes() + ':' + (currDate.getSeconds() < 10 ? '0' + currDate.getSeconds() : currDate.getSeconds());
+        switch (month) {
+            case 1:
+            case 2:
+            case 3:
+                month += 9;
+                year--;
+                break;
+            default:
+                month -= 3;
+                break;
+        }
+        month = (month < 10) ? ('0' + month) : month;
+        resultDate = year + '-' + month + '-' + date;
+        return resultDate;
+    }
+    
+    /**
+     * [近一年]
+     * @return {[String]}      [近一年日期]
+     */
+    this.getLastYearYestdy = () => {
+      let date = new Date();
+      let strYear = date.getFullYear() - 1;
+      let strDay = date.getDate();
+      let strMonth = date.getMonth() + 1;
+      if (strMonth < 10) {
+        strMonth = '0' + strMonth;
+      }
+      if (strDay < 10) {
+        strDay = '0' + strDay;
+      }
+      return strYear + '-' + strMonth + '-' + strDay;
+    }
 
     // http://gosspublic.alicdn.com/aliyun-oss-sdk-4.4.4.min.js 引包
     /*var client = new OSS.Wrapper({    // 上传图片方法
