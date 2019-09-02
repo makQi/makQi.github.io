@@ -524,6 +524,7 @@ function MakBaseFn() {
                 month -= 3;
                 break;
         }
+        date = (date < 10) ? ('0' + date) : date;
         month = (month < 10) ? ('0' + month) : month;
         resultDate = year + '-' + month + '-' + date;
         return resultDate;
